@@ -30,7 +30,7 @@ export default function PolicyAndVision() {
                             Eradicating Synthetic Baselines
                         </h4>
                     </div>
-                    <div className="md:w-2/3 flex flex-col gap-6 font-inter text-xs md:text-sm leading-[1.8] text-[#1A1A1A]/80 font-medium text-justify">
+                    <div className="md:w-2/3 flex flex-col gap-4 font-inter text-xs md:text-sm leading-[1.8] text-[#1A1A1A]/80 font-medium text-justify">
                         <p>
                             The global machine learning and cybersecurity
                             ecosystems are currently starving on legacy,
@@ -84,7 +84,7 @@ export default function PolicyAndVision() {
                             Zero-Noise Tolerance
                         </h4>
                     </div>
-                    <div className="md:w-2/3 flex flex-col gap-6 font-inter text-xs md:text-sm leading-[1.8] text-[#1A1A1A]/80 font-medium text-justify">
+                    <div className="md:w-2/3 flex flex-col gap-4 font-inter text-xs md:text-sm leading-[1.8] text-[#1A1A1A]/80 font-medium text-justify">
                         <p>
                             We operate under a strict, unforgiving{" "}
                             <strong>Zero-Noise</strong> policy. In our
@@ -148,7 +148,7 @@ export default function PolicyAndVision() {
                             Absolute Security & Integrity
                         </h4>
                     </div>
-                    <div className="md:w-2/3 flex flex-col gap-6 font-inter text-xs md:text-sm leading-[1.8] text-[#1A1A1A]/80 font-medium text-justify">
+                    <div className="md:w-2/3 flex flex-col gap-4 font-inter text-xs md:text-sm leading-[1.8] text-[#1A1A1A]/80 font-medium text-justify">
                         <p>
                             Every system deployed by Synapstream is designed
                             security-first, from bare-metal orchestration down
