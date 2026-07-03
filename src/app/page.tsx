@@ -57,7 +57,9 @@ export default function Home() {
     ];
 
     return (
-        <main className="w-full h-screen overflow-hidden relative flex items-center justify-center cursor-pointer">
+        <main className="w-full relative min-h-screen cursor-pointer">
+            {/* Hero Section */}
+            <section className="w-full h-screen relative overflow-hidden flex items-center justify-center">
             {/* LineWaves Background */}
             <div className="absolute inset-0 z-0">
                 <LineWaves
@@ -266,6 +268,19 @@ export default function Home() {
                     </div>
                 </div>
             </div>
+            </section>
+
+            {/* New White Section */}
+            <section className="w-full min-h-screen bg-white relative z-20 flex flex-col items-center justify-center py-32 text-[#1A1A1A]">
+                <div className="max-w-4xl mx-auto px-8 w-full text-center">
+                    <h2 className="text-4xl md:text-5xl font-bold font-jetbrains tracking-tight mb-8">
+                        The Future of Data
+                    </h2>
+                    <p className="max-w-2xl mx-auto text-lg md:text-xl font-inter leading-relaxed text-[#1A1A1A]/80 tracking-wide">
+                        More content will go here. You have successfully smoothly scrolled past the 3D hero section into a clean white canvas.
+                    </p>
+                </div>
+            </section>
         </main>
     );
 }
