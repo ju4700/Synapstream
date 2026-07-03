@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Orbitron } from "next/font/google";
+import { Geist, Geist_Mono, Chakra_Petch } from "next/font/google";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -12,8 +12,9 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const orbitron = Orbitron({
-  variable: "--font-orbitron",
+const chakra = Chakra_Petch({
+  weight: ['400', '600', '700'],
+  variable: "--font-chakra",
   subsets: ["latin"],
 });
 
@@ -30,7 +31,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${orbitron.variable} h-full antialiased dark`}
+      className={`${geistSans.variable} ${geistMono.variable} ${chakra.variable} h-full antialiased dark`}
     >
       <body className="min-h-full flex flex-col bg-black text-white">{children}</body>
     </html>
