@@ -169,7 +169,7 @@ export default function Hero() {
                     </div>
 
                     {/* APEX Glass Hover Card */}
-                    <div className="absolute top-full left-0 w-full md:w-[calc(50%-1.25rem)] mt-4 p-4 rounded-md bg-white/30 backdrop-blur-md backdrop-saturate-150 border border-white shadow-lg opacity-0 peer-hover/apex:opacity-100 transition-all duration-500 pointer-events-none transform -translate-y-2 peer-hover/apex:translate-y-0 z-50">
+                    <div className="absolute top-full left-0 w-full md:w-[480px] mt-4 p-5 rounded-md bg-white/30 backdrop-blur-md backdrop-saturate-150 border border-white shadow-lg opacity-0 peer-hover/apex:opacity-100 transition-all duration-500 pointer-events-none transform -translate-y-2 peer-hover/apex:translate-y-0 z-50">
                         <p className="text-[10.5px] text-[#1A1A1A] font-inter font-medium leading-[1.6] tracking-[0.03em] text-left">
                             <strong className="text-[#1A1A1A] font-jetbrains uppercase tracking-widest text-[9px] block mb-2 border-b border-[#1A1A1A]/10 pb-1.5">
                                 Technical Overview
@@ -192,7 +192,7 @@ export default function Hero() {
                     </div>
 
                     {/* LinkUp BD Glass Hover Card */}
-                    <div className="absolute top-full left-0 w-full md:w-[calc(50%-1.25rem)] mt-4 p-4 rounded-md bg-white/30 backdrop-blur-md backdrop-saturate-150 border border-white shadow-lg opacity-0 peer-hover/linkup:opacity-100 transition-all duration-500 pointer-events-none transform -translate-y-2 peer-hover/linkup:translate-y-0 z-50">
+                    <div className="absolute top-full left-0 w-full md:w-[480px] mt-4 p-5 rounded-md bg-white/30 backdrop-blur-md backdrop-saturate-150 border border-white shadow-lg opacity-0 peer-hover/linkup:opacity-100 transition-all duration-500 pointer-events-none transform -translate-y-2 peer-hover/linkup:translate-y-0 z-50">
                         <p className="text-[10.5px] text-[#1A1A1A] font-inter font-medium leading-[1.6] tracking-[0.03em] text-left">
                             <strong className="text-[#1A1A1A] font-jetbrains uppercase tracking-widest text-[9px] block mb-2 border-b border-[#1A1A1A]/10 pb-1.5">
                                 Deployment Specs
