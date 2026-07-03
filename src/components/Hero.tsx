@@ -216,10 +216,10 @@ export default function Hero() {
 
             {/* Bottom Left Content */}
             <div className="absolute bottom-20 left-24 z-10 pointer-events-auto flex flex-col items-start gap-4">
-                <p className="max-w-3xl text-black/80 font-jetbrains text-sm md:text-base leading-relaxed tracking-normal drop-shadow-sm font-medium text-left">
+                <p className="max-w-3xl font-inter text-xs md:text-sm leading-[1.8] text-[#1A1A1A]/80 font-medium tracking-normal drop-shadow-sm font-medium text-left">
                     A Software and Data Engineering firm working with{" "}
                     <br className="hidden md:block" />
-                    Governments, world-class Datasets and creative Software
+                    Governments, World-Class Datasets and Creative Software
                     solutions.
                 </p>
 
@@ -256,7 +256,7 @@ export default function Hero() {
                         <div className="overflow-hidden">
                             <div className="flex items-center whitespace-nowrap pl-6">
                                 <Link
-                                    href="/contact"
+                                    href="#contact"
                                     className="bg-black text-white hover:bg-black/80 rounded-full px-6 py-2 text-xs md:text-sm font-bold tracking-widest uppercase transition-all transform translate-x-4 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 duration-500 shadow-[0_4px_14px_0_rgba(0,0,0,0.3)]"
                                 >
                                     Contact Us

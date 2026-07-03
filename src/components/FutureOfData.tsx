@@ -81,6 +81,7 @@ export default function FutureOfData() {
                                 src="/logo1.png"
                                 alt="Linkup Communication"
                                 fill
+                                sizes="(max-width: 768px) 100vw, 150px"
                                 className="object-contain object-left"
                             />
                         </div>
@@ -89,6 +90,7 @@ export default function FutureOfData() {
                                 src="/btrc-logo-updated.png"
                                 alt="BTRC"
                                 fill
+                                sizes="(max-width: 768px) 100vw, 150px"
                                 className="object-contain object-left"
                             />
                         </div>

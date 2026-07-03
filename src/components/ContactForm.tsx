@@ -2,19 +2,15 @@ import React from "react";
 
 export default function ContactForm() {
     return (
-        <section className="w-full max-w-[1320px] mx-auto px-4 md:px-8 mt-24 mb-16 relative z-20">
+        <section id="contact" className="w-full max-w-[1320px] mx-auto px-4 md:px-8 mt-24 mb-16 relative z-20">
             <div className="border-t border-black/10 pt-16 flex flex-col md:flex-row items-start justify-between gap-16 xl:gap-24">
                 {/* Left Side: Copy */}
                 <div className="flex-1 w-full">
                     <h3 className="font-jetbrains text-[10px] md:text-xs tracking-[0.2em] uppercase text-black/50 mb-3 font-bold border-b border-black/10 pb-2">
-                        Inquiries &mdash; API Access
+                        Inquiries &mdash; Engineering & Data Solutions
                     </h3>
                     <p className="font-inter text-xs md:text-sm leading-[1.8] text-[#1A1A1A]/80 font-medium text-justify mt-8">
-                        Synapstream is currently onboarding select enterprise
-                        and government partners for early access to the
-                        APEX-IDS2026 dataset and proprietary volumetric labeling
-                        streams. Submit your credentials to request an API key
-                        and engineering consultation.
+                        Synapstream engineers mission-critical software solutions and high-throughput data infrastructure for enterprise and government partners. Submit your inquiry to discuss bespoke engineering engagements, API access, or enterprise integration.
                     </p>
                 </div>
 
