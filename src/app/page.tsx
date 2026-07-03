@@ -74,6 +74,42 @@ export default function Home() {
                         Our core competencies encompass large-scale data ingestion, distributed database architecture, and bespoke creative software design. We continuously synthesize complex, fragmented data pipelines into intuitive, high-performance applications tailored for mission-critical operations, empowering agencies with actionable intelligence.
                     </p>
                 </div>
+
+                {/* APEX-IDS2026 Reference */}
+                <div className="pt-4 flex flex-col gap-1.5 pointer-events-auto">
+                    <div className="flex justify-between items-center text-[9px] md:text-[10px] font-sans text-black/60">
+                        <span className="uppercase tracking-widest font-bold">Featured Project &mdash; Open Source</span>
+                        <a 
+                            href="https://github.com/ju4700/APEX-IDS2026" 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-1 text-black/80 hover:text-black font-bold hover:underline decoration-1 underline-offset-4 transition-all tracking-wider"
+                        >
+                            APEX-IDS2026 &#8599;
+                        </a>
+                    </div>
+                    <p className="text-[10.5px] text-black/80 font-serif leading-relaxed text-justify">
+                        One of the world's largest open-source datasets, featuring over 20 Billion network flows captured via NetFlow v9. It serves as a foundational benchmarking framework for training state-of-the-art anomaly detection and intrusion detection systems (IDS).
+                    </p>
+                </div>
+
+                {/* LinkUp BD Reference */}
+                <div className="pt-3 border-t border-black/20 flex flex-col gap-1.5 pointer-events-auto mt-2">
+                    <div className="flex justify-between items-center text-[9px] md:text-[10px] font-sans text-black/60">
+                        <span className="uppercase tracking-widest font-bold">Enterprise Client &mdash; ISP</span>
+                        <a 
+                            href="http://www.linkupbd.net/" 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-1 text-black/80 hover:text-black font-bold hover:underline decoration-1 underline-offset-4 transition-all tracking-wider uppercase"
+                        >
+                            LinkUp BD &#8599;
+                        </a>
+                    </div>
+                    <p className="text-[10.5px] text-black/80 font-serif leading-relaxed text-justify">
+                        Architected robust ISP infrastructure and custom enterprise billing software, currently powering and managing network services for more than 5,300 active clients.
+                    </p>
+                </div>
             </div>
 
             {/* Bottom Left Content */}
