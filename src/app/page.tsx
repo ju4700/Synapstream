@@ -84,29 +84,37 @@ export default function Home() {
 
             {/* Top Center IEEE-style Text */}
             <div className="absolute top-26 left-1/2 transform -translate-x-1/2 z-10 pointer-events-none max-w-3xl w-full px-8 opacity-90 hover:opacity-100 transition-opacity duration-500">
-                <div className="border-t-[1.5px] border-b-[1.5px] border-black/40 py-4 columns-1 md:columns-2 gap-10 text-justify text-[11px] text-black/80 font-serif leading-[1.7]">
+                <div className="border-t-[1.5px] border-b-[1.5px] border-black/40 py-4 columns-1 md:columns-2 gap-6 text-justify text-[11px] text-[#1A1A1A] font-inter leading-relaxed tracking-[0.03em]">
                     <p className="mb-4 md:mb-0 break-inside-avoid">
-                        <strong className="text-black font-bold font-sans tracking-wider text-[10px]">
+                        <strong className="text-[#1A1A1A] font-bold font-jetbrains tracking-wider text-[10px]">
                             I. ABSTRACT &mdash;{" "}
                         </strong>
                         Synapstream engineers the next generation of data
-                        infrastructure for public sector entities. By leveraging
-                        state-of-the-art computational models and scalable
-                        architecture, we bridge the gap between legacy
-                        government systems and modern analytical frameworks,
-                        delivering highly secure and robust solutions at an
-                        unprecedented global scale.
+                        infrastructure for public sector entities and enterprise
+                        conglomerates. By leveraging state-of-the-art
+                        computational models, high-throughput stream processing,
+                        and scalable distributed architecture, we bridge the
+                        widening gap between legacy government systems and
+                        modern analytical frameworks. Our proprietary
+                        ecosystems are mathematically verified to deliver highly
+                        secure, fault-tolerant, and robust solutions, ensuring
+                        absolute data integrity and zero-downtime scalability
+                        at an unprecedented global scale.
                     </p>
                     <p className="break-inside-avoid">
-                        <strong className="text-black font-bold font-sans tracking-wider text-[10px]">
+                        <strong className="text-[#1A1A1A] font-bold font-jetbrains tracking-wider text-[10px]">
                             II. SERVICES & WORK &mdash;{" "}
                         </strong>
-                        Our core competencies encompass large-scale data
-                        ingestion, distributed database architecture, and
-                        bespoke creative software design. We continuously
-                        synthesize complex, fragmented data pipelines into
-                        intuitive, high-performance applications tailored for
-                        mission-critical operations, empowering agencies with
+                        Our core competencies encompass massive-scale data
+                        ingestion, distributed database architecture,
+                        out-of-core pipeline engineering, and bespoke creative
+                        software design. We continuously synthesize complex,
+                        highly fragmented data pipelines into intuitive,
+                        hyper-performant front-end applications tailored
+                        specifically for mission-critical operations. By
+                        unifying raw, unstructured telemetry with advanced
+                        real-time visualization heuristics, we empower agencies
+                        and enterprise stakeholders with instantaneous,
                         actionable intelligence.
                     </p>
                 </div>
@@ -114,7 +122,7 @@ export default function Home() {
                 <div className="relative w-full">
                     {/* APEX-IDS2026 Reference */}
                     <div className="peer/apex pt-4 flex flex-col gap-1.5 pointer-events-auto">
-                        <div className="flex justify-between items-center text-[9px] md:text-[10px] font-sans text-black/60">
+                        <div className="flex justify-between items-center text-[9px] md:text-[10px] font-jetbrains text-[#1A1A1A]/80">
                             <span className="uppercase tracking-widest font-bold">
                                 Featured Project &mdash; Open Source
                             </span>
@@ -122,12 +130,12 @@ export default function Home() {
                                 href="https://github.com/ju4700/APEX-IDS2026"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="flex items-center gap-1 text-black/80 hover:text-black font-bold hover:underline decoration-1 underline-offset-4 transition-all tracking-wider"
+                                className="flex items-center gap-1 text-[#1A1A1A] hover:text-black font-bold hover:underline decoration-1 underline-offset-4 transition-all tracking-wider"
                             >
                                 APEX-IDS2026 &#8599;
                             </a>
                         </div>
-                        <p className="text-[10.5px] text-black/80 font-serif leading-relaxed text-justify">
+                        <p className="text-[10.5px] text-[#1A1A1A] font-inter leading-relaxed tracking-[0.03em] text-left">
                             A research-grade network intrusion detection dataset
                             capturing genuine threat actor behavior from the
                             live internet. Powered by a MikroTik honeypot and a
@@ -139,7 +147,7 @@ export default function Home() {
 
                     {/* LinkUp BD Reference */}
                     <div className="peer/linkup pt-3 border-t border-black/20 flex flex-col gap-1.5 pointer-events-auto mt-2">
-                        <div className="flex justify-between items-center text-[9px] md:text-[10px] font-sans text-black/60">
+                        <div className="flex justify-between items-center text-[9px] md:text-[10px] font-jetbrains text-[#1A1A1A]/80">
                             <span className="uppercase tracking-widest font-bold">
                                 Enterprise Client &mdash; ISP
                             </span>
@@ -147,12 +155,12 @@ export default function Home() {
                                 href="http://www.linkupbd.net/"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="flex items-center gap-1 text-black/80 hover:text-black font-bold hover:underline decoration-1 underline-offset-4 transition-all tracking-wider uppercase"
+                                className="flex items-center gap-1 text-[#1A1A1A] hover:text-black font-bold hover:underline decoration-1 underline-offset-4 transition-all tracking-wider uppercase"
                             >
                                 LinkUp BD &#8599;
                             </a>
                         </div>
-                        <p className="text-[10.5px] text-black/80 font-serif leading-relaxed text-justify">
+                        <p className="text-[10.5px] text-[#1A1A1A] font-inter leading-relaxed tracking-[0.03em] text-left">
                             Architected robust ISP infrastructure and custom
                             enterprise billing software, currently powering and
                             managing network services for more than 5,300 active
@@ -162,8 +170,8 @@ export default function Home() {
 
                     {/* APEX Glass Hover Card */}
                     <div className="absolute top-full left-0 w-full md:w-[calc(50%-1.25rem)] mt-4 p-4 rounded-md bg-white/30 backdrop-blur-md backdrop-saturate-150 border border-white shadow-lg opacity-0 peer-hover/apex:opacity-100 transition-all duration-500 pointer-events-none transform -translate-y-2 peer-hover/apex:translate-y-0 z-50">
-                        <p className="text-[10.5px] text-black/90 font-sans font-medium leading-[1.8] tracking-wide text-left">
-                            <strong className="text-black font-sans uppercase tracking-widest text-[9px] block mb-2 border-b border-black/10 pb-1.5">
+                        <p className="text-[10.5px] text-[#1A1A1A] font-inter font-medium leading-[1.6] tracking-[0.03em] text-left">
+                            <strong className="text-[#1A1A1A] font-jetbrains uppercase tracking-widest text-[9px] block mb-2 border-b border-[#1A1A1A]/10 pb-1.5">
                                 Technical Overview
                             </strong>
                             This dataset utilizes a proprietary Deterministic
@@ -185,8 +193,8 @@ export default function Home() {
 
                     {/* LinkUp BD Glass Hover Card */}
                     <div className="absolute top-full left-0 w-full md:w-[calc(50%-1.25rem)] mt-4 p-4 rounded-md bg-white/30 backdrop-blur-md backdrop-saturate-150 border border-white shadow-lg opacity-0 peer-hover/linkup:opacity-100 transition-all duration-500 pointer-events-none transform -translate-y-2 peer-hover/linkup:translate-y-0 z-50">
-                        <p className="text-[10.5px] text-black/90 font-sans font-medium leading-[1.8] tracking-wide text-left">
-                            <strong className="text-black font-sans uppercase tracking-widest text-[9px] block mb-2 border-b border-black/10 pb-1.5">
+                        <p className="text-[10.5px] text-[#1A1A1A] font-inter font-medium leading-[1.6] tracking-[0.03em] text-left">
+                            <strong className="text-[#1A1A1A] font-jetbrains uppercase tracking-widest text-[9px] block mb-2 border-b border-[#1A1A1A]/10 pb-1.5">
                                 Deployment Specs
                             </strong>
                             This large-scale deployment completely automates and
@@ -209,7 +217,7 @@ export default function Home() {
             {/* Bottom Left Content */}
             <div className="absolute bottom-20 left-24 z-10 pointer-events-auto flex flex-col items-start gap-4">
                 {/* Description */}
-                <p className="max-w-md text-black/80 font-sans text-sm md:text-base leading-relaxed tracking-wide drop-shadow-sm font-medium">
+                <p className="max-w-md text-black/80 font-jetbrains text-sm md:text-base leading-relaxed tracking-wide drop-shadow-sm font-medium">
                     A Software and Data Engineering firm working with
                     Governments, making world-class Datasets and creative
                     Software solutions.
