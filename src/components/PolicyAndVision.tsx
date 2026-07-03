@@ -1,4 +1,5 @@
 import React from "react";
+import LineWaves from "@/components/LineWaves";
 
 export default function PolicyAndVision() {
     return (
@@ -105,32 +106,37 @@ export default function PolicyAndVision() {
                             Out-Of-Memory failures inherent to legacy Python
                             data-science stacks.
                         </p>
-                        <div className="bg-[#fafafa] border border-black/10 p-6 rounded-lg mt-4">
-                            <h5 className="font-jetbrains text-[10px] tracking-[0.2em] uppercase text-black/50 font-bold mb-4">
-                                Core Technical Mandates
-                            </h5>
-                            <ul className="list-disc pl-5 flex flex-col gap-2 text-sm">
-                                <li>
-                                    All label extraction must be{" "}
-                                    <strong>Deterministically Derived</strong>{" "}
-                                    from verified honeypot payload signatures.
-                                    No heuristics allowed in ground-truth
-                                    generation.
-                                </li>
-                                <li>
-                                    Data pipelines must support{" "}
-                                    <strong>Out-Of-Core execution</strong> by
-                                    default. Datasets that cannot be queried on
-                                    machines with 16GB of RAM are considered
-                                    architecturally flawed.
-                                </li>
-                                <li>
-                                    All backend services must be written in
-                                    strongly-typed, memory-safe languages
-                                    (Rust/Go) or executed within mathematically
-                                    verified VM environments.
-                                </li>
-                            </ul>
+                        <div className="bg-[#fafafa] border border-black/10 p-6 rounded-lg mt-4 relative overflow-hidden">
+                            <div className="absolute inset-0 z-0 opacity-10 pointer-events-none grayscale">
+                                <LineWaves />
+                            </div>
+                            <div className="relative z-10">
+                                <h5 className="font-jetbrains text-[10px] tracking-[0.2em] uppercase text-black/50 font-bold mb-4">
+                                    Core Technical Mandates
+                                </h5>
+                                <ul className="list-disc pl-5 flex flex-col gap-2 text-sm">
+                                    <li>
+                                        All label extraction must be{" "}
+                                        <strong>Deterministically Derived</strong>{" "}
+                                        from verified honeypot payload signatures.
+                                        No heuristics allowed in ground-truth
+                                        generation.
+                                    </li>
+                                    <li>
+                                        Data pipelines must support{" "}
+                                        <strong>Out-Of-Core execution</strong> by
+                                        default. Datasets that cannot be queried on
+                                        machines with 16GB of RAM are considered
+                                        architecturally flawed.
+                                    </li>
+                                    <li>
+                                        All backend services must be written in
+                                        strongly-typed, memory-safe languages
+                                        (Rust/Go) or executed within mathematically
+                                        verified VM environments.
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
