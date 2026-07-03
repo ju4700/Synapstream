@@ -1,4 +1,5 @@
 import React from "react";
+import LineWaves from "@/components/LineWaves";
 
 export default function ContactForm() {
     return (
@@ -50,9 +51,15 @@ export default function ContactForm() {
 
                         <button
                             type="submit"
-                            className="mt-8 w-fit border border-black/20 text-[#1A1A1A] hover:bg-[#1A1A1A] hover:text-white transition-colors px-12 py-3 rounded-full font-bold font-inter text-xs uppercase tracking-widest"
+                            className="mt-8 relative overflow-hidden group w-fit border border-black/20 text-[#1A1A1A] hover:border-[#1A1A1A] transition-colors px-12 py-3 rounded-full font-bold font-inter text-xs uppercase tracking-widest"
                         >
-                            Send
+                            <div className="absolute inset-0 bg-[#1A1A1A] translate-y-[101%] group-hover:translate-y-0 transition-transform duration-500 ease-out z-0"></div>
+                            
+                            <div className="absolute inset-0 z-0 opacity-30 group-hover:opacity-50 group-hover:invert transition-all duration-500 pointer-events-none">
+                                <LineWaves innerLineCount={15} outerLineCount={15} color1="#000000" color2="#333333" color3="#666666" brightness={1.5} />
+                            </div>
+
+                            <span className="relative z-10 group-hover:text-white transition-colors duration-500">Send</span>
                         </button>
                     </form>
                 </div>

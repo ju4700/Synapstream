@@ -1,4 +1,5 @@
 import Image from "next/image";
+import LineWaves from "@/components/LineWaves";
 import fs from "fs";
 import path from "path";
 import DatasetViewer from "./DatasetViewer";
@@ -60,14 +61,29 @@ export default function FutureOfData() {
         >
             {/* Top Left Header (Logo + Description) */}
             <div className="absolute top-8 left-8 md:top-12 md:left-16 flex flex-col md:flex-row items-start md:items-start gap-6 md:gap-12 w-full max-w-5xl pr-8 md:pr-16 z-10">
-                <div className="relative w-32 h-32 md:w-48 md:h-48 shrink-0">
+                <div className="relative w-32 h-32 md:w-48 md:h-48 shrink-0 group">
                     <Image
-                        src="/logo.png"
+                        src="/logot.png"
                         alt="Synapstream Logo"
                         fill
-                        className="object-contain object-left-top"
+                        className="object-contain object-left-top z-0"
                         priority
                     />
+                    <div 
+                        className="absolute inset-0 z-10 mix-blend-screen opacity-50"
+                        style={{ 
+                            WebkitMaskImage: 'url(/logot.png)', 
+                            WebkitMaskSize: 'contain', 
+                            WebkitMaskPosition: 'left top', 
+                            WebkitMaskRepeat: 'no-repeat',
+                            maskImage: 'url(/logot.png)',
+                            maskSize: 'contain',
+                            maskPosition: 'left top',
+                            maskRepeat: 'no-repeat'
+                        }}
+                    >
+                        <LineWaves innerLineCount={20} outerLineCount={20} color1="#ffffff" color2="#cccccc" color3="#888888" brightness={2.5} />
+                    </div>
                 </div>
             </div>
 
