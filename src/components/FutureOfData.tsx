@@ -1,4 +1,5 @@
 import Image from "next/image";
+import NavBar from "@/components/NavBar";
 import LineWaves from "@/components/LineWaves";
 import fs from "fs";
 import path from "path";
@@ -59,6 +60,11 @@ export default function FutureOfData() {
             id="future-of-data"
             className="w-full min-h-screen flex flex-col items-center py-32 text-[#1A1A1A] relative"
         >
+            {/* Top Right Interactive Menu */}
+            <div className="absolute top-12 right-12 md:top-20 md:right-24 z-20">
+                <NavBar />
+            </div>
+
             {/* Top Left Header (Logo + Description) */}
             <div className="absolute top-8 left-8 md:top-12 md:left-16 flex flex-col md:flex-row items-start md:items-start gap-6 md:gap-12 w-full max-w-5xl pr-8 md:pr-16 z-10">
                 <div className="relative w-32 h-32 md:w-48 md:h-48 shrink-0 group">
@@ -66,6 +72,7 @@ export default function FutureOfData() {
                         src="/logot.png"
                         alt="Synapstream Logo"
                         fill
+                        sizes="(max-width: 768px) 128px, 192px"
                         className="object-contain object-left-top z-0"
                         priority
                     />

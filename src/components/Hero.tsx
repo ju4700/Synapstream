@@ -3,6 +3,7 @@
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import { useLenis } from "lenis/react";
 import LineWaves from "@/components/LineWaves";
 
 const Spline = dynamic(() => import("@splinetool/react-spline"), {
@@ -49,6 +50,8 @@ function TypewriterEffect({ words }: { words: string[] }) {
 }
 
 export default function Hero() {
+    const lenis = useLenis();
+
     const taglineWords = [
         "Data Engineering",
         "Creative Software",
@@ -216,6 +219,33 @@ export default function Hero() {
 
             {/* Bottom Left Content */}
             <div className="absolute bottom-20 left-24 z-10 pointer-events-auto flex flex-col items-start gap-4">
+                
+                {/* Scroll Down Indicator */}
+                <Link 
+                    href="#future-of-data" 
+                    onClick={(e) => {
+                        e.preventDefault();
+                        if (lenis) {
+                            lenis.scrollTo('#future-of-data', { 
+                                duration: 2.5, 
+                                easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)) 
+                            });
+                        } else {
+                            document.querySelector('#future-of-data')?.scrollIntoView({ behavior: 'smooth' });
+                        }
+                    }}
+                    className="group flex items-center gap-4 mb-2 cursor-pointer opacity-60 hover:opacity-100 transition-opacity"
+                >
+                    <div className="flex flex-col items-center justify-center w-8 h-8 border border-black/20 group-hover:border-black rounded-full transition-colors">
+                        <svg className="w-3 h-3 text-black animate-bounce group-hover:animate-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                        </svg>
+                    </div>
+                    <span className="font-jetbrains text-[10px] tracking-[0.2em] uppercase font-bold text-black">
+                        Discover More
+                    </span>
+                </Link>
+
                 <p className="max-w-3xl font-inter text-xs md:text-sm leading-[1.8] text-[#1A1A1A]/80 font-medium tracking-normal drop-shadow-sm font-medium text-left">
                     A Software and Data Engineering firm working with{" "}
                     <br className="hidden md:block" />

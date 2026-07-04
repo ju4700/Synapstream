@@ -106,25 +106,31 @@ export default function PolicyAndVision() {
                             Out-Of-Memory failures inherent to legacy Python
                             data-science stacks.
                         </p>
-                        <div className="bg-[#fafafa] border border-black/10 p-6 rounded-lg mt-4 relative overflow-hidden">
-                            <div className="absolute inset-0 z-0 opacity-10 pointer-events-none grayscale">
-                                <LineWaves />
+                        <div className="bg-black border border-[#222] p-6 rounded-lg mt-4 relative overflow-hidden text-white/80">
+                            <div className="absolute inset-0 z-0 opacity-40 pointer-events-none">
+                                <LineWaves
+                                    speed={0.15}
+                                    innerLineCount={15}
+                                    color1="#ffffff"
+                                    color2="#aaaaaa"
+                                    color3="#555555"
+                                />
                             </div>
                             <div className="relative z-10">
-                                <h5 className="font-jetbrains text-[10px] tracking-[0.2em] uppercase text-black/50 font-bold mb-4">
+                                <h5 className="font-jetbrains text-[10px] tracking-[0.2em] uppercase text-white/50 font-bold mb-4">
                                     Core Technical Mandates
                                 </h5>
-                                <ul className="list-disc pl-5 flex flex-col gap-2 text-sm">
+                                <ul className="list-disc pl-5 flex flex-col gap-2 text-sm text-white/80">
                                     <li>
                                         All label extraction must be{" "}
-                                        <strong>Deterministically Derived</strong>{" "}
+                                        <strong className="text-white">Deterministically Derived</strong>{" "}
                                         from verified honeypot payload signatures.
                                         No heuristics allowed in ground-truth
                                         generation.
                                     </li>
                                     <li>
                                         Data pipelines must support{" "}
-                                        <strong>Out-Of-Core execution</strong> by
+                                        <strong className="text-white">Out-Of-Core execution</strong> by
                                         default. Datasets that cannot be queried on
                                         machines with 16GB of RAM are considered
                                         architecturally flawed.

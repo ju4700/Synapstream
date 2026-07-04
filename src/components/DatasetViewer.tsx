@@ -79,23 +79,23 @@ export default function DatasetViewer({
                 </div>
 
                 {/* About this file */}
-                <div className="relative overflow-hidden p-6 border-b border-gray-200 bg-gray-50/30">
+                <div className="relative overflow-hidden p-6 border-b border-[#222] bg-black">
                     <div className="absolute inset-0 z-0 opacity-40 pointer-events-none">
                         <LineWaves
                             speed={0.15}
                             innerLineCount={15}
-                            color1="#cccccc"
-                            color2="#999999"
-                            color3="#eeeeee"
+                            color1="#ffffff"
+                            color2="#aaaaaa"
+                            color3="#555555"
                         />
                     </div>
                     <div className="relative z-10">
                         <div className="mb-2">
-                            <h3 className="font-bold font-inter text-sm text-[#1A1A1A]">
+                            <h3 className="font-bold font-inter text-sm text-white">
                                 About this file
                             </h3>
                         </div>
-                        <p className="text-sm font-inter leading-relaxed text-gray-700 max-w-3xl">
+                        <p className="text-sm font-inter leading-relaxed text-white/70 max-w-3xl">
                             {getFileDescription()}
                         </p>
                     </div>
