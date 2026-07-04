@@ -90,12 +90,6 @@ export default function Footer() {
                         >
                             About
                         </button>
-                        <Link
-                            href="/contact"
-                            className="hover:text-white transition-colors duration-300"
-                        >
-                            Contact
-                        </Link>
                     </div>
                 </div>
 
