@@ -236,7 +236,7 @@ export default function DatasetViewer({
                             Data Explorer
                         </h2>
                         <p className="text-xs font-jetbrains text-gray-500 mb-6">
-                            Version 1.0 (176.3 GB)
+                            Version 1.0 (465 GB)
                         </p>
 
                         {/* File Tree */}
@@ -375,20 +375,19 @@ export default function DatasetViewer({
                                 APEX-IDS2026 is currently being built as the
                                 next-generation gold standard for network
                                 intrusion and anomaly detection modeling.
-                                Through a deterministic, large-scale honeypot
-                                infrastructure, Synapstream is actively
-                                engineering a dataset designed to eliminate the
-                                persistent industry flaw of false-positive data
-                                labeling. Once complete, it will provide massive
-                                out-of-core volumetric flows, capturing verified
-                                threat-actor methodologies directly from the
-                                live internet with absolute certainty.
+                                The official published purified dataset is available on Zenodo (DOI: 10.5281/zenodo.22013914).
+                                We also provide access to the raw volumetric data upon request for specialized academic and enterprise research.
                             </p>
                         </div>
                     </div>
 
                     <div className="mt-auto pt-6 flex flex-col gap-2">
-                        <button className="relative w-full flex items-center justify-center gap-2 py-2.5 bg-[#0a0a0a] border border-[#1A1A1A] rounded-full text-xs font-bold font-inter text-white transition-colors overflow-hidden">
+                        <a 
+                            href="https://zenodo.org/records/22013914" 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className="relative w-full flex items-center justify-center gap-2 py-2.5 bg-[#0a0a0a] border border-[#1A1A1A] rounded-full text-xs font-bold font-inter text-white transition-colors overflow-hidden hover:bg-[#111]"
+                        >
                             <div className="absolute inset-0 z-0 opacity-50 pointer-events-none">
                                 <LineWaves
                                     speed={0.1}
@@ -419,10 +418,13 @@ export default function DatasetViewer({
                                         d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
                                     />
                                 </svg>
-                                Download Dataset Sample
+                                Download Purified Dataset (Zenodo)
                             </div>
-                        </button>
-                        <button className="w-full flex items-center justify-center gap-2 py-2.5 bg-white border border-gray-300 rounded-full text-xs font-bold font-inter text-[#1A1A1A] hover:bg-gray-50 transition-colors">
+                        </a>
+                        <button 
+                            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+                            className="w-full flex items-center justify-center gap-2 py-2.5 bg-white border border-gray-300 rounded-full text-xs font-bold font-inter text-[#1A1A1A] hover:bg-gray-50 transition-colors"
+                        >
                             <svg
                                 className="w-4 h-4"
                                 fill="none"
@@ -436,7 +438,7 @@ export default function DatasetViewer({
                                     d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
                                 />
                             </svg>
-                            Request Access via API
+                            Request Raw Volumetric Data
                         </button>
                     </div>
                 </div>

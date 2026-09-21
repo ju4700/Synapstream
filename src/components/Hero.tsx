@@ -219,26 +219,38 @@ export default function Hero() {
 
             {/* Bottom Left Content */}
             <div className="absolute bottom-20 left-24 z-10 pointer-events-auto flex flex-col items-start gap-4">
-                
                 {/* Scroll Down Indicator */}
-                <Link 
-                    href="#future-of-data" 
+                <Link
+                    href="#future-of-data"
                     onClick={(e) => {
                         e.preventDefault();
                         if (lenis) {
-                            lenis.scrollTo('#future-of-data', { 
-                                duration: 2.5, 
-                                easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)) 
+                            lenis.scrollTo("#future-of-data", {
+                                duration: 2.5,
+                                easing: (t: number) =>
+                                    Math.min(1, 1.001 - Math.pow(2, -10 * t)),
                             });
                         } else {
-                            document.querySelector('#future-of-data')?.scrollIntoView({ behavior: 'smooth' });
+                            document
+                                .querySelector("#future-of-data")
+                                ?.scrollIntoView({ behavior: "smooth" });
                         }
                     }}
                     className="group flex items-center gap-4 mb-2 cursor-pointer opacity-60 hover:opacity-100 transition-opacity"
                 >
                     <div className="flex flex-col items-center justify-center w-8 h-8 border border-black/20 group-hover:border-black rounded-full transition-colors">
-                        <svg className="w-3 h-3 text-black animate-bounce group-hover:animate-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                        <svg
+                            className="w-3 h-3 text-black animate-bounce group-hover:animate-none"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                        >
+                            <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M19 14l-7 7m0 0l-7-7m7 7V3"
+                            />
                         </svg>
                     </div>
                     <span className="font-jetbrains text-[10px] tracking-[0.2em] uppercase font-bold text-black">
@@ -257,9 +269,6 @@ export default function Hero() {
                 <div className="group flex items-center">
                     {/* Logo Link to Home */}
                     <Link href="/" className="flex items-center">
-                        {/* Animated Line */}
-                        <span className="w-6 mr-4 h-[3px] bg-black transition-all duration-300 ease-out group-hover:w-0 group-hover:mr-0"></span>
-
                         {/* Main Logo Text */}
                         <h1 className="text-black font-bold font-[family-name:var(--font-tech)] text-2xl md:text-3xl tracking-[0.4em] uppercase drop-shadow-[0_0_12px_rgba(0,0,0,0.4)] transition-all duration-300 ease-out group-hover:tracking-[0.3em] group-hover:drop-shadow-sm whitespace-nowrap">
                             Synapstream

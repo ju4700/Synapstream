@@ -98,10 +98,6 @@ export default function Footer() {
                     <div className="text-xs text-white/40 font-inter uppercase tracking-widest text-center leading-loose">
                         &copy; {new Date().getFullYear()} Synapstream. All
                         rights reserved. <br className="md:hidden" />
-                        <span className="hidden md:inline mx-4">|</span>
-                        <span className="font-jetbrains">
-                            Status: Operational
-                        </span>
                     </div>
                 </div>
             </div>

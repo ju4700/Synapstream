@@ -7,6 +7,39 @@ export default function ContactForm() {
             id="contact"
             className="w-full max-w-[1320px] mx-auto px-4 md:px-8 mt-24 mb-8 relative z-20"
         >
+            {/* Key Contacts */}
+            <div className="mb-16 flex flex-col items-center text-center">
+                <h3 className="font-jetbrains text-[10px] md:text-xs tracking-[0.2em] uppercase text-black/40 mb-10 font-bold">
+                    Key Contacts
+                </h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full max-w-4xl">
+                    {/* Person 1 */}
+                    <div className="flex flex-col items-center gap-1 border border-black/10 rounded-2xl px-8 py-8 hover:border-black/25 hover:shadow-sm transition-all duration-300 bg-white/50">
+                        <p className="font-jetbrains text-[10px] tracking-[0.10em] uppercase text-black/65 font-bold leading-relaxed">
+                            Business Consultant &amp;
+                            <br />
+                            External Operations Manager
+                        </p>
+                        <p className="font-inter text-xl md:text-2xl font-bold text-[#1A1A1A] tracking-tight leading-tight mt-3">
+                            Ashraful Ajam Sijan
+                        </p>
+                    </div>
+
+                    {/* Person 2 */}
+                    <div className="flex flex-col items-center gap-1 border border-black/10 rounded-2xl px-8 py-8 hover:border-black/25 hover:shadow-sm transition-all duration-300 bg-white/50">
+                        <p className="font-jetbrains text-[10px] tracking-[0.10em] uppercase text-black/65 font-bold leading-relaxed">
+                            Senior Legal Advisor
+                        </p>
+                        <p className="font-jetbrains text-[10px] tracking-[0.10em] uppercase text-black/65 font-bold leading-relaxed">
+                            LLB, LLM &nbsp;&mdash;&nbsp; Judge Court, Chittagong
+                        </p>
+                        <p className="font-inter text-xl md:text-2xl font-bold text-[#1A1A1A] tracking-tight leading-tight mt-3">
+                            Advocate Muntasir Alam
+                        </p>
+                    </div>
+                </div>
+            </div>
+
             <div className="border-t border-black/10 pt-16 flex flex-col md:flex-row items-start justify-between gap-16 xl:gap-24">
                 {/* Left Side: Copy */}
                 <div className="flex-1 w-full">

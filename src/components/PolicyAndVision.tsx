@@ -23,11 +23,11 @@ export default function PolicyAndVision() {
                 {/* Section 1: The Vision */}
                 <div className="flex flex-col md:flex-row gap-12 xl:gap-24">
                     <div className="md:w-1/3 shrink-0">
-                        <h3 className="font-jetbrains text-[10px] md:text-xs tracking-[0.2em] uppercase text-black/50 mb-6 font-bold border-b border-black/10 pb-2 flex justify-between">
+                        <h3 className="font-jetbrains text-[10px] md:text-xs tracking-[0.2em] uppercase text-black/50 mb-2 font-bold flex justify-between">
                             <span>01</span>
                             <span>Macro Vision & Trajectory</span>
                         </h3>
-                        <h4 className="font-inter font-bold text-2xl text-[#1A1A1A] tracking-tight">
+                        <h4 className="font-inter font-bold text-2xl text-[#1A1A1A] tracking-tight text-right">
                             Eradicating Synthetic Baselines
                         </h4>
                     </div>
@@ -77,11 +77,11 @@ export default function PolicyAndVision() {
                 {/* Section 2: Engineering Policy */}
                 <div className="flex flex-col md:flex-row gap-12 xl:gap-24">
                     <div className="md:w-1/3 shrink-0">
-                        <h3 className="font-jetbrains text-[10px] md:text-xs tracking-[0.2em] uppercase text-black/50 mb-6 font-bold border-b border-black/10 pb-2 flex justify-between">
+                        <h3 className="font-jetbrains text-[10px] md:text-xs tracking-[0.2em] uppercase text-black/50 mb-2 font-bold flex justify-between">
                             <span>02</span>
                             <span>Engineering Directives</span>
                         </h3>
-                        <h4 className="font-inter font-bold text-2xl text-[#1A1A1A] tracking-tight">
+                        <h4 className="font-inter font-bold text-2xl text-[#1A1A1A] tracking-tight text-right">
                             Zero-Noise Tolerance
                         </h4>
                     </div>
@@ -152,11 +152,11 @@ export default function PolicyAndVision() {
                 {/* Section 3: Operational Directives */}
                 <div className="flex flex-col md:flex-row gap-12 xl:gap-24">
                     <div className="md:w-1/3 shrink-0">
-                        <h3 className="font-jetbrains text-[10px] md:text-xs tracking-[0.2em] uppercase text-black/50 mb-6 font-bold border-b border-black/10 pb-2 flex justify-between">
+                        <h3 className="font-jetbrains text-[10px] md:text-xs tracking-[0.2em] uppercase text-black/50 mb-2 font-bold flex justify-between">
                             <span>03</span>
                             <span>Operational Standards</span>
                         </h3>
-                        <h4 className="font-inter font-bold text-2xl text-[#1A1A1A] tracking-tight">
+                        <h4 className="font-inter font-bold text-2xl text-[#1A1A1A] tracking-tight text-right">
                             Absolute Security & Integrity
                         </h4>
                     </div>

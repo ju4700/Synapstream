@@ -169,6 +169,21 @@ export default function FutureOfData() {
                             classes, achieving an evasion-resistant, zero-noise
                             ground truth for modern model training.
                         </p>
+
+                        {/* Zenodo Reference & Raw Data Notice */}
+                        <div className="mt-6 flex flex-col gap-3">
+                            <a
+                                href="https://doi.org/10.5281/zenodo.22013914"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-block font-jetbrains text-[10px] tracking-[0.15em] uppercase text-black/60 hover:text-black transition-colors font-bold"
+                            >
+                                Published Dataset &mdash; DOI: 10.5281/zenodo.22013914 &#8599;
+                            </a>
+                            <p className="font-jetbrains text-[9px] tracking-[0.15em] uppercase text-black/40 font-bold">
+                                Purified dataset available via Zenodo &nbsp;&bull;&nbsp; Raw volumetric data available on request
+                            </p>
+                        </div>
                     </div>
                 </div>
 
