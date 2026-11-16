@@ -12,13 +12,6 @@ import { m, useReducedMotion, useScroll, useTransform } from "motion/react";
 import { DrawLine, EASE_OUT, Reveal } from "../motion";
 import { QrCode } from "./QrBlock";
 
-const SCOPES = [
-    "Data Infrastructure",
-    "Custom Enterprise Software",
-    "Creative Systems",
-    "Full Architecture Advisory",
-];
-
 type Fields = {
     name: string;
     title: string;
@@ -27,7 +20,7 @@ type Fields = {
     phone: string;
     overview: string;
 };
-type Errors = Partial<Record<keyof Fields | "scope", string>>;
+type Errors = Partial<Record<keyof Fields, string>>;
 const EMPTY: Fields = {
     name: "",
     title: "",
@@ -37,7 +30,7 @@ const EMPTY: Fields = {
     overview: "",
 };
 
-function validate(f: Fields, scope: string[]): Errors {
+function validate(f: Fields): Errors {
     const e: Errors = {};
     if (f.name.trim().length < 2) e.name = "Enter your full name";
     if (f.title.trim().length < 2) e.title = "Enter your title";
@@ -46,7 +39,6 @@ function validate(f: Fields, scope: string[]): Errors {
         e.email = "Enter a valid work email";
     if (f.phone.replace(/[^\d]/g, "").length < 7)
         e.phone = "Enter phone number";
-    if (!scope.length) e.scope = "Select at least one scope";
     if (f.overview.trim().length < 20)
         e.overview = "Add a short overview (20+ characters)";
     return e;
@@ -114,7 +106,6 @@ function Input({
 
 function InquiryForm() {
     const [f, setF] = useState<Fields>(EMPTY);
-    const [scope, setScope] = useState<string[]>([]);
     const [errors, setErrors] = useState<Errors>({});
     const [done, setDone] = useState(false);
 
@@ -122,22 +113,14 @@ function InquiryForm() {
         setF((p) => ({ ...p, [k]: v }));
         if (errors[k]) setErrors((e) => ({ ...e, [k]: undefined }));
     };
-    const toggle = (s: string) => {
-        setScope((cur) =>
-            cur.includes(s) ? cur.filter((x) => x !== s) : [...cur, s],
-        );
-        if (errors.scope) setErrors((e) => ({ ...e, scope: undefined }));
-    };
 
     const onSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        const errs = validate(f, scope);
+        const errs = validate(f);
         setErrors(errs);
         const first = Object.keys(errs)[0];
         if (first) {
-            document
-                .getElementById(first === "scope" ? "scope-0" : first)
-                ?.focus();
+            document.getElementById(first)?.focus();
             return;
         }
         setDone(true);
@@ -146,7 +129,7 @@ function InquiryForm() {
     if (done) {
         const subject = encodeURIComponent(`Project inquiry — ${f.org}`);
         const body = encodeURIComponent(
-            `Name: ${f.name}\nTitle: ${f.title}\nOrganization: ${f.org}\nEmail: ${f.email}\nPhone: ${f.phone}\nProject scope: ${scope.join(", ")}\n\nProject overview:\n${f.overview}`,
+            `Name: ${f.name}\nTitle: ${f.title}\nOrganization: ${f.org}\nEmail: ${f.email}\nPhone: ${f.phone}\n\nProject overview:\n${f.overview}`,
         );
         return (
             <m.div
@@ -183,14 +166,10 @@ function InquiryForm() {
                     client—every detail below is already filled in. We reply to
                     inquiries directly, usually within two business days.
                 </p>
-                <dl className="mt-8 grid gap-5 border-y border-line py-6 text-sm sm:grid-cols-2">
+                <dl className="mt-8 grid gap-5 border-y border-line py-6 text-sm">
                     <div>
                         <dt className="text-step-2">Organization</dt>
                         <dd className="mt-1 text-mist">{f.org}</dd>
-                    </div>
-                    <div>
-                        <dt className="text-step-2">Project scope</dt>
-                        <dd className="mt-1 text-mist">{scope.join(", ")}</dd>
                     </div>
                 </dl>
                 <div className="mt-auto flex flex-wrap items-center gap-3 pt-10">
@@ -207,7 +186,6 @@ function InquiryForm() {
                         onClick={() => {
                             setDone(false);
                             setF(EMPTY);
-                            setScope([]);
                         }}
                         className="ml-auto text-sm text-silver underline-offset-4 hover:text-white hover:underline"
                     >
@@ -272,59 +250,6 @@ function InquiryForm() {
                     error={errors.phone}
                 />
             </div>
-
-            <fieldset aria-describedby={errors.scope ? "scope-err" : undefined}>
-                <legend className="flex w-full items-baseline justify-between gap-4">
-                    <span className="text-sm font-medium text-black">
-                        Project scope
-                    </span>
-                    {errors.scope && (
-                        <span
-                            id="scope-err"
-                            className="text-[13px] text-neutral-600"
-                        >
-                            {errors.scope}
-                        </span>
-                    )}
-                </legend>
-                <div className="mt-3 flex flex-wrap gap-2">
-                    {SCOPES.map((s, i) => {
-                        const on = scope.includes(s);
-                        return (
-                            <button
-                                key={s}
-                                id={`scope-${i}`}
-                                type="button"
-                                aria-pressed={on}
-                                onClick={() => toggle(s)}
-                                className={`inline-flex h-11 items-center gap-2.5 rounded-full border px-5 text-sm font-medium transition-colors ${
-                                    on
-                                        ? "border-black bg-black text-white"
-                                        : "border-neutral-300 bg-white text-black hover:border-black"
-                                }`}
-                            >
-                                <svg
-                                    viewBox="0 0 16 16"
-                                    fill="none"
-                                    aria-hidden
-                                    className={`h-3.5 shrink-0 transition-[width,opacity,margin] duration-300 ease-[cubic-bezier(.16,1,.3,1)] ${
-                                        on
-                                            ? "w-3.5 opacity-100"
-                                            : "-mr-2.5 w-0 opacity-0"
-                                    }`}
-                                >
-                                    <path
-                                        d="M3 8.5l3 3 7-7"
-                                        stroke="currentColor"
-                                        strokeWidth="1.8"
-                                    />
-                                </svg>
-                                {s}
-                            </button>
-                        );
-                    })}
-                </div>
-            </fieldset>
 
             <FieldShell
                 id="overview"
@@ -408,7 +333,7 @@ export function Contact() {
         <section
             ref={ref}
             id="contact"
-            aria-labelledby="contact-title"
+            aria-label="Contact"
             className="relative overflow-hidden bg-black pt-0 lg:pt-0"
         >
             <DrawLine className="absolute inset-x-0 top-0 h-px bg-hairline" />
@@ -442,13 +367,7 @@ export function Contact() {
                                 className="w-[72px]"
                                 title="SYNAPSTREAM"
                             />
-                            <h2
-                                id="contact-title"
-                                className="mt-12 text-balance text-[clamp(32px,3vw,44px)] font-semibold leading-[1.15] tracking-[-0.02em]"
-                            >
-                                Initiate an engineering consultation.
-                            </h2>
-                            <p className="mt-6 max-w-[44ch] text-lg leading-[1.65] text-neutral-600">
+                            <p className="mt-8 max-w-[44ch] text-lg leading-[1.65] text-neutral-600">
                                 Speak directly with our engineering leadership
                                 about your infrastructure or software
                                 requirements.
