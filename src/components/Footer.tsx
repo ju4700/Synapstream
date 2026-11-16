@@ -1,106 +1,207 @@
-"use client";
+import { useRef, type ReactNode } from "react";
+import { Button, LogoMark } from "./brand";
+import { EMAIL, OFFICE, PHONES, downloadVCard } from "./contact";
 
-import Link from "next/link";
-import LineWaves from "@/components/LineWaves";
-import { useLenis } from "lenis/react";
+type Item = { t: string; d: string };
 
-export default function Footer() {
-    const lenis = useLenis();
+const MODALS: { key: string; label: string; intro: string; items?: Item[]; contact?: boolean }[] = [
+  {
+    key: "standards",
+    label: "Architecture Standards",
+    intro:
+      "The engineering practices applied to every SYNAPSTREAM system, regardless of size or sector.",
+    items: [
+      {
+        t: "Documented architecture decisions",
+        d: "Significant design choices are recorded with their context and trade-offs, and handed over with the system.",
+      },
+      {
+        t: "Reviewed, version-controlled code",
+        d: "Every change goes through version control and peer code review before it is merged.",
+      },
+      {
+        t: "Automated testing",
+        d: "Unit, integration, and end-to-end tests run automatically on each change in continuous integration.",
+      },
+      {
+        t: "Separated environments",
+        d: "Development, staging, and production are isolated; releases are verified in staging first.",
+      },
+      {
+        t: "Infrastructure as code",
+        d: "Servers, networks, and configuration are defined in code so environments can be rebuilt reproducibly.",
+      },
+      {
+        t: "Open interfaces",
+        d: "APIs are described with OpenAPI and authentication follows OAuth 2.0 / OpenID Connect.",
+      },
+    ],
+  },
+  {
+    key: "governance",
+    label: "Data Governance Policy",
+    intro: "How we treat the data inside the systems we build and maintain for you.",
+    items: [
+      {
+        t: "Your data remains yours",
+        d: "Clients retain full ownership of all data, schemas, and derived records.",
+      },
+      {
+        t: "Residency you choose",
+        d: "Data is stored only in the environment you select: on-premise, national data center, or private cloud.",
+      },
+      {
+        t: "Least-privilege access",
+        d: "Engineering access is role-based, limited to what a task requires, and revoked when no longer needed.",
+      },
+      {
+        t: "Traceable activity",
+        d: "Administrative and data-access actions are written to tamper-evident activity logs.",
+      },
+      {
+        t: "Encryption",
+        d: "Data is encrypted in transit and at rest using current, widely reviewed standards.",
+      },
+      {
+        t: "Retention & deletion",
+        d: "Retention periods and deletion procedures follow your institutional policies.",
+      },
+    ],
+  },
+  {
+    key: "contact",
+    label: "Direct Contact",
+    intro: "Reach our engineering leadership directly.",
+    contact: true,
+  },
+];
 
-    const scrollToTop = () => {
-        if (lenis) {
-            // Heavy, slow quintic ease-out over 3 seconds
-            lenis.scrollTo(0, {
-                duration: 3,
-                easing: (t: number) => 1 - Math.pow(1 - t, 5),
-            });
-        } else {
-            window.scrollTo({ top: 0, behavior: "smooth" });
-        }
-    };
+function Modal({
+  id,
+  title,
+  intro,
+  children,
+}: {
+  id: string;
+  title: string;
+  intro: string;
+  children: ReactNode;
+}) {
+  return (
+    <>
+      <div className="flex items-start justify-between gap-6 border-b border-neutral-200 pb-6">
+        <div>
+          <LogoMark className="w-9" />
+          <h2 id={id} className="mt-6 text-[26px] font-semibold leading-tight tracking-[-0.02em]">
+            {title}
+          </h2>
+          <p className="mt-2 text-[15px] leading-relaxed text-neutral-600">{intro}</p>
+        </div>
+      </div>
+      {children}
+    </>
+  );
+}
 
-    const scrollToAbout = () => {
-        if (lenis) {
-            lenis.scrollTo("#future-of-data", {
-                duration: 2,
-                easing: (t: number) => 1 - Math.pow(1 - t, 4),
-            });
-        } else {
-            document
-                .getElementById("future-of-data")
-                ?.scrollIntoView({ behavior: "smooth" });
-        }
-    };
+export function Footer() {
+  const refs = useRef<Record<string, HTMLDialogElement | null>>({});
 
-    return (
-        <section className="w-full pt-12 pb-12 px-4 md:px-8 flex justify-center items-center">
-            <div className="w-full max-w-7xl min-h-[55vh] bg-[#050505] rounded-[3rem] px-12 pt-16 pb-8 md:px-24 md:pt-20 md:pb-12 shadow-2xl flex flex-col justify-between gap-12 relative overflow-hidden">
-                {/* Background LineWaves */}
-                <div className="absolute inset-0 z-0 opacity-50">
-                    <LineWaves
-                        speed={0.05}
-                        innerLineCount={40}
-                        outerLineCount={50}
-                        warpIntensity={0.8}
-                        rotation={-45}
-                        edgeFadeWidth={0.0}
-                        colorCycleSpeed={1.0}
-                        brightness={0.15}
-                        color1="#ffffff"
-                        color2="#ffffff"
-                        color3="#ffffff"
-                        enableMouseInteraction={true}
-                        mouseInfluence={2.0}
-                    />
-                </div>
+  return (
+    <footer className="bg-black">
+      <div className="mx-auto flex max-w-[1440px] flex-wrap items-center justify-between gap-6 px-6 py-10 md:px-12 xl:px-20">
+        <p className="text-sm text-silver">
+          © 2026 SYNAPSTREAM. All rights reserved. Chittagong, Bangladesh.
+        </p>
+        <ul className="flex flex-wrap items-center gap-x-8 gap-y-3">
+          {MODALS.map((m) => (
+            <li key={m.key}>
+              <button
+                type="button"
+                onClick={() => refs.current[m.key]?.showModal()}
+                className="link-draw text-sm text-silver transition-colors hover:text-white"
+              >
+                {m.label}
+              </button>
+            </li>
+          ))}
+        </ul>
+      </div>
 
-                {/* Subtle Glow inside the card */}
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-1/2 bg-white/5 blur-[120px] rounded-full pointer-events-none z-0"></div>
-
-                <div className="flex flex-col items-center text-center w-full z-10 gap-16 mt-auto">
-                    {/* Brand / Logo */}
-                    <div className="flex flex-col items-center gap-6">
-                        <h2 className="bg-gradient-to-br from-white via-white/70 to-white/10 bg-clip-text text-transparent mix-blend-plus-lighter font-bold font-[family-name:var(--font-tech)] text-3xl md:text-5xl lg:text-6xl tracking-[0.3em] uppercase drop-shadow-[0_0_15px_rgba(255,255,255,0.1)]">
-                            Synapstream
-                        </h2>
-                        <div className="flex flex-col items-center gap-3">
-                            <p className="bg-gradient-to-r from-white/70 to-white/30 bg-clip-text text-transparent mix-blend-plus-lighter text-sm md:text-base font-inter max-w-lg leading-relaxed">
-                                Engineering the next generation of data
-                                infrastructure and creative software solutions
-                                for governments and enterprise conglomerates.
-                            </p>
-                            <p className="bg-gradient-to-r from-white/50 to-white/20 bg-clip-text text-transparent mix-blend-plus-lighter italic font-inter text-sm tracking-wide">
-                                &quot;Debugging Humanity&quot; &mdash; Jalal
-                                Uddin (ju4700)
-                            </p>
-                        </div>
-                    </div>
-
-                    {/* Navigation Links */}
-                    <div className="flex flex-row flex-wrap justify-center items-center gap-8 md:gap-16 text-sm md:text-base font-jetbrains text-white/70">
-                        <button
-                            onClick={scrollToTop}
-                            className="hover:text-white transition-colors duration-300 cursor-pointer"
-                        >
-                            Home
-                        </button>
-                        <button
-                            onClick={scrollToAbout}
-                            className="hover:text-white transition-colors duration-300 cursor-pointer"
-                        >
-                            About
-                        </button>
-                    </div>
-                </div>
-
-                <div className="w-full border-t border-white/10 mt-8 pt-8 flex flex-col items-center justify-center z-10 gap-4">
-                    {/* Copyright & Status */}
-                    <div className="text-xs text-white/40 font-inter uppercase tracking-widest text-center leading-loose">
-                        &copy; {new Date().getFullYear()} Synapstream. All
-                        rights reserved. <br className="md:hidden" />
-                    </div>
-                </div>
-            </div>
-        </section>
-    );
+      {MODALS.map((m) => (
+        <dialog
+          key={m.key}
+          ref={(el) => {
+            refs.current[m.key] = el;
+          }}
+          aria-labelledby={`modal-${m.key}`}
+          onClick={(e) => {
+            if (e.target === e.currentTarget) e.currentTarget.close();
+          }}
+          className="tile-lg m-auto max-h-[86vh] w-[min(720px,calc(100vw-32px))] overflow-y-auto bg-white p-0 text-black"
+        >
+          <div className="p-8 md:p-12">
+            <Modal id={`modal-${m.key}`} title={m.label} intro={m.intro}>
+              {m.items && (
+                <ul className="divide-y divide-neutral-200">
+                  {m.items.map((it) => (
+                    <li key={it.t} className="py-5">
+                      <h3 className="text-base font-semibold">{it.t}</h3>
+                      <p className="mt-1.5 text-[15px] leading-[1.65] text-neutral-600">{it.d}</p>
+                    </li>
+                  ))}
+                </ul>
+              )}
+              {m.contact && (
+                <dl className="space-y-5 py-6 font-mono text-[15px]">
+                  <div>
+                    <dt className="font-sans text-sm font-medium text-neutral-500">Phone</dt>
+                    <dd className="mt-1">
+                      {PHONES.map((p, i) => (
+                        <span key={p}>
+                          {i > 0 && ", "}
+                          <a href={`tel:${p}`} className="link-draw">
+                            {p}
+                          </a>
+                        </span>
+                      ))}
+                    </dd>
+                  </div>
+                  <div>
+                    <dt className="font-sans text-sm font-medium text-neutral-500">Email</dt>
+                    <dd className="mt-1">
+                      <a href={`mailto:${EMAIL}`} className="link-draw break-all">
+                        {EMAIL}
+                      </a>
+                    </dd>
+                  </div>
+                  <div>
+                    <dt className="font-sans text-sm font-medium text-neutral-500">Office</dt>
+                    <dd className="mt-1">{OFFICE}</dd>
+                  </div>
+                </dl>
+              )}
+              <form
+                method="dialog"
+                className="mt-4 flex flex-wrap gap-3 border-t border-neutral-200 pt-6"
+              >
+                <Button type="submit" variant="black" autoFocus>
+                  Close
+                </Button>
+                {m.contact && (
+                  <Button
+                    type="button"
+                    variant="outline"
+                    className="!border-neutral-300 !text-black hover:!bg-neutral-100"
+                    onClick={downloadVCard}
+                  >
+                    Download vCard
+                  </Button>
+                )}
+              </form>
+            </Modal>
+          </div>
+        </dialog>
+      ))}
+    </footer>
+  );
 }

@@ -1,106 +1,159 @@
-import React from "react";
-import LineWaves from "@/components/LineWaves";
+import type { PointerEvent } from "react";
+import { Item, Stagger, StepTile } from "../motion";
+import { Container, Heading, Numeral, Section, SectionHeader } from "./brand";
 
-const capabilities = [
-    {
-        id: "01",
-        domain: "Database Infrastructure",
-        title: "Enterprise-Scale Storage & Management Systems",
-        description:
-            "Design and deployment of high-throughput database architectures for large-scale institutional data — including spatial databases, GIS-integrated data lakes, and multi-terabyte Parquet-based storage systems optimized for government and urban planning workloads.",
-    },
-    {
-        id: "02",
-        domain: "Geospatial & Smart City Systems",
-        title: "Spatial Data Engineering & Metropolitan Analytics",
-        description:
-            "End-to-end engineering of geospatial data pipelines for urban planning authorities. We deliver structured data environments capable of ingesting, normalizing, and serving multi-source metropolitan datasets — from drone-captured aerial surveys to real-time sensor feeds.",
-    },
-    {
-        id: "03",
-        domain: "Government-Grade Procurement",
-        title: "Integrated Hardware & Software Solutions",
-        description:
-            "Full-stack procurement and deployment of integrated IT infrastructure — from server-class hardware and network switching to custom enterprise software. All engagements are compliant with government procurement standards and designed for zero-downtime institutional operations.",
-    },
-    {
-        id: "04",
-        domain: "Systems Integration",
-        title: "Custom Software & ITES Delivery",
-        description:
-            "Bespoke software development and IT-enabled services (ITES) for government and semi-autonomous organizations. Our delivery model covers requirements analysis, system architecture, implementation, and long-term maintenance under SLA-bound operational guarantees.",
-    },
+/** Track the pointer so a faint light can follow it across the card. */
+function trackPointer(e: PointerEvent<HTMLElement>) {
+  const r = e.currentTarget.getBoundingClientRect();
+  e.currentTarget.style.setProperty("--mx", `${e.clientX - r.left}px`);
+  e.currentTarget.style.setProperty("--my", `${e.clientY - r.top}px`);
+}
+
+type Pillar = {
+  n: number;
+  title: string;
+  summary: string;
+  deliverables: { title: string; body: string }[];
+  inverted?: boolean;
+};
+
+const PILLARS: Pillar[] = [
+  {
+    n: 1,
+    title: "Data Infrastructure & Systems Architecture",
+    summary:
+      "We design and build the foundational systems that collect, clean, store, and protect your organization’s most critical records—turning scattered departmental silos into a single, dependable source of truth.",
+    deliverables: [
+      {
+        title: "Unified Data Warehousing & Lakes",
+        body: "Consolidating fragmented databases, spreadsheets, and legacy ERP records into structured, query-ready repositories.",
+      },
+      {
+        title: "High-Throughput ETL/ELT Pipelines",
+        body: "Automated data ingestion, validation, and real-time synchronization across distributed branches and ministries.",
+      },
+      {
+        title: "Interoperability & API Gateways",
+        body: "Secure REST, GraphQL, and event-driven middleware connecting legacy software with modern applications.",
+      },
+      {
+        title: "On-Premise & Private Cloud Orchestration",
+        body: "Containerized, fault-tolerant infrastructure deployed directly on your hardware or chosen sovereign cloud.",
+      },
+    ],
+  },
+  {
+    n: 2,
+    title: "Enterprise & Creative Software Solutions",
+    summary:
+      "Data is only valuable when teams can act on it. We design and engineer custom web platforms, internal operational tools, and high-velocity creative workflows tailored to how your organization operates.",
+    inverted: true,
+    deliverables: [
+      {
+        title: "Custom Operational & Citizen Portals",
+        body: "Fast, accessible, role-based web applications built for high concurrency and daily institutional use.",
+      },
+      {
+        title: "Digital Asset & Media Ecosystems",
+        body: "Centralized platforms for managing, versioning, and distributing brand, media, and production assets at conglomerate scale.",
+      },
+      {
+        title: "Workflow & Process Automation",
+        body: "Replacing manual approval chains and paper-heavy administration with auditable digital workflows.",
+      },
+      {
+        title: "Enterprise Design Systems",
+        body: "Cohesive, reusable UI component libraries that unify software experiences across multiple subsidiaries and departments.",
+      },
+    ],
+  },
 ];
 
-export default function Capabilities() {
-    return (
-        <section className="w-full mb-24 relative z-20">
-            <div className="bg-[#0A0A0A] overflow-hidden relative">
-                {/* Background LineWaves */}
-                <div className="absolute inset-0 z-0 opacity-25 pointer-events-none">
-                    <LineWaves
-                        speed={0.1}
-                        innerLineCount={64}
-                        outerLineCount={72}
-                        warpIntensity={1.0}
-                        rotation={-45}
-                        edgeFadeWidth={0.0}
-                        colorCycleSpeed={1.0}
-                        brightness={0.2}
-                        color1="#ffffff"
-                        color2="#ffffff"
-                        color3="#ffffff"
-                    />
-                </div>
+function PillarCard({ p, delay }: { p: Pillar; delay: number }) {
+  const inv = !!p.inverted;
+  return (
+    <StepTile
+      as="article"
+      hover
+      delay={delay}
+      onPointerMove={trackPointer}
+      className={`tile-lg group relative flex flex-col overflow-hidden p-8 md:p-14 ${
+        inv ? "bg-white text-black" : "border border-line bg-obsidian text-white"
+      }`}
+    >
+      <span
+        aria-hidden
+        className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+        style={{
+          background: `radial-gradient(520px circle at var(--mx, 50%) var(--my, 0%), ${
+            inv ? "rgba(0,0,0,0.045)" : "rgba(255,255,255,0.07)"
+          }, transparent 65%)`,
+        }}
+      />
+      <div className="flex items-start justify-between gap-6">
+        <Numeral
+          n={p.n}
+          className={`text-[40px] leading-none ${inv ? "text-black" : "text-white"}`}
+        />
+        <span className={`text-sm font-medium ${inv ? "text-neutral-500" : "text-silver"}`}>
+          {inv ? "Software discipline" : "Infrastructure discipline"}
+        </span>
+      </div>
+      <Heading as="h3" className="mt-12 text-[clamp(26px,2.2vw,32px)]">
+        {p.title}
+      </Heading>
+      <p
+        className={`mt-6 max-w-[62ch] text-lg leading-[1.65] ${inv ? "text-neutral-700" : "text-mist"}`}
+      >
+        {p.summary}
+      </p>
 
-                <div className="relative z-10 px-6 py-12 md:px-12 md:py-16 max-w-[1400px] mx-auto">
-                    {/* Section Header */}
-                    <div className="mb-12 flex flex-col items-center text-center">
-                        <p className="font-jetbrains text-[10px] md:text-xs tracking-[0.2em] uppercase text-white/40 font-bold mb-3">
-                            Domain Expertise
-                        </p>
-                        <h2 className="font-inter text-3xl md:text-4xl font-bold text-white tracking-tight max-w-2xl leading-tight">
-                            Built for Institutional & Government-Scale
-                            Deployments
-                        </h2>
-                    </div>
+      <Stagger
+        as="ul"
+        delay={delay + 0.5}
+        stagger={0.09}
+        amount={0.3}
+        className={`relative mt-12 grid flex-1 border-l border-t sm:grid-cols-2 ${inv ? "border-neutral-200" : "border-line"}`}
+        aria-label={`${p.title} deliverables`}
+      >
+        {p.deliverables.map((d) => (
+          <Item
+            as="li"
+            key={d.title}
+            className={`border-b border-r p-7 ${inv ? "border-neutral-200" : "border-line"}`}
+          >
+            <span className={`block size-2 ${inv ? "bg-black" : "bg-white"}`} aria-hidden />
+            <h4 className="mt-5 text-base font-semibold leading-snug tracking-[-0.01em]">
+              {d.title}
+            </h4>
+            <p
+              className={`mt-3 text-[15px] leading-[1.65] ${inv ? "text-neutral-600" : "text-silver"}`}
+            >
+              {d.body}
+            </p>
+          </Item>
+        ))}
+      </Stagger>
+    </StepTile>
+  );
+}
 
-                    {/* Capabilities Grid */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-white/10 rounded-xl overflow-hidden">
-                        {capabilities.map((cap) => (
-                            <div
-                                key={cap.id}
-                                className="bg-[#0A0A0A] p-8 md:p-10 flex flex-col gap-4 group hover:bg-[#111111] transition-colors duration-300"
-                            >
-                                <div className="flex items-center justify-between">
-                                    <span className="font-jetbrains text-[9px] tracking-[0.25em] uppercase text-white/35 font-bold">
-                                        {cap.domain}
-                                    </span>
-                                    <span className="font-jetbrains text-[9px] tracking-[0.2em] text-white/15 font-bold">
-                                        {cap.id}
-                                    </span>
-                                </div>
-                                <h3 className="font-inter text-lg md:text-xl font-bold text-white tracking-tight leading-snug">
-                                    {cap.title}
-                                </h3>
-                                <p className="font-inter text-xs md:text-sm leading-[1.85] text-white/50 font-medium text-justify">
-                                    {cap.description}
-                                </p>
-                            </div>
-                        ))}
-                    </div>
+export function Capabilities() {
+  return (
+    <Section id="capabilities">
+      <Container>
+        <SectionHeader
+          eyebrow="Core capabilities"
+          lines={["Two core disciplines.", "One engineering standard."]}
+          lead="Complex organizations rarely fail from a lack of data—they stall because their underlying infrastructure and the software their people actually use are built in isolation. SYNAPSTREAM engineers both as a unified system."
+        />
 
-                    {/* Bottom Tag */}
-                    <div className="mt-8 flex items-center justify-center gap-3">
-                        <div className="w-1.5 h-1.5 rounded-full bg-white/20" />
-                        <p className="font-jetbrains text-[9px] tracking-[0.2em] uppercase text-white font-bold">
-                            All engagements comply with national e-GP
-                            procurement standards
-                        </p>
-                        <div className="w-1.5 h-1.5 rounded-full bg-white/20" />
-                    </div>
-                </div>
-            </div>
-        </section>
-    );
+        <div className="mt-20 grid gap-10 pb-5 pr-5 lg:grid-cols-2">
+          {PILLARS.map((p, i) => (
+            <PillarCard key={p.n} p={p} delay={i * 0.15} />
+          ))}
+        </div>
+      </Container>
+    </Section>
+  );
 }

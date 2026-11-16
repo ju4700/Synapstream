@@ -1,0 +1,10 @@
+{
+  "description": "Explore sovereign data infrastructure and enterprise creative software for governments and large organizations, with security, architecture, and executive demo details.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}

@@ -1,0 +1,139 @@
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Michroma&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Michroma", ui-sans-serif, sans-serif;
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  --color-void: #000000;
+  --color-obsidian: #0a0a0a;
+  --color-hairline: #161616;
+  --color-line: #262626;
+  --color-mist: #d4d4d8;
+  --color-silver: #a1a1aa;
+  --color-step-1: #333333;
+  --color-step-2: #666666;
+  --color-step-3: #cccccc;
+}
+
+/* Signature asymmetric geometry: rounded top-left + bottom-right, crisp top-right + bottom-left */
+@utility tile {
+  border-radius: 32px 0 32px 0;
+}
+@utility tile-lg {
+  border-radius: 48px 0 48px 0;
+}
+@utility tile-sm {
+  border-radius: 14px 0 14px 0;
+}
+@utility tile-xs {
+  border-radius: 6px 0 6px 0;
+}
+/* Stepped grayscale offset layers echoing the stacked modular tiles */
+@utility steps-dark {
+  box-shadow:
+    10px 10px 0 0 #1f1f1f,
+    20px 20px 0 0 #333333;
+}
+@utility steps {
+  box-shadow:
+    10px 10px 0 0 #333333,
+    20px 20px 0 0 #666666;
+}
+@utility steps-light {
+  box-shadow:
+    10px 10px 0 0 #666666,
+    20px 20px 0 0 #cccccc;
+}
+
+/* Underline that draws in from the left on hover/focus */
+@utility link-draw {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  &:hover,
+  &:focus-visible {
+    background-size: 100% 1px;
+  }
+}
+
+@keyframes dialog-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.985);
+  }
+}
+@keyframes backdrop-in {
+  from {
+    opacity: 0;
+  }
+}
+/* A data packet travelling up a connector between architecture planes */
+@keyframes packet {
+  0% {
+    top: 0%;
+    opacity: 0;
+  }
+  15%,
+  80% {
+    opacity: 1;
+  }
+  100% {
+    top: 100%;
+    opacity: 0;
+  }
+}
+@keyframes check-draw {
+  from {
+    stroke-dashoffset: 1;
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 104px;
+    background: #000;
+  }
+  body {
+    background: #000;
+    color: #fff;
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+  ::selection {
+    background: #fff;
+    color: #000;
+  }
+  :focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 3px;
+  }
+  dialog::backdrop {
+    background: rgb(0 0 0 / 0.72);
+    backdrop-filter: blur(6px);
+  }
+  dialog[open] {
+    animation: dialog-in 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  dialog[open]::backdrop {
+    animation: backdrop-in 0.4s ease-out;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.001ms !important;
+    animation-duration: 0.001ms !important;
+  }
+}
