@@ -13,6 +13,7 @@ import {
 } from "../motion";
 import { Container, Heading, Numeral, Section, H2_SIZE } from "./brand";
 import { HalftoneSphere } from "./HalftoneSphere";
+import { SocialProofMarquee } from "./SocialProofMarquee";
 
 const COMMITMENTS = [
   {
@@ -30,16 +31,6 @@ const COMMITMENTS = [
     title: "No Black-Box Lock-In",
     body: "Built on battle-tested, open industry standards with clean documentation so your organization retains full institutional control.",
   },
-];
-
-const STANDARDS = [
-  "TLS 1.3",
-  "AES-256",
-  "OAuth 2.0 / OIDC",
-  "OpenAPI 3",
-  "PostgreSQL",
-  "Kubernetes",
-  "OpenTelemetry",
 ];
 
 const EMBLEM_W = 280;
@@ -338,31 +329,10 @@ export function Governance() {
 
         <HubDiagram />
         <StackedMobile />
-
-        <div className="relative mt-24 flex flex-col items-center gap-6 pt-12">
-          <DrawLine className="absolute inset-x-0 top-0 h-px bg-hairline" />
-          <Reveal as="p" className="text-sm font-medium text-silver">
-            Open standards we build on
-          </Reveal>
-          <Stagger
-            as="ul"
-            stagger={0.05}
-            delay={0.1}
-            className="flex flex-wrap justify-center gap-2"
-          >
-            {STANDARDS.map((s) => (
-              <Item
-                as="li"
-                key={s}
-                variants={fadeIn}
-                className="tile-xs border border-line px-3.5 py-2 font-mono text-xs text-mist"
-              >
-                {s}
-              </Item>
-            ))}
-          </Stagger>
-        </div>
       </Container>
+
+      {/* Dual-direction sliding logo marquees: Government/Institutional partners & Technology standards */}
+      <SocialProofMarquee />
     </Section>
   );
 }

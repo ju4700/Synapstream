@@ -4,9 +4,19 @@ type Props = {
   className?: string;
   /** Sphere radius as a fraction of canvas width */
   radius?: number;
+  /** Max radius in CSS pixels to prevent oversized sphere on ultrawide viewports */
+  maxRadius?: number;
+  /** Min radius in CSS pixels to prevent undersized sphere on mobile viewports */
+  minRadius?: number;
   /** Sphere center X/Y as fractions of canvas size (Y > 1 sinks the sphere below the bottom edge) */
   centerX?: number;
   centerY?: number;
+  /**
+   * Explicit Y coordinate (in CSS pixels, or fraction of canvas height if <= 1)
+   * for the top crest of the sphere. When specified, overrides centerY to guarantee
+   * the dome peaks at exactly this position and is never cut off at the canvas top.
+   */
+  crestY?: number;
   /** Number of latitude bands; controls dot density */
   rings?: number;
   /** Max dot radius in CSS pixels */
@@ -31,8 +41,11 @@ type Props = {
 export function HalftoneSphere({
   className = "",
   radius = 0.5,
+  maxRadius,
+  minRadius,
   centerX = 0.5,
   centerY = 1,
+  crestY,
   rings = 64,
   maxDot = 4,
   tilt = 0.55,
@@ -97,9 +110,21 @@ export function HalftoneSphere({
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       ctx.clearRect(0, 0, w, h);
       ctx.fillStyle = color;
-      const R = w * radius;
+
+      let R = w * radius;
+      if (minRadius !== undefined) R = Math.max(R, minRadius);
+      if (maxRadius !== undefined) R = Math.min(R, maxRadius);
       const cx = w * centerX;
-      const cy = h * centerY;
+
+      let cy = h * centerY;
+      if (crestY !== undefined) {
+        const targetCrest = crestY <= 1 ? h * crestY : crestY;
+        cy = targetCrest + R;
+      } else if (centerY < 0.9 && cy - R < 24) {
+        // Auto-safety clamp: on wide screens, prevent the sphere crest from extending above the canvas
+        cy = R + 24;
+      }
+
       const t = tilt + tiltOffset;
       const ct = Math.cos(t);
       const st = Math.sin(t);
@@ -181,7 +206,22 @@ export function HalftoneSphere({
       io.disconnect();
       window.removeEventListener("pointermove", onMove);
     };
-  }, [radius, centerX, centerY, rings, maxDot, tilt, speed, fadeTop, interactive, color, intro]);
+  }, [
+    radius,
+    maxRadius,
+    minRadius,
+    centerX,
+    centerY,
+    crestY,
+    rings,
+    maxDot,
+    tilt,
+    speed,
+    fadeTop,
+    interactive,
+    color,
+    intro,
+  ]);
 
   return (
     <canvas

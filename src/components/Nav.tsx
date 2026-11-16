@@ -5,7 +5,6 @@ import { ButtonLink, LogoMark } from "./brand";
 
 const LINKS = [
   { label: "Capabilities", href: "#capabilities" },
-  { label: "System Architecture", href: "#architecture" },
   { label: "Delivery Model", href: "#delivery" },
   { label: "Governance", href: "#governance" },
   { label: "Contact", href: "#contact" },
@@ -46,15 +45,19 @@ export function Nav() {
 
   return (
     <m.header
-      className="fixed inset-x-0 top-4 z-50 px-4"
+      className={`fixed inset-x-0 z-50 px-4 transition-all duration-300 ease-out ${
+        scrolled ? "top-0" : "top-4"
+      }`}
       initial={{ y: -24, opacity: 0 }}
       animate={{ y: hidden ? -110 : 0, opacity: hidden ? 0 : 1 }}
       transition={{ duration: hidden ? 0.4 : 0.7, ease: EASE_OUT, delay: 0 }}
     >
       <nav
         aria-label="Primary"
-        className={`mx-auto flex h-[72px] max-w-[1280px] items-center justify-between rounded-full border pl-4 pr-3 backdrop-blur-xl transition-colors duration-500 ${
-          scrolled ? "border-line bg-[#0a0a0a]/85" : "border-white/[0.07] bg-[#0a0a0a]/40"
+        className={`mx-auto flex h-[72px] max-w-[1280px] items-center justify-between border pl-4 pr-3 backdrop-blur-xl transition-all duration-300 ease-out ${
+          scrolled
+            ? "rounded-t-none rounded-b-[36px] border-t-0 border-line bg-[#0a0a0a]/90 shadow-[0_8px_32px_rgba(0,0,0,0.5)]"
+            : "rounded-full border-white/[0.07] bg-[#0a0a0a]/40"
         }`}
       >
         <a

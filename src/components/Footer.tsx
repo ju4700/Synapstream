@@ -1,6 +1,6 @@
 import { useRef, type ReactNode } from "react";
 import { Button, LogoMark } from "./brand";
-import { EMAIL, OFFICE, PHONES, downloadVCard } from "./contact";
+import { EMAIL, OFFICE, PHONES, downloadVCard } from "./contactData";
 
 type Item = { t: string; d: string };
 

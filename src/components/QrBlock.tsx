@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import QRCode from "qrcode";
-import { VCARD } from "./contact";
+import { VCARD } from "./contactData";
 
 /** Scannable vCard QR, with the brand's asymmetric finder tiles. */
 export function QrCode({ className = "" }: { className?: string }) {

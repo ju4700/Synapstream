@@ -1,5 +1,4 @@
 import { LazyMotion, MotionConfig, domMax } from "motion/react";
-import { Architecture } from "./components/Architecture";
 import { Capabilities } from "./components/Capabilities";
 import { Contact } from "./components/Contact";
 import { Delivery } from "./components/Delivery";
@@ -18,7 +17,6 @@ export default function App() {
           <main>
             <Hero />
             <Capabilities />
-            <Architecture />
             <Delivery />
             <Governance />
             <Contact />

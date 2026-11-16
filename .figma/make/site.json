@@ -1,5 +1,10 @@
 {
-  "description": "Explore sovereign data infrastructure and enterprise creative software for governments and large organizations, with security, architecture, and executive demo details.",
+  "title": "SYNAPSTREAM | Sovereign Data Infrastructure",
+  "description": "Engineering the next generation of sovereign data infrastructure and creative software solutions for governments and enterprise conglomerates.",
+  "language": "en",
+  "icons": {
+    "icon": "/favicon.svg"
+  },
   "robots": {
     "index": false
   },

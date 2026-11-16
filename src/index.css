@@ -47,6 +47,35 @@
     20px 20px 0 0 #cccccc;
 }
 
+/* Dual-direction continuous sliding marquees */
+@keyframes marquee-left {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-33.333%, 0, 0);
+  }
+}
+
+@keyframes marquee-right {
+  0% {
+    transform: translate3d(-33.333%, 0, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@utility animate-marquee-left {
+  animation: marquee-left 32s linear infinite;
+  will-change: transform;
+}
+
+@utility animate-marquee-right {
+  animation: marquee-right 36s linear infinite;
+  will-change: transform;
+}
+
 /* Underline that draws in from the left on hover/focus */
 @utility link-draw {
   background-image: linear-gradient(currentColor, currentColor);

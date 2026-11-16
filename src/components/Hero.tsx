@@ -14,9 +14,7 @@ export function Hero() {
   const ref = useRef<HTMLElement>(null);
   const reduced = useReducedMotion();
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
-  // Gentle depth on scroll: copy drifts up and fades, the sphere sinks slower than the page
-  const textY = useTransform(scrollYProgress, [0, 0.35], [0, -70]);
-  const textOpacity = useTransform(scrollYProgress, [0, 0.3], [1, 0]);
+  // Sphere sinks slower than the page on scroll
   const sphereY = useTransform(scrollYProgress, [0, 1], [0, 240]);
   const sphereOpacity = useTransform(scrollYProgress, [0.15, 0.75], [1, 0.4]);
 
@@ -26,7 +24,7 @@ export function Hero() {
       id="top"
       className="relative overflow-hidden bg-black pt-[180px] lg:pt-[240px]"
     >
-      <m.div style={reduced ? undefined : { y: textY, opacity: textOpacity }}>
+      <div>
         <Container className="relative flex flex-col items-center text-center">
           <m.h1
             aria-label="SYNAPSTREAM"
@@ -39,7 +37,7 @@ export function Hero() {
               {WORD.split("").map((ch, i) => (
                 <m.span
                   key={i}
-                  className="inline-block will-change-transform"
+                  className="inline-block will-change-transform text-white"
                   initial={{ y: "110%", opacity: 0 }}
                   animate={{ y: "0%", opacity: 1 }}
                   transition={{
@@ -54,7 +52,7 @@ export function Hero() {
             </span>
           </m.h1>
           <m.p
-            className="mt-8 max-w-[58ch] text-balance text-[clamp(18px,1.6vw,22px)] leading-[1.5] text-mist md:max-w-none md:text-wrap"
+            className="mt-8 max-w-[58ch] text-balance text-[clamp(18px,1.6vw,22px)] leading-[1.5] text-white md:max-w-none md:text-wrap"
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, ease: EASE_OUT, delay: AFTER_WORD + 0.05 }}
@@ -77,7 +75,7 @@ export function Hero() {
             </ButtonLink>
           </m.div>
         </Container>
-      </m.div>
+      </div>
 
       {/* Rising halftone sphere with the blueprint overlaid at its base */}
       <div className="relative mt-24">
@@ -88,7 +86,9 @@ export function Hero() {
         >
           <HalftoneSphere
             radius={0.4}
-            centerY={0.474}
+            crestY={40}
+            maxRadius={760}
+            minRadius={320}
             rings={96}
             maxDot={5.6}
             tilt={0.62}
