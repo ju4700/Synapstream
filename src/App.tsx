@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { LazyMotion, MotionConfig, domMax } from "motion/react";
 import { Capabilities } from "./components/Capabilities";
 import { Contact } from "./components/Contact";
@@ -8,6 +9,10 @@ import { Hero } from "./components/Hero";
 import { Nav } from "./components/Nav";
 
 export default function App() {
+  useEffect(() => {
+    document.title = "Synapstream";
+  }, []);
+
   return (
     <LazyMotion features={domMax} strict>
       {/* reducedMotion="user": transforms are dropped for users who prefer reduced motion; fades remain */}
