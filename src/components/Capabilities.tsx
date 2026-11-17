@@ -77,7 +77,7 @@ function PillarCard({ p, delay }: { p: Pillar; delay: number }) {
       hover
       delay={delay}
       onPointerMove={trackPointer}
-      className={`tile-lg group relative flex flex-col overflow-hidden p-8 md:p-14 ${
+      className={`tile-lg group relative flex flex-col overflow-hidden p-6 sm:p-8 md:p-14 ${
         inv ? "bg-white text-black" : "border border-line bg-obsidian text-white"
       }`}
     >
@@ -93,17 +93,17 @@ function PillarCard({ p, delay }: { p: Pillar; delay: number }) {
       <div className="flex items-start justify-between gap-6">
         <Numeral
           n={p.n}
-          className={`text-[40px] leading-none ${inv ? "text-black" : "text-white"}`}
+          className={`text-[32px] sm:text-[40px] leading-none ${inv ? "text-black" : "text-white"}`}
         />
-        <span className={`text-sm font-medium ${inv ? "text-neutral-500" : "text-silver"}`}>
+        <span className={`text-xs sm:text-sm font-medium ${inv ? "text-neutral-500" : "text-silver"}`}>
           {inv ? "Software discipline" : "Infrastructure discipline"}
         </span>
       </div>
-      <Heading as="h3" className="mt-12 text-[clamp(26px,2.2vw,32px)]">
+      <Heading as="h3" className="mt-8 sm:mt-12 text-[clamp(21px,2.2vw,32px)]">
         {p.title}
       </Heading>
       <p
-        className={`mt-6 max-w-[62ch] text-lg leading-[1.65] ${inv ? "text-neutral-700" : "text-mist"}`}
+        className={`mt-4 sm:mt-6 max-w-[62ch] text-[15px] sm:text-lg leading-[1.65] ${inv ? "text-neutral-700" : "text-mist"}`}
       >
         {p.summary}
       </p>

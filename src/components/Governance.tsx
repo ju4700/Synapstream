@@ -71,22 +71,22 @@ function CommitmentCard({
       transition={{ duration: 0.9, ease: EASE_OUT, delay: SEQ.cards[i] }}
       onMouseEnter={() => link?.setFocus(i)}
       onMouseLeave={() => link?.setFocus(null)}
-      className={`tile-lg relative z-10 border bg-obsidian/90 p-10 backdrop-blur-md transition-colors duration-500 xl:p-12 ${
+      className={`tile-lg relative z-10 border bg-obsidian/90 p-6 sm:p-10 backdrop-blur-md transition-colors duration-500 xl:p-12 ${
         lit ? "border-step-2" : "border-line"
       } ${className}`}
     >
       <div className="flex items-center justify-between gap-4">
-        <Numeral n={i + 1} className="text-[15px] text-white" />
+        <Numeral n={i + 1} className="text-[14px] sm:text-[15px] text-white" />
         <span
-          className={`font-mono text-[11px] uppercase tracking-[0.12em] transition-colors duration-500 ${lit ? "text-mist" : "text-step-2"}`}
+          className={`font-mono text-[10px] sm:text-[11px] uppercase tracking-[0.12em] transition-colors duration-500 ${lit ? "text-mist" : "text-step-2"}`}
         >
           {c.control}
         </span>
       </div>
-      <h3 className="mt-10 text-[22px] font-semibold leading-[1.25] tracking-[-0.015em] text-white">
+      <h3 className="mt-6 sm:mt-10 text-[18px] sm:text-[22px] font-semibold leading-[1.25] tracking-[-0.015em] text-white">
         {c.title}
       </h3>
-      <p className="mt-4 text-base leading-[1.65] text-silver">{c.body}</p>
+      <p className="mt-3 sm:mt-4 text-[14px] sm:text-base leading-[1.65] text-silver">{c.body}</p>
     </m.article>
   );
 }

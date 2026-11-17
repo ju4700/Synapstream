@@ -158,7 +158,7 @@ export function Arrow({ className = "size-4" }: { className?: string }) {
 }
 
 /** Shared H2 scale for every section title. */
-export const H2_SIZE = "text-[clamp(34px,3.4vw,52px)] leading-[1.1]";
+export const H2_SIZE = "text-[clamp(26px,3.2vw,52px)] leading-[1.15]";
 
 /**
  * Section header: eyebrow → title (one deliberate line per entry; lines after the first are muted)
@@ -181,7 +181,7 @@ export function SectionHeader({
         <m.span variants={drawX} className="block h-px w-6 origin-left bg-step-2" aria-hidden />
         {eyebrow}
       </m.p>
-      <Heading className={`mt-8 ${H2_SIZE}`}>
+      <Heading className={`mt-6 sm:mt-8 ${H2_SIZE}`}>
         {lines.map((l, i) => (
           <MaskLine key={l} className={i === 0 ? "text-white" : "text-silver"}>
             {l}
@@ -195,7 +195,7 @@ export function SectionHeader({
             hidden: fadeUp.hidden,
             show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: EASE_OUT, delay: 0.15 } },
           }}
-          className="mt-8 max-w-[62ch] text-lg leading-[1.65] text-mist"
+          className="mt-6 sm:mt-8 max-w-[62ch] text-[15px] sm:text-lg leading-[1.65] text-mist"
         >
           {lead}
         </Item>

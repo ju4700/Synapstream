@@ -95,16 +95,16 @@ export function Delivery() {
                   as="article"
                   hover
                   key={s.title}
-                  className={`tile-lg grid gap-10 p-8 md:p-14 xl:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] ${
+                  className={`tile-lg grid gap-8 sm:gap-10 p-6 sm:p-8 md:p-14 xl:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] ${
                     inv ? "bg-white text-black" : "border border-line bg-obsidian text-white"
                   }`}
                 >
                   <div>
-                    <Heading as="h3" className="text-[28px]">
+                    <Heading as="h3" className="text-[20px] sm:text-[28px]">
                       {s.title}
                     </Heading>
                     <p
-                      className={`mt-5 text-base leading-[1.65] ${inv ? "text-neutral-600" : "text-silver"}`}
+                      className={`mt-4 sm:mt-5 text-[15px] sm:text-base leading-[1.65] ${inv ? "text-neutral-600" : "text-silver"}`}
                     >
                       {s.intro}
                     </p>

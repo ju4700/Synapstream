@@ -22,18 +22,18 @@ export function Hero() {
     <section
       ref={ref}
       id="top"
-      className="relative overflow-hidden bg-black pt-[180px] lg:pt-[240px]"
+      className="relative overflow-hidden bg-black pt-[130px] sm:pt-[170px] lg:pt-[240px]"
     >
       <div>
         <Container className="relative flex flex-col items-center text-center">
           <m.h1
             aria-label="SYNAPSTREAM"
-            className="font-display text-[clamp(34px,6vw,88px)] uppercase leading-none text-white"
-            initial={{ letterSpacing: reduced ? "0.12em" : "0.24em" }}
-            animate={{ letterSpacing: "0.12em" }}
+            className="font-display text-[clamp(21px,5.8vw,88px)] uppercase leading-none text-white"
+            initial={{ letterSpacing: reduced ? "0.06em" : "0.14em" }}
+            animate={{ letterSpacing: "0.08em" }}
             transition={{ duration: 1.6, ease: EASE_OUT, delay: LETTER_START }}
           >
-            <span className="block overflow-hidden pb-[0.08em]" aria-hidden>
+            <span className="block overflow-hidden pb-[0.08em] whitespace-nowrap" aria-hidden>
               {WORD.split("").map((ch, i) => (
                 <m.span
                   key={i}
@@ -52,7 +52,7 @@ export function Hero() {
             </span>
           </m.h1>
           <m.p
-            className="mt-8 max-w-[58ch] text-balance text-[clamp(18px,1.6vw,22px)] leading-[1.5] text-white md:max-w-none md:text-wrap"
+            className="mt-6 sm:mt-8 max-w-[58ch] text-balance text-[15px] sm:text-[17px] md:text-[clamp(18px,1.6vw,22px)] leading-[1.55] text-white md:max-w-none md:text-wrap"
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, ease: EASE_OUT, delay: AFTER_WORD + 0.05 }}
@@ -62,15 +62,15 @@ export function Hero() {
             solutions for governments and enterprise conglomerates.
           </m.p>
           <m.div
-            className="mt-12 flex flex-wrap items-center justify-center gap-4"
+            className="mt-8 sm:mt-12 flex w-full flex-col sm:w-auto sm:flex-row flex-wrap items-center justify-center gap-3 sm:gap-4 px-4 sm:px-0"
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, ease: EASE_OUT, delay: AFTER_WORD + 0.25 }}
           >
-            <ButtonLink href="#contact" size="lg">
+            <ButtonLink href="#contact" size="lg" className="w-full sm:w-auto">
               Schedule a Briefing <Arrow />
             </ButtonLink>
-            <ButtonLink href="#capabilities" size="lg" variant="outline">
+            <ButtonLink href="#capabilities" size="lg" variant="outline" className="w-full sm:w-auto">
               Explore Capabilities
             </ButtonLink>
           </m.div>

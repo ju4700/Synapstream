@@ -359,7 +359,7 @@ export function Contact() {
                 <Reveal
                     y={64}
                     amount={0.08}
-                    className="tile-lg bg-white p-8 text-black md:p-16"
+                    className="tile-lg bg-white p-6 sm:p-8 text-black md:p-16"
                 >
                     <div className="grid grid-cols-12 gap-x-8 gap-y-16">
                         <div className="col-span-12 flex flex-col lg:col-span-5 lg:pr-8">
@@ -367,7 +367,7 @@ export function Contact() {
                                 className="w-[72px]"
                                 title="SYNAPSTREAM"
                             />
-                            <p className="mt-8 max-w-[44ch] text-lg leading-[1.65] text-neutral-600">
+                            <p className="mt-6 sm:mt-8 max-w-[44ch] text-[15px] sm:text-lg leading-[1.65] text-neutral-600">
                                 Speak directly with our engineering leadership
                                 about your infrastructure or software
                                 requirements.

@@ -95,7 +95,7 @@ export function Nav() {
         </ul>
 
         <div className="flex items-center gap-2">
-          <ButtonLink href="#contact" className="!rounded-full !px-6">
+          <ButtonLink href="#contact" className="hidden sm:inline-flex !rounded-full !px-6">
             Initiate a Project
           </ButtonLink>
           <button
@@ -137,6 +137,15 @@ export function Nav() {
                 {l.label}
               </a>
             ))}
+            <div className="mt-2 border-t border-line/60 pt-3 px-2 pb-1">
+              <ButtonLink
+                href="#contact"
+                onClick={() => setOpen(false)}
+                className="w-full !rounded-full !py-3 text-center justify-center font-semibold"
+              >
+                Initiate a Project
+              </ButtonLink>
+            </div>
           </m.div>
         )}
       </AnimatePresence>
