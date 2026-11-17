@@ -87,7 +87,7 @@ export function Delivery() {
           lead="Our work is shaped by clients whose systems are expected to run reliably for years, under real institutional scrutiny."
         />
         <div className="mt-20">
-          <div className="space-y-10 pb-5 pr-5">
+          <div className="space-y-8 sm:space-y-10 pb-0 pr-0 md:pb-5 md:pr-5">
             {SECTORS.map((s) => {
               const inv = !!s.inverted;
               return (

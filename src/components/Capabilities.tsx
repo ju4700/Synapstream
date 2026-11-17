@@ -148,7 +148,7 @@ export function Capabilities() {
           lead="Complex organizations rarely fail from a lack of data—they stall because their underlying infrastructure and the software their people actually use are built in isolation. SYNAPSTREAM engineers both as a unified system."
         />
 
-        <div className="mt-20 grid gap-10 pb-5 pr-5 lg:grid-cols-2">
+        <div className="mt-12 sm:mt-20 grid gap-8 sm:gap-10 pb-0 pr-0 md:pb-5 md:pr-5 lg:grid-cols-2">
           {PILLARS.map((p, i) => (
             <PillarCard key={p.n} p={p} delay={i * 0.15} />
           ))}
