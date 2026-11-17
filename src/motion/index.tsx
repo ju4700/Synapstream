@@ -1,4 +1,4 @@
-import { useRef, useState, type ReactNode, type Ref } from "react";
+import { useEffect, useRef, useState, type ReactNode, type Ref } from "react";
 import { m, useInView, useReducedMotion, type HTMLMotionProps, type Variants } from "motion/react";
 
 /* ---------- Tokens: one motion language for the whole site ---------- */
@@ -150,19 +150,30 @@ export function StepTile({
   const reduced = useReducedMotion();
   const [ready, setReady] = useState(false);
   const [hovered, setHovered] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 767px)");
+    const check = () => setIsMobile(mq.matches);
+    check();
+    mq.addEventListener("change", check);
+    return () => mq.removeEventListener("change", check);
+  }, []);
 
   const target = !inView
-    ? { opacity: 0, y: 32, boxShadow: reduced ? STEPS_SHOWN : STEPS_HIDDEN }
-    : hover && hovered && ready
-      ? { opacity: 1, y: -4, boxShadow: STEPS_HOVER }
-      : { opacity: 1, y: 0, boxShadow: STEPS_SHOWN };
+    ? { opacity: 0, y: 32, boxShadow: isMobile ? "none" : (reduced ? STEPS_SHOWN : STEPS_HIDDEN) }
+    : isMobile
+      ? { opacity: 1, y: 0, boxShadow: "none" }
+      : hover && hovered && ready
+        ? { opacity: 1, y: -4, boxShadow: STEPS_HOVER }
+        : { opacity: 1, y: 0, boxShadow: STEPS_SHOWN };
 
   const transition = ready
     ? { duration: 0.45, ease: EASE_OUT }
     : {
         opacity: { duration: 0.8, ease: EASE_OUT, delay },
         y: { duration: 0.9, ease: EASE_OUT, delay },
-        boxShadow: { duration: 0.9, ease: EASE_IN_OUT, delay: delay + 0.45 },
+        boxShadow: { duration: isMobile ? 0.01 : 0.9, ease: EASE_IN_OUT, delay: delay + 0.45 },
       };
 
   return (

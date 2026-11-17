@@ -47,6 +47,19 @@
     20px 20px 0 0 #cccccc;
 }
 
+/* On mobile/smaller screens, remove the three-layer offset shadows for clean phone layouts */
+@media (max-width: 767px) {
+  .tile-lg,
+  .tile,
+  .tile-sm,
+  .tile-xs,
+  .steps,
+  .steps-dark,
+  .steps-light {
+    box-shadow: none !important;
+  }
+}
+
 /* Dual-direction continuous sliding marquees */
 @keyframes marquee-left {
   0% {

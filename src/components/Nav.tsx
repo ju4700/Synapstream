@@ -95,7 +95,7 @@ export function Nav() {
         </ul>
 
         <div className="flex items-center gap-2">
-          <ButtonLink href="#contact" className="hidden sm:inline-flex !rounded-full !px-6">
+          <ButtonLink href="#contact" className="!hidden lg:!inline-flex !rounded-full !px-6">
             Initiate a Project
           </ButtonLink>
           <button

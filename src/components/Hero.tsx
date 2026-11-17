@@ -78,9 +78,9 @@ export function Hero() {
       </div>
 
       {/* Rising halftone sphere with the blueprint overlaid at its base */}
-      <div className="relative mt-24">
+      <div className="relative mt-4 sm:mt-12 lg:mt-24">
         <m.div
-          className="pointer-events-none absolute inset-x-0 top-0 h-[1300px]"
+          className="pointer-events-none absolute inset-x-0 top-0 h-[600px] sm:h-[900px] lg:h-[1300px]"
           style={reduced ? undefined : { y: sphereY, opacity: sphereOpacity }}
           aria-hidden
         >
@@ -99,11 +99,11 @@ export function Hero() {
           />
         </m.div>
         <div
-          className="pointer-events-none absolute inset-x-0 bottom-0 h-[320px] bg-gradient-to-t from-black via-black/80 to-transparent"
+          className="pointer-events-none absolute inset-x-0 bottom-0 h-[180px] sm:h-[260px] lg:h-[320px] bg-gradient-to-t from-black via-black/80 to-transparent"
           aria-hidden
         />
-        <Container className="relative pb-40 pt-[340px]">
-          <div className="pr-5">
+        <Container className="relative pb-20 sm:pb-32 lg:pb-40 pt-[40px] sm:pt-[160px] lg:pt-[340px]">
+          <div className="pr-0 md:pr-5">
             <Blueprint />
           </div>
         </Container>
