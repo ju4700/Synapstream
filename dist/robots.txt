@@ -1,2 +1,8 @@
 User-agent: *
-Disallow: /
+Allow: /
+
+# Host
+Host: https://synapstream.org
+
+# Sitemaps
+Sitemap: https://synapstream.org/sitemap.xml

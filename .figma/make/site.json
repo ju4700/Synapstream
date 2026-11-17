@@ -5,8 +5,11 @@
   "icons": {
     "icon": "/favicon.svg"
   },
+  "openGraph": {
+    "image": "/brand-logo.png"
+  },
   "robots": {
-    "index": false
+    "index": true
   },
   "accessibility": {
     "addBypassLinks": false,
