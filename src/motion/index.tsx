@@ -28,6 +28,26 @@ export const drawX: Variants = {
   show: { scaleX: 1, transition: { duration: DUR.slow, ease: EASE_OUT } },
 };
 
+/* ---------- Mobile screen detection hook ---------- */
+export function useIsMobile(breakpoint = 767) {
+  const [isMobile, setIsMobile] = useState(() => {
+    if (typeof window !== "undefined") {
+      return window.innerWidth <= breakpoint;
+    }
+    return false;
+  });
+
+  useEffect(() => {
+    const mq = window.matchMedia(`(max-width: ${breakpoint}px)`);
+    const onChange = () => setIsMobile(mq.matches);
+    setIsMobile(mq.matches);
+    mq.addEventListener("change", onChange);
+    return () => mq.removeEventListener("change", onChange);
+  }, [breakpoint]);
+
+  return isMobile;
+}
+
 type Tag = "div" | "li" | "ul" | "ol" | "p" | "span" | "header" | "article" | "figure" | "section";
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type Props = Omit<HTMLMotionProps<"div">, "ref"> & {
@@ -38,7 +58,7 @@ type Props = Omit<HTMLMotionProps<"div">, "ref"> & {
 
 const tag = (as: Tag) => m[as] as typeof m.div;
 
-/** Fade-and-rise a block once when it scrolls into view. */
+/** Fade-and-rise a block once when it scrolls into view. On phones, rendered immediately with no scroll animation. */
 export function Reveal({
   as = "div",
   delay = 0,
@@ -48,6 +68,16 @@ export function Reveal({
   ...rest
 }: Props & { delay?: number; y?: number; amount?: number }) {
   const C = tag(as);
+  const isMobile = useIsMobile();
+
+  if (isMobile) {
+    return (
+      <C initial={false} animate={{ opacity: 1, y: 0 }} {...rest}>
+        {children}
+      </C>
+    );
+  }
+
   return (
     <C
       initial={{ opacity: 0, y }}
@@ -61,7 +91,7 @@ export function Reveal({
   );
 }
 
-/** Orchestrates its variant children in sequence once in view. */
+/** Orchestrates its variant children in sequence once in view. On phones, shown immediately without scroll waiting. */
 export function Stagger({
   as = "div",
   delay = 0,
@@ -71,6 +101,16 @@ export function Stagger({
   ...rest
 }: Props & { delay?: number; stagger?: number; amount?: number }) {
   const C = tag(as);
+  const isMobile = useIsMobile();
+
+  if (isMobile) {
+    return (
+      <C initial={false} animate="show" variants={{ show: {} }} {...rest}>
+        {children}
+      </C>
+    );
+  }
+
   return (
     <C
       initial="hidden"
@@ -87,9 +127,19 @@ export function Stagger({
   );
 }
 
-/** A child of <Stagger>; defaults to fade-and-rise. */
+/** A child of <Stagger>; defaults to fade-and-rise. On phones, rendered immediately. */
 export function Item({ as = "div", variants = fadeUp, children, ...rest }: Props) {
   const C = tag(as);
+  const isMobile = useIsMobile();
+
+  if (isMobile) {
+    return (
+      <C initial={false} animate={{ opacity: 1, y: 0 }} {...rest}>
+        {children}
+      </C>
+    );
+  }
+
   return (
     <C variants={variants} {...rest}>
       {children}
@@ -97,7 +147,7 @@ export function Item({ as = "div", variants = fadeUp, children, ...rest }: Props
   );
 }
 
-/** One line of display text revealed from a mask. Must sit inside a <Stagger>. */
+/** One line of display text revealed from a mask. On phones, static and immediate. */
 export function MaskLine({
   children,
   className = "",
@@ -105,6 +155,16 @@ export function MaskLine({
   children: ReactNode;
   className?: string;
 }) {
+  const isMobile = useIsMobile();
+
+  if (isMobile) {
+    return (
+      <span className={`block pb-[0.12em] -mb-[0.12em] ${className}`}>
+        <span className="block">{children}</span>
+      </span>
+    );
+  }
+
   return (
     <span className={`block overflow-hidden pb-[0.12em] -mb-[0.12em] ${className}`}>
       <m.span className="block will-change-transform" variants={lineUp}>
@@ -114,8 +174,19 @@ export function MaskLine({
   );
 }
 
-/** Hairline that draws itself left → right when in view. */
+/** Hairline that draws itself left → right when in view. On phones, static hairline. */
 export function DrawLine({ className = "", delay = 0 }: { className?: string; delay?: number }) {
+  const isMobile = useIsMobile();
+
+  if (isMobile) {
+    return (
+      <span
+        aria-hidden
+        className={`pointer-events-none block origin-left ${className}`}
+      />
+    );
+  }
+
   return (
     <m.span
       aria-hidden
@@ -136,6 +207,7 @@ const STEPS_HOVER = "14px 14px 0px 0px #333333, 28px 28px 0px 0px #666666";
 /**
  * A card with the brand's stepped offset layers. It rises in, then its #333 / #666 layers step
  * out from beneath it like stacked tiles. Optional hover lifts the card and spreads the steps.
+ * On phones / smaller screens, renders immediately with no scroll animation and flat edges.
  */
 export function StepTile({
   as = "div",
@@ -150,30 +222,33 @@ export function StepTile({
   const reduced = useReducedMotion();
   const [ready, setReady] = useState(false);
   const [hovered, setHovered] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
+  const isMobile = useIsMobile();
 
-  useEffect(() => {
-    const mq = window.matchMedia("(max-width: 767px)");
-    const check = () => setIsMobile(mq.matches);
-    check();
-    mq.addEventListener("change", check);
-    return () => mq.removeEventListener("change", check);
-  }, []);
+  if (isMobile) {
+    return (
+      <C
+        ref={ref}
+        initial={false}
+        animate={{ opacity: 1, y: 0, boxShadow: "none" }}
+        {...rest}
+      >
+        {children}
+      </C>
+    );
+  }
 
   const target = !inView
-    ? { opacity: 0, y: 32, boxShadow: isMobile ? "none" : (reduced ? STEPS_SHOWN : STEPS_HIDDEN) }
-    : isMobile
-      ? { opacity: 1, y: 0, boxShadow: "none" }
-      : hover && hovered && ready
-        ? { opacity: 1, y: -4, boxShadow: STEPS_HOVER }
-        : { opacity: 1, y: 0, boxShadow: STEPS_SHOWN };
+    ? { opacity: 0, y: 32, boxShadow: reduced ? STEPS_SHOWN : STEPS_HIDDEN }
+    : hover && hovered && ready
+      ? { opacity: 1, y: -4, boxShadow: STEPS_HOVER }
+      : { opacity: 1, y: 0, boxShadow: STEPS_SHOWN };
 
   const transition = ready
     ? { duration: 0.45, ease: EASE_OUT }
     : {
         opacity: { duration: 0.8, ease: EASE_OUT, delay },
         y: { duration: 0.9, ease: EASE_OUT, delay },
-        boxShadow: { duration: isMobile ? 0.01 : 0.9, ease: EASE_IN_OUT, delay: delay + 0.45 },
+        boxShadow: { duration: 0.9, ease: EASE_IN_OUT, delay: delay + 0.45 },
       };
 
   return (

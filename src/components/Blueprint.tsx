@@ -1,6 +1,6 @@
 import { useRef, type ReactNode } from "react";
 import { m, useInView } from "motion/react";
-import { EASE_OUT, StepTile } from "../motion";
+import { EASE_OUT, StepTile, useIsMobile } from "../motion";
 import { Numeral } from "./brand";
 
 /** Build order (seconds after the card enters view), following the direction of data flow. */
@@ -17,6 +17,10 @@ function Step({
   className?: string;
   children: ReactNode;
 }) {
+  const isMobile = useIsMobile();
+  if (isMobile) {
+    return <div className={className}>{children}</div>;
+  }
   return (
     <m.div
       className={className}
@@ -73,7 +77,9 @@ function Connector({ show, delay }: { show: boolean; delay: number }) {
 /** Reference architecture (builds in once, then stays static) showing the four layers of a SYNAPSTREAM platform. */
 export function Blueprint() {
   const ref = useRef<HTMLDivElement>(null);
-  const show = useInView(ref, { once: true, amount: 0.35 });
+  const isMobile = useIsMobile();
+  const inView = useInView(ref, { once: true, amount: 0.35 });
+  const show = isMobile ? true : inView;
   return (
     <StepTile
       as="figure"

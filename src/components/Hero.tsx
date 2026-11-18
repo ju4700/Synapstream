@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { m, useReducedMotion, useScroll, useTransform } from "motion/react";
-import { EASE_OUT } from "../motion";
+import { EASE_OUT, useIsMobile } from "../motion";
 import { Arrow, ButtonLink, Container } from "./brand";
 import { Blueprint } from "./Blueprint";
 import { HalftoneSphere } from "./HalftoneSphere";
@@ -13,6 +13,7 @@ const AFTER_WORD = LETTER_START + WORD.length * LETTER_STAGGER;
 export function Hero() {
   const ref = useRef<HTMLElement>(null);
   const reduced = useReducedMotion();
+  const isMobile = useIsMobile();
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
   // Sphere sinks slower than the page on scroll
   const sphereY = useTransform(scrollYProgress, [0, 1], [0, 240]);
@@ -81,7 +82,7 @@ export function Hero() {
       <div className="relative mt-4 sm:mt-12 lg:mt-24">
         <m.div
           className="pointer-events-none absolute inset-x-0 top-0 h-[600px] sm:h-[900px] lg:h-[1300px]"
-          style={reduced ? undefined : { y: sphereY, opacity: sphereOpacity }}
+          style={reduced || isMobile ? undefined : { y: sphereY, opacity: sphereOpacity }}
           aria-hidden
         >
           <HalftoneSphere

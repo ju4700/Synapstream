@@ -9,7 +9,7 @@ import { EMAIL, OFFICE, PHONES, downloadVCard } from "./contactData";
 import { HalftoneSphere } from "./HalftoneSphere";
 import { useRef } from "react";
 import { m, useReducedMotion, useScroll, useTransform } from "motion/react";
-import { DrawLine, EASE_OUT, Reveal } from "../motion";
+import { DrawLine, EASE_OUT, Reveal, useIsMobile } from "../motion";
 import { QrCode } from "./QrBlock";
 
 type Fields = {
@@ -285,6 +285,14 @@ function InquiryForm() {
 
 /** QR code revealed once by a single scan-line sweep. */
 function QrReveal() {
+    const isMobile = useIsMobile();
+    if (isMobile) {
+        return (
+            <div className="relative w-[120px] shrink-0 overflow-hidden">
+                <QrCode className="w-full" />
+            </div>
+        );
+    }
     return (
         <div className="relative w-[120px] shrink-0 overflow-hidden">
             <QrCode className="w-full" />
@@ -322,6 +330,7 @@ function QrReveal() {
 export function Contact() {
     const ref = useRef<HTMLElement>(null);
     const reduced = useReducedMotion();
+    const isMobile = useIsMobile();
     // The arc rises into place as the section approaches, like the card emerging from the page
     const { scrollYProgress } = useScroll({
         target: ref,
@@ -340,7 +349,7 @@ export function Contact() {
             {/* Rising halftone arc, mirroring the physical business card */}
             <m.div
                 className="pointer-events-none relative mx-auto -mb-32 h-[420px] max-w-[1280px]"
-                style={reduced ? undefined : { y: arcY }}
+                style={reduced || isMobile ? undefined : { y: arcY }}
                 aria-hidden
             >
                 <HalftoneSphere

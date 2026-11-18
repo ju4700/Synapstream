@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import { m, useMotionValueEvent, useReducedMotion, useScroll, useTransform } from "motion/react";
-import { DrawLine, Item, Stagger, StepTile } from "../motion";
+import { DrawLine, Item, Stagger, StepTile, useIsMobile } from "../motion";
 import { Container, Heading, Numeral, Section, SectionHeader } from "./brand";
 
 const SECTORS = [
@@ -158,11 +158,12 @@ export function Delivery() {
 function Phases() {
   const ref = useRef<HTMLOListElement>(null);
   const reduced = useReducedMotion();
+  const isMobile = useIsMobile();
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start 85%", "start 35%"] });
   const scaleX = useTransform(scrollYProgress, [0, 1], [0, 1]);
-  const [reached, setReached] = useState(reduced ? STEPS.length : 0);
+  const [reached, setReached] = useState(reduced || isMobile ? STEPS.length : 0);
   useMotionValueEvent(scrollYProgress, "change", (v) => {
-    if (!reduced) setReached(Math.min(STEPS.length, Math.floor(v * STEPS.length + 0.75)));
+    if (!reduced && !isMobile) setReached(Math.min(STEPS.length, Math.floor(v * STEPS.length + 0.75)));
   });
 
   return (

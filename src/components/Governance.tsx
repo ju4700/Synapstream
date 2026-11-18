@@ -259,14 +259,9 @@ function HubDiagram() {
 }
 
 function StackedMobile() {
-  const ref = useRef<HTMLDivElement>(null);
-  const on = useInView(ref, { once: true, amount: 0.3 });
   return (
     <div className="mt-16 lg:hidden">
-      <div
-        ref={ref}
-        className="relative mx-auto grid aspect-square w-full max-w-[520px] place-items-center"
-      >
+      <div className="relative mx-auto grid aspect-square w-full max-w-[520px] place-items-center">
         <div className="pointer-events-none absolute inset-0" aria-hidden>
           <HalftoneSphere
             radius={0.44}
@@ -278,13 +273,11 @@ function StackedMobile() {
             fadeTop={0}
           />
         </div>
-        <ControlEmblem on={on} />
+        <ControlEmblem on={true} />
       </div>
       <div className="mx-auto mt-12 grid max-w-[640px] gap-8">
         {COMMITMENTS.map((_, i) => (
-          <Reveal key={i} delay={i * 0.08}>
-            <CommitmentCard i={i} on />
-          </Reveal>
+          <CommitmentCard key={i} i={i} on={true} />
         ))}
       </div>
     </div>
