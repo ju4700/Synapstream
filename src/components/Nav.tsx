@@ -7,7 +7,6 @@ const LINKS = [
   { label: "Capabilities", href: "#capabilities" },
   { label: "Delivery Model", href: "#delivery" },
   { label: "Governance", href: "#governance" },
-  { label: "Contact", href: "#contact" },
 ];
 
 export function Nav() {
@@ -87,7 +86,7 @@ export function Nav() {
 
         <div className="flex items-center gap-2">
           <ButtonLink href="#contact" className="!hidden lg:!inline-flex !rounded-full !px-6">
-            Initiate a Project
+            Contact
           </ButtonLink>
           <button
             type="button"
@@ -134,7 +133,7 @@ export function Nav() {
                 onClick={() => setOpen(false)}
                 className="w-full !rounded-full !py-3 text-center justify-center font-semibold"
               >
-                Initiate a Project
+                Contact
               </ButtonLink>
             </div>
           </m.div>
