@@ -103,11 +103,11 @@ const base =
 const sizes = { md: "h-12 px-6 text-sm", lg: "h-14 px-7 text-[15px]" };
 const variants = {
   solid:
-    "bg-white text-black hover:bg-white hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[6px_6px_0_0_#666666,12px_12px_0_0_#333333] active:translate-x-0 active:translate-y-0 active:shadow-none",
+    "bg-white text-black hover:bg-white hover:-translate-x-0.5 hover:-translate-y-1 hover:shadow-[2px_5px_0_0_#666666,4px_10px_0_0_#333333] active:translate-x-0 active:translate-y-0 active:shadow-none",
   outline:
-    "border border-white/40 text-white bg-transparent hover:border-white hover:bg-white/10 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[6px_6px_0_0_#333333,12px_12px_0_0_#1a1a1a] active:translate-x-0 active:translate-y-0 active:shadow-none",
+    "border border-white/40 text-white bg-transparent hover:border-white hover:bg-white/10 hover:-translate-x-0.5 hover:-translate-y-1 hover:shadow-[2px_5px_0_0_#333333,4px_10px_0_0_#1a1a1a] active:translate-x-0 active:translate-y-0 active:shadow-none",
   black:
-    "bg-black text-white hover:bg-black hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[6px_6px_0_0_#666666,12px_12px_0_0_#cccccc] active:translate-x-0 active:translate-y-0 active:shadow-none",
+    "bg-black text-white hover:bg-black hover:-translate-x-0.5 hover:-translate-y-1 hover:shadow-[2px_5px_0_0_#666666,4px_10px_0_0_#cccccc] active:translate-x-0 active:translate-y-0 active:shadow-none",
 };
 type Variant = keyof typeof variants;
 
