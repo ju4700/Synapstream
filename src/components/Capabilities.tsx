@@ -143,6 +143,7 @@ export function Capabilities() {
     <Section id="capabilities">
       <Container>
         <SectionHeader
+          center
           eyebrow="Core capabilities"
           lines={["Two core disciplines.", "One engineering standard."]}
           lead="Complex organizations rarely fail from a lack of data—they stall because their underlying infrastructure and the software their people actually use are built in isolation. SYNAPSTREAM engineers both as a unified system."

@@ -169,17 +169,33 @@ export function SectionHeader({
   lines,
   lead,
   className = "",
+  center = false,
 }: {
   eyebrow: string;
   lines: string[];
   lead?: ReactNode;
   className?: string;
+  center?: boolean;
 }) {
   return (
-    <Stagger as="header" stagger={0.1} amount={0.4} className={`max-w-[1080px] ${className}`}>
+    <Stagger
+      as="header"
+      stagger={0.1}
+      amount={0.4}
+      className={`max-w-[1080px] ${
+        center ? "mx-auto flex flex-col items-center text-center" : ""
+      } ${className}`}
+    >
       <m.p variants={fadeIn} className="flex items-center gap-3 text-sm font-medium text-silver">
-        <m.span variants={drawX} className="block h-px w-6 origin-left bg-step-2" aria-hidden />
+        <m.span
+          variants={drawX}
+          className={`block h-px w-6 ${center ? "origin-right" : "origin-left"} bg-step-2`}
+          aria-hidden
+        />
         {eyebrow}
+        {center && (
+          <m.span variants={drawX} className="block h-px w-6 origin-left bg-step-2" aria-hidden />
+        )}
       </m.p>
       <Heading className={`mt-6 sm:mt-8 ${H2_SIZE}`}>
         {lines.map((l, i) => (
@@ -195,7 +211,9 @@ export function SectionHeader({
             hidden: fadeUp.hidden,
             show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: EASE_OUT, delay: 0.15 } },
           }}
-          className="mt-6 sm:mt-8 max-w-[62ch] text-[15px] sm:text-lg leading-[1.65] text-mist"
+          className={`mt-6 sm:mt-8 max-w-[62ch] text-[15px] sm:text-lg leading-[1.65] text-mist ${
+            center ? "mx-auto text-balance" : ""
+          }`}
         >
           {lead}
         </Item>
