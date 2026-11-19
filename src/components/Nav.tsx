@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { AnimatePresence, m, useMotionValueEvent, useScroll } from "motion/react";
+import { AnimatePresence, m } from "motion/react";
 import { EASE_OUT } from "../motion";
 import { ButtonLink, LogoMark } from "./brand";
 
@@ -14,18 +14,9 @@ export function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [active, setActive] = useState<string | null>(null);
   const [open, setOpen] = useState(false);
-  const [hidden, setHidden] = useState(false);
-
-  // Tuck the bar away while scrolling down; bring it back on any upward scroll
-  const { scrollY } = useScroll();
-  useMotionValueEvent(scrollY, "change", (y) => {
-    const prev = scrollY.getPrevious() ?? 0;
-    setHidden(y > 240 && y > prev + 4 && !open);
-    if (y < prev - 4 || y <= 240) setHidden(false);
-  });
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
+    const onScroll = () => setScrolled(window.scrollY > 0);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     const targets = LINKS.map((l) => document.querySelector(l.href)).filter(Boolean) as Element[];
@@ -49,8 +40,8 @@ export function Nav() {
         scrolled ? "top-0" : "top-4"
       }`}
       initial={{ y: -24, opacity: 0 }}
-      animate={{ y: hidden ? -110 : 0, opacity: hidden ? 0 : 1 }}
-      transition={{ duration: hidden ? 0.4 : 0.7, ease: EASE_OUT, delay: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.7, ease: EASE_OUT, delay: 0 }}
     >
       <nav
         aria-label="Primary"
