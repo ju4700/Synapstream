@@ -82,6 +82,7 @@ export function Delivery() {
       <Container>
         {/* Part A — sector focus */}
         <SectionHeader
+          center
           eyebrow="Who we build for"
           lines={["Two kinds of organization.", "The same long‑term responsibility."]}
           lead="Our work is shaped by clients whose systems are expected to run reliably for years, under real institutional scrutiny."
@@ -142,6 +143,7 @@ export function Delivery() {
         <div className="relative mt-24 pt-24 lg:mt-40 lg:pt-40">
           <DrawLine className="absolute inset-x-0 top-0 h-px bg-hairline" />
           <SectionHeader
+            center
             eyebrow="How we deliver"
             lines={["Our engineering engagement model"]}
             lead="Four clearly bounded phases, each ending in a deliverable you can review, approve, and keep—so progress is visible and nothing depends on trust alone."
