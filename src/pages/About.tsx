@@ -568,17 +568,17 @@ export function About() {
 
           <div
             className="relative mt-10 sm:mt-14 w-full overflow-hidden"
-            style={{ width: "100%", height: "680px", position: "relative" }}
+            style={{ width: "100%", height: "820px", position: "relative" }}
           >
             <CircularCarousel
               items={SOVEREIGN_CAROUSEL_ITEMS}
               preset="cylinder"
               intro="rise"
-              cardWidth={320}
-              aspectRatio={1}
-              gap={30}
-              cornerRadius={14}
-              speed={12}
+              cardWidth={360}
+              aspectRatio={0.64}
+              gap={28}
+              cornerRadius={16}
+              speed={11}
               fadeColor="#040404"
               captions
             />
