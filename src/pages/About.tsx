@@ -365,8 +365,8 @@ export function About() {
           </div>
 
           <div
-            className="relative mt-10 sm:mt-14 w-full overflow-hidden"
-            style={{ width: "100%", height: "820px", position: "relative" }}
+            className="relative mt-8 sm:mt-12 lg:mt-14 w-full overflow-hidden h-[580px] sm:h-[700px] lg:h-[820px]"
+            style={{ width: "100%", position: "relative" }}
           >
             <CircularCarousel
               items={SOVEREIGN_CAROUSEL_ITEMS}

@@ -493,16 +493,72 @@ export const CircularCarousel = ({
       const width = rect.width * 0.94;
       const height = (rect.height - room) * 0.92;
       const P = s.perspective;
-      let minX = Infinity;
-      let maxX = -Infinity;
-      let minY = Infinity;
-      let maxY = -Infinity;
-      if (s.layout.inward) {
-        minX = -width / 2;
-        maxX = width / 2;
-        minY = -s.cardH / 2;
-        maxY = s.cardH / 2;
+
+      let fit: number;
+      let shiftY = -room / 2;
+
+      if (s.axis === 'y' && !s.layout.inward) {
+        if (rect.width < 640) {
+          // Mobile (< 640px): front card takes ~76-78% of viewport width and scales tall
+          const targetW = Math.min(s.cardW, Math.max(250, rect.width * 0.78));
+          fit = Math.min(1, targetW / s.cardW, height / s.cardH);
+          shiftY = -room / 2;
+        } else if (rect.width < 1024) {
+          // Tablet (640px - 1023px): front card is comfortably sized
+          const targetW = Math.min(s.cardW, Math.max(300, rect.width * 0.52));
+          fit = Math.min(1, targetW / s.cardW, height / s.cardH);
+          shiftY = -room / 2;
+        } else {
+          // Desktop (1024px+): frame an arc of cards without excessive shrink
+          const windowSpan = s.layout.window || (s.count > 6 ? 2.8 : 0);
+          const limit = windowSpan ? Math.min(180, windowSpan * s.step) : 180;
+          let minX = Infinity;
+          let maxX = -Infinity;
+          let minY = Infinity;
+          let maxY = -Infinity;
+          const corners: [number, number][] = [
+            [-s.cardW / 2, -s.cardH / 2],
+            [s.cardW / 2, -s.cardH / 2],
+            [-s.cardW / 2, s.cardH / 2],
+            [s.cardW / 2, s.cardH / 2]
+          ];
+          for (let a = -limit; a <= limit; a += limit / 24) {
+            for (const [cx, cy] of corners) {
+              let p: [number, number, number];
+              if (s.layout.billboard) {
+                const c = rotateY([0, 0, s.radius], a);
+                p = rotateX([c[0] + cx, cy, c[2]], s.tilt);
+              } else {
+                p = rotateX(rotateY([cx, cy, s.radius], a), s.tilt);
+              }
+              p = [p[0], p[1], p[2] - s.radius];
+              if (p[2] >= P * 0.95) continue;
+              const k = P / (P - p[2]);
+              minX = Math.min(minX, p[0] * k);
+              maxX = Math.max(maxX, p[0] * k);
+              minY = Math.min(minY, p[1] * k);
+              maxY = Math.max(maxY, p[1] * k);
+            }
+          }
+          const spanX = Math.max(maxX - minX, 1);
+          const spanY = Math.max(maxY - minY, 1);
+          fit = Math.min(1, width / spanX, height / spanY);
+          shiftY = -((minY + maxY) / 2) * fit - room / 2;
+        }
+      } else if (s.layout.inward) {
+        let minX = -width / 2;
+        let maxX = width / 2;
+        let minY = -s.cardH / 2;
+        let maxY = s.cardH / 2;
+        const spanX = Math.max(maxX - minX, 1);
+        const spanY = Math.max(maxY - minY, 1);
+        fit = Math.min(1, width / spanX, height / spanY);
+        shiftY = -((minY + maxY) / 2) * fit - room / 2;
       } else {
+        let minX = Infinity;
+        let maxX = -Infinity;
+        let minY = Infinity;
+        let maxY = -Infinity;
         const corners: [number, number][] = [
           [-s.cardW / 2, -s.cardH / 2],
           [s.cardW / 2, -s.cardH / 2],
@@ -512,15 +568,7 @@ export const CircularCarousel = ({
         const limit = s.layout.window ? s.layout.window * s.step : 180;
         for (let a = -limit; a <= limit; a += limit / 24) {
           for (const [cx, cy] of corners) {
-            let p: [number, number, number];
-            if (s.axis === 'x') {
-              p = rotateY(rotateX([cx, cy, s.radius], -a), s.tilt);
-            } else if (s.layout.billboard) {
-              const c = rotateY([0, 0, s.radius], a);
-              p = rotateX([c[0] + cx, cy, c[2]], s.tilt);
-            } else {
-              p = rotateX(rotateY([cx, cy, s.radius], a), s.tilt);
-            }
+            let p: [number, number, number] = rotateY(rotateX([cx, cy, s.radius], -a), s.tilt);
             p = [p[0], p[1], p[2] - s.radius];
             if (p[2] >= P * 0.95) continue;
             const k = P / (P - p[2]);
@@ -530,12 +578,13 @@ export const CircularCarousel = ({
             maxY = Math.max(maxY, p[1] * k);
           }
         }
+        const spanX = Math.max(maxX - minX, 1);
+        const spanY = Math.max(maxY - minY, 1);
+        fit = Math.min(1, width / spanX, height / spanY);
+        shiftY = -((minY + maxY) / 2) * fit - room / 2;
       }
-      const spanX = Math.max(maxX - minX, 1);
-      const spanY = Math.max(maxY - minY, 1);
-      const fit = Math.min(1, width / spanX, height / spanY);
       state.fit = fit;
-      state.shift = -((minY + maxY) / 2) * fit - room / 2;
+      state.shift = shiftY;
       state.drop = s.axis === 'x' ? (rect.width / fit) * 0.55 + s.cardW : (rect.height / fit) * 0.55 + s.cardH;
       stage.style.perspective = `${P}px`;
       stage.style.transform = `translate3d(0, ${state.shift}px, 0) scale(${fit})`;
