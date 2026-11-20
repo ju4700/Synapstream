@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { AnimatePresence, m } from "motion/react";
+import { CircularCarousel, type CarouselItem } from "../components/reactbits/CircularCarousel";
 import {
   Container,
   Heading,
@@ -112,6 +113,57 @@ const AI_CAPABILITIES = [
     num: "04",
     title: "Auditable Agentic Automation",
     desc: "Self-executing operational pipelines equipped with deterministic guardrails, human-in-the-loop approvals, and immutable audit logs that trace every autonomous step with complete forensic accountability.",
+  },
+];
+
+const SOVEREIGN_CAROUSEL_ITEMS: CarouselItem[] = [
+  {
+    src: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=900&q=80&auto=format&fit=max&sat=-100",
+    alt: "High-density sovereign data center server hall",
+    title: "Sovereign Cloud Core",
+    subtitle: "Tier IV GovCloud Facility",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=900&q=80&auto=format&fit=max&sat=-100",
+    alt: "Dedicated AI accelerator cluster",
+    title: "Private Machine Intelligence",
+    subtitle: "Air-Gapped LLM Deployments",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=900&q=80&auto=format&fit=max&sat=-100",
+    alt: "Institutional civil administration headquarters",
+    title: "National Registries",
+    subtitle: "Civil Infrastructure Scale",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=900&q=80&auto=format&fit=max&sat=-100",
+    alt: "Encrypted data stream and network telemetry",
+    title: "Cryptographic Handover",
+    subtitle: "100% Client Key Custody",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=900&q=80&auto=format&fit=max&sat=-100",
+    alt: "Deterministic archive indexing and verified search",
+    title: "Archive Intelligence",
+    subtitle: "Mathematical Citations & RAG",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=900&q=80&auto=format&fit=max&sat=-100",
+    alt: "Mission operations control room with telemetry displays",
+    title: "Mission Operations",
+    subtitle: "Offline-First Network Resiliency",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=900&q=80&auto=format&fit=max&sat=-100",
+    alt: "Modern public administration complex",
+    title: "Citizen Portals",
+    subtitle: "High-Concurrency Workloads",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=900&q=80&auto=format&fit=max&sat=-100",
+    alt: "Secure hardware security module installation",
+    title: "Zero Foreign Dependency",
+    subtitle: "Statutory Jurisdiction Control",
   },
 ];
 
@@ -498,6 +550,42 @@ export function About() {
                 ))}
               </div>
             </div>
+          </div>
+        </Container>
+      </Section>
+
+      {/* -------------------------------------------------------------------- */}
+      {/* 4. SOVEREIGN TOPOLOGY & DEPLOYMENT NODES (CIRCULAR CAROUSEL)         */}
+      {/* -------------------------------------------------------------------- */}
+      <Section id="operational-nodes" className="relative border-t border-hairline bg-[#040404] py-14 sm:py-20">
+        <Container>
+          <div className="mx-auto max-w-3xl text-center">
+            <span className="font-mono text-xs uppercase tracking-[0.16em] text-silver">
+              Operational Environments
+            </span>
+            <Heading as="h2" className="mt-4 text-[26px] sm:text-[36px]">
+              Sovereign Topologies & Deployment Nodes
+            </Heading>
+            <p className="mt-4 text-[15px] sm:text-base leading-relaxed text-silver text-justify [text-align-last:center]">
+              Interactive spatial visualization of certified operational deployment footprints across
+              sovereign data centers, private GovClouds, and isolated machine intelligence enclaves.
+            </p>
+          </div>
+
+          <div
+            className="relative mt-10 sm:mt-14 w-full overflow-hidden"
+            style={{ width: "100%", height: "560px", position: "relative" }}
+          >
+            <CircularCarousel
+              items={SOVEREIGN_CAROUSEL_ITEMS}
+              preset="cylinder"
+              intro="rise"
+              cardWidth={220}
+              aspectRatio={1}
+              speed={14}
+              fadeColor="#040404"
+              captions
+            />
           </div>
         </Container>
       </Section>
