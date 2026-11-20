@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { AnimatePresence, m } from "motion/react";
+import { m } from "motion/react";
 import { CircularCarousel, type CarouselItem } from "../components/reactbits/CircularCarousel";
 import {
   Container,
@@ -62,60 +61,6 @@ const TENETS = [
   },
 ];
 
-const GOV_CAPABILITIES = [
-  {
-    id: "gov-01",
-    num: "01",
-    title: "National Registries & Public Administration",
-    desc: "Bespoke citizen portals, civil licensing, healthcare registries, and institutional workflows engineered for peak nationwide concurrency, multi-lingual accessibility, and zero data loss.",
-  },
-  {
-    id: "gov-02",
-    num: "02",
-    title: "100% Jurisdictional Data Sovereignty",
-    desc: "Zero exposure to extraterritorial jurisdiction. Deployed directly within national data centers, private GovCloud accounts, or dedicated hardware with independent encryption key custody.",
-  },
-  {
-    id: "gov-03",
-    num: "03",
-    title: "Air-Gapped & Offline-First Resiliency",
-    desc: "Critical systems engineered to install, validate, and execute continuously on isolated networks disconnected from the public internet, featuring secure cryptographic offline sync.",
-  },
-  {
-    id: "gov-04",
-    num: "04",
-    title: "Full Codebase & Blueprint Handover",
-    desc: "Zero vendor lock-in. Full source code repositories, infrastructure definitions, schema documentation, and operational runbooks are transferred entirely to the client upon milestone completion.",
-  },
-];
-
-const AI_CAPABILITIES = [
-  {
-    id: "ai-01",
-    num: "01",
-    title: "Private & Air-Gapped LLM Deployments",
-    desc: "Deploying high-capability open-weight models (Llama, DeepSeek, Mistral) on your dedicated on-premise hardware or private cloud. Zero external API calls, zero data retention, and zero training on institutional records.",
-  },
-  {
-    id: "ai-02",
-    num: "02",
-    title: "High-Precision Enterprise RAG",
-    desc: "Retrieval-Augmented Generation across millions of regulatory, legal, and operational documents. Strict role-based access filtering (RBAC) and mathematical citation verification prevent hallucinations.",
-  },
-  {
-    id: "ai-03",
-    num: "03",
-    title: "Deterministic Document & Archive Intelligence",
-    desc: "Automated ingestion, OCR, classification, and structured schema extraction across historical archives, invoices, clinical charts, and registry files—transforming paper silos into queryable databases.",
-  },
-  {
-    id: "ai-04",
-    num: "04",
-    title: "Auditable Agentic Automation",
-    desc: "Self-executing operational pipelines equipped with deterministic guardrails, human-in-the-loop approvals, and immutable audit logs that trace every autonomous step with complete forensic accountability.",
-  },
-];
-
 const SOVEREIGN_CAROUSEL_ITEMS: CarouselItem[] = [
   {
     src: "/carousel/pcb-circuits.jpg",
@@ -154,75 +99,30 @@ const SOVEREIGN_CAROUSEL_ITEMS: CarouselItem[] = [
     subtitle: "Statutory Data Center Nodes",
   },
   {
+    src: "/carousel/codebase-terminal.jpg",
+    alt: "High-density source code terminal and algorithmic execution logic",
+    title: "Deterministic Codebases",
+    subtitle: "Type-Safe Architectural Handover",
+  },
+  {
+    src: "/carousel/embedded-motherboard.jpg",
+    alt: "Industrial computing motherboard with integrated processing chips",
+    title: "Embedded Architectures",
+    subtitle: "Statutory Hardware Security Modules",
+  },
+  {
+    src: "/carousel/industrial-hydraulics.jpg",
+    alt: "Heavy industrial hydraulic control assemblies and ruggedized field wiring",
+    title: "Civil Infrastructure",
+    subtitle: "Field Instrumentation & Operations",
+  },
+  {
     src: "/carousel/systems-workshop.jpg",
     alt: "Workstation hardware array and field systems deployment kits",
     title: "Station Runbooks",
     subtitle: "100% Operational Handover",
   },
 ];
-
-/* -------------------------------------------------------------------------- */
-/*                              ACCORDION ITEM                                */
-/* -------------------------------------------------------------------------- */
-
-interface AccordionItemProps {
-  num: string;
-  title: string;
-  desc: string;
-  isOpen: boolean;
-  onToggle: () => void;
-}
-
-function AccordionItem({ num, title, desc, isOpen, onToggle }: AccordionItemProps) {
-  return (
-    <div className="border border-line bg-obsidian/70 transition-colors duration-200 hover:border-white/30">
-      <button
-        type="button"
-        onClick={onToggle}
-        className="flex w-full items-center justify-between p-4 sm:p-5 text-left focus:outline-none"
-        aria-expanded={isOpen}
-      >
-        <div className="flex items-center gap-3 pr-3 sm:gap-4 sm:pr-4">
-          <span className="font-mono text-xs font-semibold text-silver">{num}</span>
-          <span className="text-[14px] sm:text-[15px] font-semibold text-white tracking-[-0.01em]">
-            {title}
-          </span>
-        </div>
-        <div className="flex size-7 shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-silver transition-colors duration-200">
-          <m.svg
-            animate={{ rotate: isOpen ? 180 : 0 }}
-            transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
-            className="size-3.5"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            strokeWidth={2}
-          >
-            <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-          </m.svg>
-        </div>
-      </button>
-
-      <AnimatePresence initial={false}>
-        {isOpen && (
-          <m.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-            className="overflow-hidden"
-          >
-            <div className="border-t border-hairline px-4 pt-3.5 pb-5 sm:px-5">
-              <p className="text-[13px] sm:text-[14px] leading-[1.7] text-silver text-justify [text-align-last:left]">
-                {desc}
-              </p>
-            </div>
-          </m.div>
-        )}
-      </AnimatePresence>
-    </div>
-  );
-}
 
 const PHASES = [
   {
@@ -294,8 +194,6 @@ const ENGAGEMENT_MODELS = [
 
 export function About() {
   const isMobile = useIsMobile();
-  const [openGovId, setOpenGovId] = useState<string | null>("gov-01");
-  const [openAiId, setOpenAiId] = useState<string | null>("ai-01");
 
   return (
     <div className="pt-24 lg:pt-32">
@@ -437,119 +335,7 @@ export function About() {
       </Section>
 
       {/* -------------------------------------------------------------------- */}
-      {/* 3. SOVEREIGN CIVIL SYSTEMS & APPLIED AI (MERGED SECTION)              */}
-      {/* -------------------------------------------------------------------- */}
-      <Section id="sovereign-systems" className="relative border-t border-hairline bg-[#040404]">
-        <Container>
-          <div className="mx-auto max-w-3xl text-center">
-            <span className="font-mono text-xs uppercase tracking-[0.16em] text-silver">
-              Institutional Sovereignty & Machine Intelligence
-            </span>
-            <Heading as="h2" className="mt-4 text-[26px] sm:text-[38px] leading-[1.18]">
-              Sovereign Digital Systems & Applied Artificial Intelligence
-            </Heading>
-            <p className="mt-4 text-[15px] sm:text-base leading-relaxed text-silver text-justify [text-align-last:center]">
-              Engineered for public authorities, defense bodies, and enterprises requiring statutory data control,
-              deterministic machine intelligence, and operational resilience without foreign dependency.
-            </p>
-          </div>
-
-          <div className="mt-14 grid gap-12 lg:grid-cols-2 lg:gap-16">
-            {/* Left: Government & Civil Infrastructure */}
-            <div className="flex flex-col justify-between">
-              <div>
-                <span className="font-mono text-xs uppercase tracking-[0.16em] text-silver">
-                  Government & Public Institutions
-                </span>
-                <h3 className="mt-3 text-xl sm:text-2xl font-semibold tracking-[-0.015em] text-white">
-                  Sovereign Digital Systems & Civil Infrastructure
-                </h3>
-                <p className="mt-4 text-[15px] sm:text-[16px] leading-[1.75] text-mist text-justify [text-align-last:left]">
-                  Ministries, defense bodies, and public authorities cannot outsource their operational
-                  sovereignty to opaque third-party software vendors. We architect resilient systems
-                  engineered to handle citizen-scale workloads while remaining strictly under statutory control.
-                </p>
-
-                <div className="mt-6 space-y-3.5 border-l border-white/20 pl-4 text-[14px] leading-relaxed text-silver">
-                  <p className="text-justify [text-align-last:left]">
-                    <strong className="text-white">Total Regulatory Alignment:</strong> Engineered to satisfy national data protection frameworks, national archival laws, and multi-tier public audit protocols.
-                  </p>
-                  <p className="text-justify [text-align-last:left]">
-                    <strong className="text-white">Zero Foreign Dependency:</strong> Deployed in your sovereign data center or national GovCloud, ensuring continuity even during geopolitical network disruptions.
-                  </p>
-                </div>
-              </div>
-
-              {/* Accordion FAQ for Government */}
-              <div className="mt-10 space-y-3">
-                <div className="border-b border-line pb-2">
-                  <span className="font-mono text-[11px] uppercase tracking-wider text-neutral-400">
-                    Sovereign Infrastructure Specifications
-                  </span>
-                </div>
-                {GOV_CAPABILITIES.map((item) => (
-                  <AccordionItem
-                    key={item.id}
-                    num={item.num}
-                    title={item.title}
-                    desc={item.desc}
-                    isOpen={openGovId === item.id}
-                    onToggle={() => setOpenGovId(openGovId === item.id ? null : item.id)}
-                  />
-                ))}
-              </div>
-            </div>
-
-            {/* Right: Applied Artificial Intelligence */}
-            <div className="flex flex-col justify-between">
-              <div>
-                <span className="font-mono text-xs uppercase tracking-[0.16em] text-silver">
-                  Applied Artificial Intelligence
-                </span>
-                <h3 className="mt-3 text-xl sm:text-2xl font-semibold tracking-[-0.015em] text-white">
-                  Private, Deterministic AI for High-Stakes Operations
-                </h3>
-                <p className="mt-4 text-[15px] sm:text-[16px] leading-[1.75] text-mist text-justify [text-align-last:left]">
-                  Generic consumer AI models pose unmanaged data leaks and hallucinations. Synapstream
-                  engineers sovereign, air-gapped machine intelligence tailored to complex institutional archives,
-                  operational workflows, and automated decision-support pipelines.
-                </p>
-
-                <div className="mt-6 space-y-3.5 border-l border-white/20 pl-4 text-[14px] leading-relaxed text-silver">
-                  <p className="text-justify [text-align-last:left]">
-                    <strong className="text-white">Zero Training on Client Data:</strong> Your intellectual property, citizen records, and proprietary datasets are never used to train or refine foundation models.
-                  </p>
-                  <p className="text-justify [text-align-last:left]">
-                    <strong className="text-white">Verifiable Grounding:</strong> Every generative response is bound to mathematical citations in your underlying records, ensuring tamper-evident accountability.
-                  </p>
-                </div>
-              </div>
-
-              {/* Accordion FAQ for AI */}
-              <div className="mt-10 space-y-3">
-                <div className="border-b border-line pb-2">
-                  <span className="font-mono text-[11px] uppercase tracking-wider text-neutral-400">
-                    Machine Intelligence Specifications
-                  </span>
-                </div>
-                {AI_CAPABILITIES.map((item) => (
-                  <AccordionItem
-                    key={item.id}
-                    num={item.num}
-                    title={item.title}
-                    desc={item.desc}
-                    isOpen={openAiId === item.id}
-                    onToggle={() => setOpenAiId(openAiId === item.id ? null : item.id)}
-                  />
-                ))}
-              </div>
-            </div>
-          </div>
-        </Container>
-      </Section>
-
-      {/* -------------------------------------------------------------------- */}
-      {/* 4. SOVEREIGN TOPOLOGY & DEPLOYMENT NODES (CIRCULAR CAROUSEL)         */}
+      {/* 3. SOVEREIGN TOPOLOGY & DEPLOYMENT NODES (CIRCULAR CAROUSEL)         */}
       {/* -------------------------------------------------------------------- */}
       <Section id="operational-nodes" className="relative border-t border-hairline bg-[#040404] py-14 sm:py-20">
         <Container>
