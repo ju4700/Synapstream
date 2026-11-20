@@ -489,25 +489,31 @@ export const CircularCarousel = ({
       const s = settingsRef.current;
       const rect = root.getBoundingClientRect();
       if (!rect.width || !rect.height) return;
-      const room = s.captions ? CAPTION_SPACE : 0;
-      const width = rect.width * 0.94;
-      const height = (rect.height - room) * 0.92;
       const P = s.perspective;
 
+      // Generous reserved space to completely prevent card and caption collision
+      const isMobile = rect.width < 640;
+      const isTablet = rect.width < 1024;
+      const reservedTop = isMobile ? 24 : (isTablet ? 28 : 32);
+      const reservedBottom = s.captions ? (isMobile ? 128 : (isTablet ? 116 : 104)) : (isMobile ? 24 : 32);
+      const maxCardH = Math.max(100, rect.height - reservedBottom - reservedTop);
+      const availW = rect.width * 0.94;
+
       let fit: number;
-      let shiftY = -room / 2;
+      // Shift stage center so the card sits centered in the available space above the reserved caption area
+      const shiftY = (reservedTop - reservedBottom) / 2;
 
       if (s.axis === 'y' && !s.layout.inward) {
-        if (rect.width < 640) {
-          // Mobile (< 640px): front card takes ~76-78% of viewport width and scales tall
-          const targetW = Math.min(s.cardW, Math.max(250, rect.width * 0.78));
-          fit = Math.min(1, targetW / s.cardW, height / s.cardH);
-          shiftY = -room / 2;
-        } else if (rect.width < 1024) {
-          // Tablet (640px - 1023px): front card is comfortably sized
-          const targetW = Math.min(s.cardW, Math.max(300, rect.width * 0.52));
-          fit = Math.min(1, targetW / s.cardW, height / s.cardH);
-          shiftY = -room / 2;
+        if (isMobile) {
+          // Mobile (< 640px): front card takes ~74-76% of viewport width, strictly bounded by maxCardH
+          const maxTargetW = Math.min(s.cardW, Math.max(240, rect.width * 0.75));
+          const targetW = Math.min(maxTargetW, maxCardH * (s.cardW / s.cardH));
+          fit = Math.min(1, targetW / s.cardW, maxCardH / s.cardH);
+        } else if (isTablet) {
+          // Tablet (640px - 1023px): front card is comfortably sized, strictly bounded by maxCardH
+          const maxTargetW = Math.min(s.cardW, Math.max(300, rect.width * 0.52));
+          const targetW = Math.min(maxTargetW, maxCardH * (s.cardW / s.cardH));
+          fit = Math.min(1, targetW / s.cardW, maxCardH / s.cardH);
         } else {
           // Desktop (1024px+): frame an arc of cards without excessive shrink
           const windowSpan = s.layout.window || (s.count > 6 ? 2.8 : 0);
@@ -542,18 +548,16 @@ export const CircularCarousel = ({
           }
           const spanX = Math.max(maxX - minX, 1);
           const spanY = Math.max(maxY - minY, 1);
-          fit = Math.min(1, width / spanX, height / spanY);
-          shiftY = -((minY + maxY) / 2) * fit - room / 2;
+          fit = Math.min(1, availW / spanX, maxCardH / spanY);
         }
       } else if (s.layout.inward) {
-        let minX = -width / 2;
-        let maxX = width / 2;
+        let minX = -availW / 2;
+        let maxX = availW / 2;
         let minY = -s.cardH / 2;
         let maxY = s.cardH / 2;
         const spanX = Math.max(maxX - minX, 1);
         const spanY = Math.max(maxY - minY, 1);
-        fit = Math.min(1, width / spanX, height / spanY);
-        shiftY = -((minY + maxY) / 2) * fit - room / 2;
+        fit = Math.min(1, availW / spanX, maxCardH / spanY);
       } else {
         let minX = Infinity;
         let maxX = -Infinity;
@@ -580,8 +584,7 @@ export const CircularCarousel = ({
         }
         const spanX = Math.max(maxX - minX, 1);
         const spanY = Math.max(maxY - minY, 1);
-        fit = Math.min(1, width / spanX, height / spanY);
-        shiftY = -((minY + maxY) / 2) * fit - room / 2;
+        fit = Math.min(1, availW / spanX, maxCardH / spanY);
       }
       state.fit = fit;
       state.shift = shiftY;

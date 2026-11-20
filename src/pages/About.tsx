@@ -365,7 +365,7 @@ export function About() {
           </div>
 
           <div
-            className="relative mt-8 sm:mt-12 lg:mt-14 w-full overflow-hidden h-[580px] sm:h-[700px] lg:h-[820px]"
+            className="relative mt-8 sm:mt-12 lg:mt-14 w-full overflow-hidden h-[600px] sm:h-[720px] lg:h-[840px]"
             style={{ width: "100%", position: "relative" }}
           >
             <CircularCarousel
