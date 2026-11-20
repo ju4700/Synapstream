@@ -283,13 +283,19 @@ export function About() {
             as="div"
             delay={0.2}
             stagger={0.08}
-            className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
+            className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-6"
           >
             {TENETS.map((t, idx) => (
               <Item
                 as="div"
                 key={t.title}
-                className={idx === 4 ? "sm:col-span-2 lg:col-span-1" : ""}
+                className={
+                  idx < 3
+                    ? "lg:col-span-2"
+                    : idx === 3
+                      ? "lg:col-span-2 lg:col-start-2"
+                      : "sm:col-span-2 lg:col-span-2 sm:max-w-md sm:mx-auto lg:max-w-none w-full"
+                }
               >
                 <StepTile
                   as="article"
