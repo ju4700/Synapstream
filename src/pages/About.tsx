@@ -268,7 +268,7 @@ export function About() {
         <Container>
           <div className="mx-auto max-w-3xl text-center">
             <span className="font-mono text-xs uppercase tracking-[0.16em] text-silver">
-              Engineering Governance
+              Engineering System
             </span>
             <Heading as="h2" className="mt-4 text-[26px] sm:text-[36px]">
               Five Non-Negotiable Architectural Tenets
@@ -430,7 +430,7 @@ export function About() {
       </Section>
 
       {/* -------------------------------------------------------------------- */}
-      {/* 5. 5-PHASE DELIVERY GOVERNANCE (SDLC)                                 */}
+      {/* 5. 5-PHASE DELIVERY SYSTEM (SDLC)                                     */}
       {/* -------------------------------------------------------------------- */}
       <Section id="sdlc" className="border-t border-hairline">
         <Container>
@@ -439,10 +439,10 @@ export function About() {
               Deterministic Execution
             </span>
             <Heading as="h2" className="mt-4 text-[26px] sm:text-[36px]">
-              The Five-Phase Delivery Governance
+              The Five-Phase Delivery System
             </Heading>
             <p className="mt-4 text-[15px] sm:text-base leading-relaxed text-silver">
-              Software delivery fails from optimistic schedules and vague boundaries. We govern every
+              Software delivery fails from optimistic schedules and vague boundaries. We structure every
               engagement with formalized milestone sign-off gates.
             </p>
           </div>
