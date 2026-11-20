@@ -343,7 +343,7 @@ export function Contact() {
             ref={ref}
             id="contact"
             aria-label="Contact"
-            className="relative overflow-hidden bg-black pt-0 lg:pt-0"
+            className="relative overflow-hidden bg-black pt-0 pb-24 md:pb-32 lg:pb-40"
         >
             <DrawLine className="absolute inset-x-0 top-0 h-px bg-hairline" />
             {/* Rising halftone arc, mirroring the physical business card */}
