@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { m, AnimatePresence } from "motion/react";
+import { m } from "motion/react";
 import {
   Container,
   Heading,
@@ -115,49 +114,6 @@ const AI_PILLARS = [
   },
 ];
 
-const TECH_CATEGORIES = [
-  {
-    id: "frontend",
-    name: "Frontend & Web",
-    items: [
-      { name: "TypeScript", role: "Strict compile-time type safety across UI models" },
-      { name: "React 19 & Next.js", role: "Server-side rendering, sub-second TTFB, modular components" },
-      { name: "Tailwind CSS v4", role: "Predictable design token systems with zero runtime overhead" },
-      { name: "Framer Motion", role: "Hardware-accelerated interface interactions and layout state" },
-    ],
-  },
-  {
-    id: "backend",
-    name: "Backend & Distributed Systems",
-    items: [
-      { name: "Node.js (TypeScript)", role: "High-velocity typed microservices and event handlers" },
-      { name: "Python (FastAPI / Django)", role: "Data engineering, AI orchestration, scientific pipelines" },
-      { name: "Go", role: "High-throughput concurrent daemon workers and edge proxies" },
-      { name: "OpenAPI 3.1 & GraphQL", role: "Contract-first schemas and type-generated client SDKs" },
-    ],
-  },
-  {
-    id: "data",
-    name: "Data, Streaming & AI",
-    items: [
-      { name: "PostgreSQL", role: "ACID-compliant relational core with strict referential integrity" },
-      { name: "Redis", role: "Low-latency distributed caching, atomic locking, and rate limiters" },
-      { name: "Apache Kafka / RabbitMQ", role: "Event-driven asynchronous messaging and telemetry streams" },
-      { name: "Vector Databases", role: "High-dimensional embeddings for private enterprise RAG" },
-    ],
-  },
-  {
-    id: "infra",
-    name: "Cloud, Sovereign Ops & Security",
-    items: [
-      { name: "Docker & Kubernetes", role: "Immutable containerized workloads and self-healing clusters" },
-      { name: "Terraform (IaC)", role: "Reproducible declarative infrastructure without environment drift" },
-      { name: "OpenTelemetry", role: "Distributed request tracing, structured logging, SLA alerts" },
-      { name: "Air-Gapped Linux", role: "Hardened OS perimeters with zero external network dependency" },
-    ],
-  },
-];
-
 const PHASES = [
   {
     phase: "01",
@@ -227,7 +183,6 @@ const ENGAGEMENT_MODELS = [
 /* -------------------------------------------------------------------------- */
 
 export function About() {
-  const [activeTab, setActiveTab] = useState("frontend");
   const isMobile = useIsMobile();
 
   return (
@@ -469,73 +424,7 @@ export function About() {
       </Section>
 
       {/* -------------------------------------------------------------------- */}
-      {/* 5. TECHNOLOGY STACK & ARCHITECTURAL STANDARDS                        */}
-      {/* -------------------------------------------------------------------- */}
-      <Section id="tech-standards" className="border-t border-hairline bg-[#040404]">
-        <Container>
-          <div className="mx-auto max-w-3xl text-center">
-            <span className="font-mono text-xs uppercase tracking-[0.16em] text-silver">
-              Engineering Foundation
-            </span>
-            <Heading as="h2" className="mt-4 text-[26px] sm:text-[36px]">
-              Technology Selection & Standards Matrix
-            </Heading>
-            <p className="mt-4 text-[15px] sm:text-base leading-relaxed text-silver">
-              We select technologies based on ecosystem health, runtime predictability, compile-time
-              type safety, and ease of hiring for internal teams—strictly avoiding experimental toolchains.
-            </p>
-
-            {/* Category Filter Tabs */}
-            <div className="mt-10 flex flex-wrap justify-center gap-2">
-              {TECH_CATEGORIES.map((cat) => (
-                <button
-                  key={cat.id}
-                  type="button"
-                  onClick={() => setActiveTab(cat.id)}
-                  className={`rounded-full px-5 py-2 text-xs font-semibold transition-all duration-300 ${
-                    activeTab === cat.id
-                      ? "bg-white text-black shadow-[0_4px_16px_rgba(255,255,255,0.2)]"
-                      : "border border-line bg-obsidian text-silver hover:border-white/30 hover:text-white"
-                  }`}
-                >
-                  {cat.name}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          <div className="mx-auto mt-12 max-w-4xl">
-            <AnimatePresence mode="wait">
-              {TECH_CATEGORIES.filter((c) => c.id === activeTab).map((c) => (
-                <m.div
-                  key={c.id}
-                  initial={{ opacity: 0, y: 12 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -12 }}
-                  transition={{ duration: 0.35, ease: EASE_OUT }}
-                  className="tile border border-line bg-obsidian p-6 sm:p-10"
-                >
-                  <div className="grid gap-6 sm:grid-cols-2">
-                    {c.items.map((item) => (
-                      <div key={item.name} className="border-b border-line pb-5">
-                        <span className="font-mono text-base font-semibold text-white">
-                          {item.name}
-                        </span>
-                        <p className="mt-2 text-[14px] leading-relaxed text-mist">
-                          {item.role}
-                        </p>
-                      </div>
-                    ))}
-                  </div>
-                </m.div>
-              ))}
-            </AnimatePresence>
-          </div>
-        </Container>
-      </Section>
-
-      {/* -------------------------------------------------------------------- */}
-      {/* 6. 5-PHASE DELIVERY GOVERNANCE (SDLC)                                 */}
+      {/* 5. 5-PHASE DELIVERY GOVERNANCE (SDLC)                                 */}
       {/* -------------------------------------------------------------------- */}
       <Section id="sdlc" className="border-t border-hairline">
         <Container>
