@@ -134,19 +134,6 @@
   }
 }
 
-@keyframes shine {
-  0% {
-    background-position: 100%;
-  }
-  100% {
-    background-position: -100%;
-  }
-}
-
-@utility animate-shine {
-  animation: shine var(--shine-speed, 4s) linear infinite;
-}
-
 @layer base {
   html {
     scroll-behavior: smooth;
