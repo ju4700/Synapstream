@@ -118,52 +118,46 @@ const AI_CAPABILITIES = [
 
 const SOVEREIGN_CAROUSEL_ITEMS: CarouselItem[] = [
   {
-    src: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=900&q=80&auto=format&fit=max&sat=-100",
-    alt: "High-density sovereign data center server hall",
-    title: "Sovereign Cloud Core",
-    subtitle: "Tier IV GovCloud Facility",
+    src: "/carousel/pcb-circuits.jpg",
+    alt: "Printed circuit board microarchitecture and precision gold trace routing",
+    title: "Sovereign Silicon",
+    subtitle: "Isolated Hardware Architectures",
   },
   {
-    src: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=900&q=80&auto=format&fit=max&sat=-100",
-    alt: "Dedicated AI accelerator cluster",
-    title: "Private Machine Intelligence",
-    subtitle: "Air-Gapped LLM Deployments",
+    src: "/carousel/hardware-lab.jpg",
+    alt: "Electronics prototyping laboratory and precision multimeter telemetry",
+    title: "Hardware Validation",
+    subtitle: "Physical Signal Benchmarking",
   },
   {
-    src: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=900&q=80&auto=format&fit=max&sat=-100",
-    alt: "Institutional civil administration headquarters",
-    title: "National Registries",
-    subtitle: "Civil Infrastructure Scale",
+    src: "/carousel/bionic-interface.jpg",
+    alt: "Cybernetic bionic hand interface under precision blue illumination",
+    title: "Human-in-the-Loop",
+    subtitle: "Auditable Autonomous Controls",
   },
   {
-    src: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=900&q=80&auto=format&fit=max&sat=-100",
-    alt: "Encrypted data stream and network telemetry",
-    title: "Cryptographic Handover",
-    subtitle: "100% Client Key Custody",
+    src: "/carousel/infrastructure-cabling.jpg",
+    alt: "High-density industrial cabling bundle for isolated networks",
+    title: "Air-Gapped Telemetry",
+    subtitle: "Zero External Network Transit",
   },
   {
-    src: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=900&q=80&auto=format&fit=max&sat=-100",
-    alt: "Deterministic archive indexing and verified search",
-    title: "Archive Intelligence",
-    subtitle: "Mathematical Citations & RAG",
+    src: "/carousel/cybernetic-intelligence.jpg",
+    alt: "Monochrome cybernetic intelligence sculpture and neural network geometry",
+    title: "Machine Intelligence",
+    subtitle: "Private Open-Weight Inference",
   },
   {
-    src: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=900&q=80&auto=format&fit=max&sat=-100",
-    alt: "Mission operations control room with telemetry displays",
-    title: "Mission Operations",
-    subtitle: "Offline-First Network Resiliency",
+    src: "/carousel/server-rack-patching.jpg",
+    alt: "Structured enterprise server rack with high-throughput patch routing",
+    title: "GovCloud Infrastructure",
+    subtitle: "Statutory Data Center Nodes",
   },
   {
-    src: "https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=900&q=80&auto=format&fit=max&sat=-100",
-    alt: "Modern public administration complex",
-    title: "Citizen Portals",
-    subtitle: "High-Concurrency Workloads",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=900&q=80&auto=format&fit=max&sat=-100",
-    alt: "Secure hardware security module installation",
-    title: "Zero Foreign Dependency",
-    subtitle: "Statutory Jurisdiction Control",
+    src: "/carousel/systems-workshop.jpg",
+    alt: "Workstation hardware array and field systems deployment kits",
+    title: "Station Runbooks",
+    subtitle: "100% Operational Handover",
   },
 ];
 
@@ -574,15 +568,17 @@ export function About() {
 
           <div
             className="relative mt-10 sm:mt-14 w-full overflow-hidden"
-            style={{ width: "100%", height: "560px", position: "relative" }}
+            style={{ width: "100%", height: "680px", position: "relative" }}
           >
             <CircularCarousel
               items={SOVEREIGN_CAROUSEL_ITEMS}
               preset="cylinder"
               intro="rise"
-              cardWidth={220}
+              cardWidth={320}
               aspectRatio={1}
-              speed={14}
+              gap={30}
+              cornerRadius={14}
+              speed={12}
               fadeColor="#040404"
               captions
             />
