@@ -1,14 +1,13 @@
 import { useEffect, useState } from "react";
 import { LazyMotion, MotionConfig, domMax } from "motion/react";
-import { Capabilities } from "./components/Capabilities";
-import { Contact } from "./components/Contact";
-import { Delivery } from "./components/Delivery";
 import { Footer } from "./components/Footer";
-import { Governance } from "./components/Governance";
-import { Hero } from "./components/Hero";
 import { Nav } from "./components/Nav";
+import { Home } from "./pages/Home";
+import { About } from "./pages/About";
+import { usePathname } from "./router";
 
 export default function App() {
+  const pathname = usePathname();
   const [isMobile, setIsMobile] = useState(() => {
     if (typeof window !== "undefined") {
       return window.innerWidth <= 767;
@@ -17,7 +16,14 @@ export default function App() {
   });
 
   useEffect(() => {
-    document.title = "Synapstream";
+    if (pathname === "/about") {
+      document.title = "About — Synapstream | Institutional Software Engineering";
+    } else {
+      document.title = "Synapstream — Enterprise Architecture & Digital Infrastructure";
+    }
+  }, [pathname]);
+
+  useEffect(() => {
     const mq = window.matchMedia("(max-width: 767px)");
     const onChange = () => setIsMobile(mq.matches);
     setIsMobile(mq.matches);
@@ -31,12 +37,8 @@ export default function App() {
       <MotionConfig reducedMotion={isMobile ? "always" : "user"}>
         <div className="min-h-screen overflow-x-clip bg-black text-white">
           <Nav />
-          <main>
-            <Hero />
-            <Capabilities />
-            <Delivery />
-            <Governance />
-            <Contact />
+          <main id="top">
+            {pathname === "/about" ? <About /> : <Home />}
           </main>
           <Footer />
         </div>

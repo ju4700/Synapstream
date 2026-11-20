@@ -1,15 +1,18 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, type MouseEvent } from "react";
 import { AnimatePresence, m } from "motion/react";
 import { EASE_OUT } from "../motion";
 import { ButtonLink, LogoMark } from "./brand";
+import { navigate, usePathname } from "../router";
 
 const LINKS = [
-  { label: "Capabilities", href: "#capabilities" },
-  { label: "Delivery Model", href: "#delivery" },
-  { label: "Governance", href: "#governance" },
+  { label: "About", href: "/about" },
+  { label: "Capabilities", href: "/#capabilities" },
+  { label: "Delivery Model", href: "/#delivery" },
+  { label: "Governance", href: "/#governance" },
 ];
 
 export function Nav() {
+  const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [active, setActive] = useState<string | null>(null);
   const [open, setOpen] = useState(false);
@@ -18,20 +21,37 @@ export function Nav() {
     const onScroll = () => setScrolled(window.scrollY > 0);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
-    const targets = LINKS.map((l) => document.querySelector(l.href)).filter(Boolean) as Element[];
-    const io = new IntersectionObserver(
-      (entries) => {
-        const hit = entries.find((e) => e.isIntersecting);
-        if (hit) setActive(`#${hit.target.id}`);
-      },
-      { rootMargin: "-40% 0px -55% 0px" },
-    );
-    targets.forEach((t) => io.observe(t));
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-      io.disconnect();
-    };
-  }, []);
+
+    if (pathname === "/") {
+      const targets = [
+        document.querySelector("#capabilities"),
+        document.querySelector("#delivery"),
+        document.querySelector("#governance"),
+      ].filter(Boolean) as Element[];
+
+      const io = new IntersectionObserver(
+        (entries) => {
+          const hit = entries.find((e) => e.isIntersecting);
+          if (hit) setActive(`/#${hit.target.id}`);
+        },
+        { rootMargin: "-40% 0px -55% 0px" },
+      );
+      targets.forEach((t) => io.observe(t));
+      return () => {
+        window.removeEventListener("scroll", onScroll);
+        io.disconnect();
+      };
+    } else {
+      setActive(pathname);
+      return () => window.removeEventListener("scroll", onScroll);
+    }
+  }, [pathname]);
+
+  const handleLinkClick = (e: MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    setOpen(false);
+    navigate(href);
+  };
 
   return (
     <m.header
@@ -51,9 +71,10 @@ export function Nav() {
         }`}
       >
         <a
-          href="#top"
+          href="/"
+          onClick={(e) => handleLinkClick(e, "/")}
           className="flex items-center gap-3.5 rounded-full"
-          aria-label="SYNAPSTREAM, back to top"
+          aria-label="SYNAPSTREAM, back to home"
         >
           <span className="grid size-11 place-items-center rounded-full bg-white">
             <LogoMark className="w-6" />
@@ -61,31 +82,40 @@ export function Nav() {
         </a>
 
         <ul className="hidden items-center gap-1 lg:flex">
-          {LINKS.map((l) => (
-            <li key={l.href}>
-              <a
-                href={l.href}
-                aria-current={active === l.href ? "true" : undefined}
-                className={`relative rounded-full px-4 py-2.5 text-sm font-medium transition-colors duration-300 ${
-                  active === l.href ? "text-white" : "text-silver hover:text-white"
-                }`}
-              >
-                {active === l.href && (
-                  <m.span
-                    layoutId="nav-active"
-                    className="absolute inset-0 rounded-full bg-white/[0.07]"
-                    transition={{ duration: 0.5, ease: EASE_OUT }}
-                    aria-hidden
-                  />
-                )}
-                <span className="relative">{l.label}</span>
-              </a>
-            </li>
-          ))}
+          {LINKS.map((l) => {
+            const isLinkActive =
+              l.href === "/about" ? pathname === "/about" : active === l.href;
+            return (
+              <li key={l.href}>
+                <a
+                  href={l.href}
+                  onClick={(e) => handleLinkClick(e, l.href)}
+                  aria-current={isLinkActive ? "true" : undefined}
+                  className={`relative rounded-full px-4 py-2.5 text-sm font-medium transition-colors duration-300 ${
+                    isLinkActive ? "text-white" : "text-silver hover:text-white"
+                  }`}
+                >
+                  {isLinkActive && (
+                    <m.span
+                      layoutId="nav-active"
+                      className="absolute inset-0 rounded-full bg-white/[0.07]"
+                      transition={{ duration: 0.5, ease: EASE_OUT }}
+                      aria-hidden
+                    />
+                  )}
+                  <span className="relative">{l.label}</span>
+                </a>
+              </li>
+            );
+          })}
         </ul>
 
         <div className="flex items-center gap-2">
-          <ButtonLink href="#contact" className="!hidden lg:!inline-flex !rounded-full !px-6">
+          <ButtonLink
+            href="/#contact"
+            onClick={(e) => handleLinkClick(e, "/#contact")}
+            className="!hidden lg:!inline-flex !rounded-full !px-6"
+          >
             Contact
           </ButtonLink>
           <button
@@ -121,7 +151,7 @@ export function Nav() {
               <a
                 key={l.href}
                 href={l.href}
-                onClick={() => setOpen(false)}
+                onClick={(e) => handleLinkClick(e, l.href)}
                 className="block px-4 py-3 text-[15px] text-silver hover:text-white"
               >
                 {l.label}
@@ -129,8 +159,8 @@ export function Nav() {
             ))}
             <div className="mt-2 border-t border-line/60 pt-3 px-2 pb-1">
               <ButtonLink
-                href="#contact"
-                onClick={() => setOpen(false)}
+                href="/#contact"
+                onClick={(e) => handleLinkClick(e, "/#contact")}
                 className="w-full !rounded-full !py-3 text-center justify-center font-semibold"
               >
                 Contact
