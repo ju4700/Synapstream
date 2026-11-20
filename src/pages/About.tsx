@@ -1,4 +1,5 @@
-import { m } from "motion/react";
+import { useState } from "react";
+import { AnimatePresence, m } from "motion/react";
 import {
   Container,
   Heading,
@@ -60,59 +61,122 @@ const TENETS = [
   },
 ];
 
-const GOV_PILLARS = [
+const GOV_CAPABILITIES = [
   {
+    id: "gov-01",
     num: "01",
     title: "National Registries & Public Administration",
     desc: "Bespoke citizen portals, civil licensing, healthcare registries, and institutional workflows engineered for peak nationwide concurrency, multi-lingual accessibility, and zero data loss.",
-    badge: "Citizen Scale",
   },
   {
+    id: "gov-02",
     num: "02",
     title: "100% Jurisdictional Data Sovereignty",
     desc: "Zero exposure to extraterritorial jurisdiction. Deployed directly within national data centers, private GovCloud accounts, or dedicated hardware with independent encryption key custody.",
-    badge: "Jurisdiction Control",
   },
   {
+    id: "gov-03",
     num: "03",
     title: "Air-Gapped & Offline-First Resiliency",
     desc: "Critical systems engineered to install, validate, and execute continuously on isolated networks disconnected from the public internet, featuring secure cryptographic offline sync.",
-    badge: "Air-Gapped",
   },
   {
+    id: "gov-04",
     num: "04",
     title: "Full Codebase & Blueprint Handover",
     desc: "Zero vendor lock-in. Full source code repositories, infrastructure definitions, schema documentation, and operational runbooks are transferred entirely to the client upon milestone completion.",
-    badge: "100% IP Transfer",
   },
 ];
 
-const AI_PILLARS = [
+const AI_CAPABILITIES = [
   {
+    id: "ai-01",
     num: "01",
     title: "Private & Air-Gapped LLM Deployments",
     desc: "Deploying high-capability open-weight models (Llama, DeepSeek, Mistral) on your dedicated on-premise hardware or private cloud. Zero external API calls, zero data retention, and zero training on institutional records.",
-    badge: "Zero Leakage",
   },
   {
+    id: "ai-02",
     num: "02",
     title: "High-Precision Enterprise RAG",
     desc: "Retrieval-Augmented Generation across millions of regulatory, legal, and operational documents. Strict role-based access filtering (RBAC) and mathematical citation verification prevent hallucinations.",
-    badge: "Verifiable Citations",
   },
   {
+    id: "ai-03",
     num: "03",
     title: "Deterministic Document & Archive Intelligence",
     desc: "Automated ingestion, OCR, classification, and structured schema extraction across historical archives, invoices, clinical charts, and registry files—transforming paper silos into queryable databases.",
-    badge: "Automated Ingestion",
   },
   {
+    id: "ai-04",
     num: "04",
     title: "Auditable Agentic Automation",
     desc: "Self-executing operational pipelines equipped with deterministic guardrails, human-in-the-loop approvals, and immutable audit logs that trace every autonomous step with complete forensic accountability.",
-    badge: "Human-in-the-Loop",
   },
 ];
+
+/* -------------------------------------------------------------------------- */
+/*                              ACCORDION ITEM                                */
+/* -------------------------------------------------------------------------- */
+
+interface AccordionItemProps {
+  num: string;
+  title: string;
+  desc: string;
+  isOpen: boolean;
+  onToggle: () => void;
+}
+
+function AccordionItem({ num, title, desc, isOpen, onToggle }: AccordionItemProps) {
+  return (
+    <div className="border border-line bg-obsidian/70 transition-colors duration-200 hover:border-white/30">
+      <button
+        type="button"
+        onClick={onToggle}
+        className="flex w-full items-center justify-between p-4 sm:p-5 text-left focus:outline-none"
+        aria-expanded={isOpen}
+      >
+        <div className="flex items-center gap-3 pr-3 sm:gap-4 sm:pr-4">
+          <span className="font-mono text-xs font-semibold text-silver">{num}</span>
+          <span className="text-[14px] sm:text-[15px] font-semibold text-white tracking-[-0.01em]">
+            {title}
+          </span>
+        </div>
+        <div className="flex size-7 shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-silver transition-colors duration-200">
+          <m.svg
+            animate={{ rotate: isOpen ? 180 : 0 }}
+            transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
+            className="size-3.5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            strokeWidth={2}
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+          </m.svg>
+        </div>
+      </button>
+
+      <AnimatePresence initial={false}>
+        {isOpen && (
+          <m.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+            className="overflow-hidden"
+          >
+            <div className="border-t border-hairline px-4 pt-3.5 pb-5 sm:px-5">
+              <p className="text-[13px] sm:text-[14px] leading-[1.7] text-silver text-justify [text-align-last:left]">
+                {desc}
+              </p>
+            </div>
+          </m.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
 
 const PHASES = [
   {
@@ -184,6 +248,8 @@ const ENGAGEMENT_MODELS = [
 
 export function About() {
   const isMobile = useIsMobile();
+  const [openGovId, setOpenGovId] = useState<string | null>("gov-01");
+  const [openAiId, setOpenAiId] = useState<string | null>("ai-01");
 
   return (
     <div className="pt-24 lg:pt-32">
@@ -325,104 +391,111 @@ export function About() {
       </Section>
 
       {/* -------------------------------------------------------------------- */}
-      {/* 3. SOVEREIGN GOVERNMENT PRACTICE (EXPLICIT USER REQUEST)              */}
+      {/* 3. SOVEREIGN CIVIL SYSTEMS & APPLIED AI (MERGED SECTION)              */}
       {/* -------------------------------------------------------------------- */}
-      <Section id="government-practice" className="relative border-t border-hairline bg-[#040404]">
+      <Section id="sovereign-systems" className="relative border-t border-hairline bg-[#040404]">
         <Container>
-          <div className="grid gap-12 lg:grid-cols-[1fr_1.3fr] lg:items-start">
-            <div>
-              <span className="tile-xs border border-white/10 bg-white/[0.05] px-3 py-1 font-mono text-[11px] uppercase tracking-[0.14em] text-silver">
-                Government & Public Institutions
-              </span>
-              <Heading as="h2" className="mt-6 text-[28px] sm:text-[38px] leading-[1.18]">
-                Sovereign Digital Systems & Civil Infrastructure
-              </Heading>
-              <p className="mt-6 text-[15px] sm:text-[17px] leading-[1.7] text-silver">
-                Ministries, defense bodies, and public authorities cannot outsource their operational
-                sovereignty to opaque third-party software vendors. We architect resilient systems
-                engineered to handle citizen-scale workloads while remaining strictly under statutory control.
-              </p>
-              <div className="mt-8 space-y-4 border-l border-white/15 pl-5 text-[14px] leading-relaxed text-mist">
-                <p>
-                  <strong>Total Regulatory Alignment:</strong> Engineered to satisfy national data protection
-                  frameworks, national archival laws, and multi-tier public audit protocols.
+          <div className="mx-auto max-w-3xl text-center">
+            <span className="font-mono text-xs uppercase tracking-[0.16em] text-silver">
+              Institutional Sovereignty & Machine Intelligence
+            </span>
+            <Heading as="h2" className="mt-4 text-[26px] sm:text-[38px] leading-[1.18]">
+              Sovereign Digital Systems & Applied Artificial Intelligence
+            </Heading>
+            <p className="mt-4 text-[15px] sm:text-base leading-relaxed text-silver text-justify [text-align-last:center]">
+              Engineered for public authorities, defense bodies, and enterprises requiring statutory data control,
+              deterministic machine intelligence, and operational resilience without foreign dependency.
+            </p>
+          </div>
+
+          <div className="mt-14 grid gap-12 lg:grid-cols-2 lg:gap-16">
+            {/* Left: Government & Civil Infrastructure */}
+            <div className="flex flex-col justify-between">
+              <div>
+                <span className="font-mono text-xs uppercase tracking-[0.16em] text-silver">
+                  Government & Public Institutions
+                </span>
+                <h3 className="mt-3 text-xl sm:text-2xl font-semibold tracking-[-0.015em] text-white">
+                  Sovereign Digital Systems & Civil Infrastructure
+                </h3>
+                <p className="mt-4 text-[15px] sm:text-[16px] leading-[1.75] text-mist text-justify [text-align-last:left]">
+                  Ministries, defense bodies, and public authorities cannot outsource their operational
+                  sovereignty to opaque third-party software vendors. We architect resilient systems
+                  engineered to handle citizen-scale workloads while remaining strictly under statutory control.
                 </p>
-                <p>
-                  <strong>Zero Foreign Dependency:</strong> Deployed in your sovereign data center or national
-                  GovCloud, ensuring continuity even during geopolitical network disruptions.
-                </p>
+
+                <div className="mt-6 space-y-3.5 border-l border-white/20 pl-4 text-[14px] leading-relaxed text-silver">
+                  <p className="text-justify [text-align-last:left]">
+                    <strong className="text-white">Total Regulatory Alignment:</strong> Engineered to satisfy national data protection frameworks, national archival laws, and multi-tier public audit protocols.
+                  </p>
+                  <p className="text-justify [text-align-last:left]">
+                    <strong className="text-white">Zero Foreign Dependency:</strong> Deployed in your sovereign data center or national GovCloud, ensuring continuity even during geopolitical network disruptions.
+                  </p>
+                </div>
+              </div>
+
+              {/* Accordion FAQ for Government */}
+              <div className="mt-10 space-y-3">
+                <div className="border-b border-line pb-2">
+                  <span className="font-mono text-[11px] uppercase tracking-wider text-neutral-400">
+                    Sovereign Infrastructure Specifications
+                  </span>
+                </div>
+                {GOV_CAPABILITIES.map((item) => (
+                  <AccordionItem
+                    key={item.id}
+                    num={item.num}
+                    title={item.title}
+                    desc={item.desc}
+                    isOpen={openGovId === item.id}
+                    onToggle={() => setOpenGovId(openGovId === item.id ? null : item.id)}
+                  />
+                ))}
               </div>
             </div>
 
-            {/* 4 Pillars Grid */}
-            <div className="grid gap-4 sm:grid-cols-2">
-              {GOV_PILLARS.map((p) => (
-                <div
-                  key={p.title}
-                  className="tile-sm border border-line bg-obsidian/80 p-6 backdrop-blur-md transition-colors hover:border-white/30"
-                >
-                  <div className="flex items-center justify-between">
-                    <span className="font-mono text-xs font-semibold text-silver">{p.num}</span>
-                    <span className="rounded bg-white/10 px-2 py-0.5 font-mono text-[10px] uppercase text-white">
-                      {p.badge}
-                    </span>
-                  </div>
-                  <h3 className="mt-4 text-base font-semibold text-white">{p.title}</h3>
-                  <p className="mt-2.5 text-[13px] leading-relaxed text-silver">{p.desc}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </Container>
-      </Section>
-
-      {/* -------------------------------------------------------------------- */}
-      {/* 4. APPLIED ENTERPRISE & SOVEREIGN AI (EXPLICIT USER REQUEST)         */}
-      {/* -------------------------------------------------------------------- */}
-      <Section id="ai-practice" className="relative border-t border-hairline">
-        <Container>
-          <div className="grid gap-12 lg:grid-cols-[1.3fr_1fr] lg:items-start">
-            {/* Left AI Capabilities Grid */}
-            <div className="order-2 grid gap-4 sm:grid-cols-2 lg:order-1">
-              {AI_PILLARS.map((a) => (
-                <div
-                  key={a.title}
-                  className="tile-sm border border-line bg-obsidian/80 p-6 backdrop-blur-md transition-colors hover:border-white/30"
-                >
-                  <div className="flex items-center justify-between">
-                    <span className="font-mono text-xs font-semibold text-silver">{a.num}</span>
-                    <span className="rounded bg-white/10 px-2 py-0.5 font-mono text-[10px] uppercase text-white">
-                      {a.badge}
-                    </span>
-                  </div>
-                  <h3 className="mt-4 text-base font-semibold text-white">{a.title}</h3>
-                  <p className="mt-2.5 text-[13px] leading-relaxed text-silver">{a.desc}</p>
-                </div>
-              ))}
-            </div>
-
-            {/* Right Copy */}
-            <div className="order-1 lg:order-2">
-              <span className="tile-xs border border-white/10 bg-white/[0.05] px-3 py-1 font-mono text-[11px] uppercase tracking-[0.14em] text-silver">
-                Applied Artificial Intelligence
-              </span>
-              <Heading as="h2" className="mt-6 text-[28px] sm:text-[38px] leading-[1.18]">
-                Private, Deterministic AI for High-Stakes Operations
-              </Heading>
-              <p className="mt-6 text-[15px] sm:text-[17px] leading-[1.7] text-silver">
-                Generic consumer AI models pose unmanaged data leaks and hallucinations. Synapstream
-                engineers sovereign, air-gapped machine intelligence tailored to complex institutional archives,
-                operational workflows, and automated decision-support pipelines.
-              </p>
-              <div className="mt-8 space-y-4 border-l border-white/15 pl-5 text-[14px] leading-relaxed text-mist">
-                <p>
-                  <strong>Zero Training on Client Data:</strong> Your intellectual property, citizen records, and
-                  proprietary datasets are never used to train or refine foundation models.
+            {/* Right: Applied Artificial Intelligence */}
+            <div className="flex flex-col justify-between">
+              <div>
+                <span className="font-mono text-xs uppercase tracking-[0.16em] text-silver">
+                  Applied Artificial Intelligence
+                </span>
+                <h3 className="mt-3 text-xl sm:text-2xl font-semibold tracking-[-0.015em] text-white">
+                  Private, Deterministic AI for High-Stakes Operations
+                </h3>
+                <p className="mt-4 text-[15px] sm:text-[16px] leading-[1.75] text-mist text-justify [text-align-last:left]">
+                  Generic consumer AI models pose unmanaged data leaks and hallucinations. Synapstream
+                  engineers sovereign, air-gapped machine intelligence tailored to complex institutional archives,
+                  operational workflows, and automated decision-support pipelines.
                 </p>
-                <p>
-                  <strong>Verifiable Grounding:</strong> Every generative response is bound to mathematical
-                  citations in your underlying records, ensuring tamper-evident accountability.
-                </p>
+
+                <div className="mt-6 space-y-3.5 border-l border-white/20 pl-4 text-[14px] leading-relaxed text-silver">
+                  <p className="text-justify [text-align-last:left]">
+                    <strong className="text-white">Zero Training on Client Data:</strong> Your intellectual property, citizen records, and proprietary datasets are never used to train or refine foundation models.
+                  </p>
+                  <p className="text-justify [text-align-last:left]">
+                    <strong className="text-white">Verifiable Grounding:</strong> Every generative response is bound to mathematical citations in your underlying records, ensuring tamper-evident accountability.
+                  </p>
+                </div>
+              </div>
+
+              {/* Accordion FAQ for AI */}
+              <div className="mt-10 space-y-3">
+                <div className="border-b border-line pb-2">
+                  <span className="font-mono text-[11px] uppercase tracking-wider text-neutral-400">
+                    Machine Intelligence Specifications
+                  </span>
+                </div>
+                {AI_CAPABILITIES.map((item) => (
+                  <AccordionItem
+                    key={item.id}
+                    num={item.num}
+                    title={item.title}
+                    desc={item.desc}
+                    isOpen={openAiId === item.id}
+                    onToggle={() => setOpenAiId(openAiId === item.id ? null : item.id)}
+                  />
+                ))}
               </div>
             </div>
           </div>
