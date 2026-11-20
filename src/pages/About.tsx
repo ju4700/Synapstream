@@ -99,6 +99,18 @@ const SOVEREIGN_CAROUSEL_ITEMS: CarouselItem[] = [
     subtitle: "Statutory Data Center Nodes",
   },
   {
+    src: "/carousel/tensor-junction.jpg",
+    alt: "Geometric 3D coordinate tensor junction representing multi-dimensional system routing",
+    title: "Tensor Topologies",
+    subtitle: "High-Dimensional Coordinate Routing",
+  },
+  {
+    src: "/carousel/llm-architecture.jpg",
+    alt: "Minimalist architectural 3D typography of LLM foundation model",
+    title: "Sovereign LLMs",
+    subtitle: "Private In-Jurisdiction Execution",
+  },
+  {
     src: "/carousel/codebase-terminal.jpg",
     alt: "High-density source code terminal and algorithmic execution logic",
     title: "Deterministic Codebases",
