@@ -231,7 +231,7 @@ export function About() {
   const isMobile = useIsMobile();
 
   return (
-    <div className="pt-24 pb-16 lg:pt-32">
+    <div className="pt-24 lg:pt-32">
       {/* -------------------------------------------------------------------- */}
       {/* 1. HERO SECTION                                                      */}
       {/* -------------------------------------------------------------------- */}

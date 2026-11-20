@@ -40,7 +40,7 @@ export default function App() {
           <main id="top">
             {pathname === "/about" ? <About /> : <Home />}
           </main>
-          <Footer />
+          <Footer className={pathname === "/about" ? "bg-[#040404]" : "bg-black"} />
         </div>
       </MotionConfig>
     </LazyMotion>

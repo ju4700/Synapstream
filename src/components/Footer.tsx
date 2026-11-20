@@ -1,8 +1,8 @@
 import { navigate } from "../router";
 
-export function Footer() {
+export function Footer({ className = "" }: { className?: string }) {
   return (
-    <footer className="border-t border-hairline bg-black">
+    <footer className={`border-t border-hairline ${className || "bg-black"}`}>
       <div className="mx-auto flex max-w-[1440px] flex-col items-center justify-between gap-6 px-6 py-12 text-center md:flex-row md:px-12 md:text-left xl:px-20">
         <div>
           <span className="font-display text-sm uppercase tracking-[0.2em] text-white">
