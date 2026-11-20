@@ -7,47 +7,39 @@ const SECTORS = [
   {
     title: "For Government & Public Sector Institutions",
     intro:
-      "Ministries, agencies, and public bodies whose systems serve citizens and must remain under national control.",
-    points: [
+      "Ministries, agencies, and public bodies whose systems serve citizens and must remain under strict sovereign jurisdiction.",
+    mandates: [
       {
-        t: "Sovereign data residency",
-        d: "Data and backups stay on infrastructure inside your jurisdiction.",
+        t: "Data Sovereignty & Air-Gap",
+        d: "100% jurisdictional data residency, isolated network capability, and independent encryption keys.",
       },
       {
-        t: "Offline / air-gapped compatibility",
-        d: "Systems that install, update, and operate on isolated networks.",
+        t: "Citizen-Scale Reliability",
+        d: "Engineered and stress-tested for nationwide concurrency without performance degradation.",
       },
       {
-        t: "Citizen-scale reliability",
-        d: "Architected and load-tested for nationwide usage peaks.",
-      },
-      {
-        t: "Long-term vendor transparency",
-        d: "Source code, documentation, and architecture records handed over in full.",
+        t: "Full Institutional Autonomy",
+        d: "Source code, architectural blueprints, and schema documentation handed over in full.",
       },
     ],
   },
   {
     title: "For Enterprise Conglomerates",
     intro:
-      "Multi-industry groups that need one dependable view across many companies, systems, and brands.",
+      "Multi-industry groups that require a single dependable operational truth across distributed entities and brands.",
     inverted: true,
-    points: [
+    mandates: [
       {
-        t: "Multi-subsidiary data consolidation",
-        d: "One governed data model across companies, ledgers, and regions.",
+        t: "Unified Enterprise Governance",
+        d: "A reconciled group-wide data foundation spanning subsidiaries, regional ledgers, and legacy ERPs.",
       },
       {
-        t: "Unified executive reporting",
-        d: "Consistent group-level reporting built on reconciled source data.",
+        t: "Purpose-Built Operations",
+        d: "Custom software applications built for critical internal workflows off-the-shelf SaaS cannot accommodate.",
       },
       {
-        t: "Custom internal tooling",
-        d: "Purpose-built applications for the workflows off-the-shelf software misses.",
-      },
-      {
-        t: "High-speed digital asset pipelines",
-        d: "Ingest, version, and distribute media across brands and agencies.",
+        t: "Enterprise Asset Distribution",
+        d: "High-velocity media, brand, and operational asset pipelines governing multi-agency production.",
       },
     ],
   },
@@ -111,25 +103,28 @@ export function Delivery() {
                     </p>
                   </div>
                   <Stagger
-                    as="ul"
+                    as="div"
                     delay={0.45}
                     amount={0.3}
                     className={`divide-y border-y ${inv ? "divide-neutral-200 border-neutral-200" : "divide-line border-line"}`}
                   >
-                    {s.points.map((p) => (
-                      <Item as="li" key={p.t} className="grid gap-1 py-5">
-                        <span className="flex items-center gap-3 text-base font-semibold">
+                    {s.mandates.map((m, idx) => (
+                      <Item as="div" key={m.t} className="grid gap-1.5 py-5 sm:py-6">
+                        <div className="flex items-center gap-3 text-[15px] sm:text-base font-semibold tracking-[-0.01em]">
                           <span
-                            className={`size-1.5 ${inv ? "bg-black" : "bg-white"}`}
-                            aria-hidden
-                          />
-                          {p.t}
-                        </span>
-                        <span
-                          className={`pl-[18px] text-[15px] leading-[1.6] ${inv ? "text-neutral-600" : "text-silver"}`}
+                            className={`font-mono text-xs tabular-nums ${
+                              inv ? "text-neutral-400" : "text-step-2"
+                            }`}
+                          >
+                            {String(idx + 1).padStart(2, "0")}
+                          </span>
+                          <h4>{m.t}</h4>
+                        </div>
+                        <p
+                          className={`pl-7 text-[14px] leading-relaxed ${inv ? "text-neutral-600" : "text-silver"}`}
                         >
-                          {p.d}
-                        </span>
+                          {m.d}
+                        </p>
                       </Item>
                     ))}
                   </Stagger>

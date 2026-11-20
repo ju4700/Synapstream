@@ -12,8 +12,9 @@ function trackPointer(e: PointerEvent<HTMLElement>) {
 type Pillar = {
   n: number;
   title: string;
+  discipline: string;
   summary: string;
-  deliverables: { title: string; body: string }[];
+  focusAreas: { title: string; desc: string }[];
   inverted?: boolean;
 };
 
@@ -21,49 +22,43 @@ const PILLARS: Pillar[] = [
   {
     n: 1,
     title: "Data Infrastructure & Systems Architecture",
+    discipline: "Infrastructure discipline",
     summary:
       "We design and build the foundational systems that collect, clean, store, and protect your organization’s most critical records—turning scattered departmental silos into a single, dependable source of truth.",
-    deliverables: [
+    focusAreas: [
       {
-        title: "Unified Data Warehousing & Lakes",
-        body: "Consolidating fragmented databases, spreadsheets, and legacy ERP records into structured, query-ready repositories.",
+        title: "Unified Warehousing & Lakes",
+        desc: "Consolidating disparate ERP records and databases into structured, query-ready repositories.",
       },
       {
-        title: "High-Throughput ETL/ELT Pipelines",
-        body: "Automated data ingestion, validation, and real-time synchronization across distributed branches and ministries.",
+        title: "Resilient Pipelines & Gateways",
+        desc: "Automated ingestion, real-time synchronization, and zero-trust API middleware connecting systems.",
       },
       {
-        title: "Interoperability & API Gateways",
-        body: "Secure REST, GraphQL, and event-driven middleware connecting legacy software with modern applications.",
-      },
-      {
-        title: "On-Premise & Private Cloud Orchestration",
-        body: "Containerized, fault-tolerant infrastructure deployed directly on your hardware or chosen sovereign cloud.",
+        title: "Sovereign Cloud Orchestration",
+        desc: "Containerized, fault-tolerant infrastructure deployed on your hardware or chosen sovereign cloud.",
       },
     ],
   },
   {
     n: 2,
     title: "Enterprise & Creative Software Solutions",
+    discipline: "Software discipline",
     summary:
       "Data is only valuable when teams can act on it. We design and engineer custom web platforms, internal operational tools, and high-velocity creative workflows tailored to how your organization operates.",
     inverted: true,
-    deliverables: [
+    focusAreas: [
       {
-        title: "Custom Operational & Citizen Portals",
-        body: "Fast, accessible, role-based web applications built for high concurrency and daily institutional use.",
-      },
-      {
-        title: "Digital Asset & Media Ecosystems",
-        body: "Centralized platforms for managing, versioning, and distributing brand, media, and production assets at conglomerate scale.",
+        title: "Custom Operational Portals",
+        desc: "High-concurrency, role-based web applications engineered for daily institutional operations.",
       },
       {
         title: "Workflow & Process Automation",
-        body: "Replacing manual approval chains and paper-heavy administration with auditable digital workflows.",
+        desc: "Replacing manual approval chains and paper-heavy administration with auditable digital pipelines.",
       },
       {
-        title: "Enterprise Design Systems",
-        body: "Cohesive, reusable UI component libraries that unify software experiences across multiple subsidiaries and departments.",
+        title: "Enterprise UI & Asset Systems",
+        desc: "Cohesive component libraries and digital asset ecosystems unifying multiple subsidiaries.",
       },
     ],
   },
@@ -77,7 +72,7 @@ function PillarCard({ p, delay }: { p: Pillar; delay: number }) {
       hover
       delay={delay}
       onPointerMove={trackPointer}
-      className={`tile-lg group relative flex flex-col overflow-hidden p-6 sm:p-8 md:p-14 ${
+      className={`tile-lg group relative flex flex-col justify-between overflow-hidden p-6 sm:p-8 md:p-14 ${
         inv ? "bg-white text-black" : "border border-line bg-obsidian text-white"
       }`}
     >
@@ -90,46 +85,60 @@ function PillarCard({ p, delay }: { p: Pillar; delay: number }) {
           }, transparent 65%)`,
         }}
       />
-      <div className="flex items-start justify-between gap-6">
-        <Numeral
-          n={p.n}
-          className={`text-[32px] sm:text-[40px] leading-none ${inv ? "text-black" : "text-white"}`}
-        />
-        <span className={`text-xs sm:text-sm font-medium ${inv ? "text-neutral-500" : "text-silver"}`}>
-          {inv ? "Software discipline" : "Infrastructure discipline"}
-        </span>
+      <div>
+        <div className="flex items-start justify-between gap-6">
+          <Numeral
+            n={p.n}
+            className={`text-[32px] sm:text-[40px] leading-none ${inv ? "text-black" : "text-white"}`}
+          />
+          <span className={`text-xs sm:text-sm font-medium ${inv ? "text-neutral-500" : "text-silver"}`}>
+            {p.discipline}
+          </span>
+        </div>
+        <Heading as="h3" className="mt-8 sm:mt-12 text-[clamp(21px,2.2vw,32px)]">
+          {p.title}
+        </Heading>
+        <p
+          className={`mt-4 sm:mt-6 max-w-[62ch] text-[15px] sm:text-lg leading-[1.65] ${inv ? "text-neutral-700" : "text-mist"}`}
+        >
+          {p.summary}
+        </p>
       </div>
-      <Heading as="h3" className="mt-8 sm:mt-12 text-[clamp(21px,2.2vw,32px)]">
-        {p.title}
-      </Heading>
-      <p
-        className={`mt-4 sm:mt-6 max-w-[62ch] text-[15px] sm:text-lg leading-[1.65] ${inv ? "text-neutral-700" : "text-mist"}`}
-      >
-        {p.summary}
-      </p>
 
       <Stagger
-        as="ul"
-        delay={delay + 0.5}
-        stagger={0.09}
-        amount={0.3}
-        className={`relative mt-12 grid flex-1 border-l border-t sm:grid-cols-2 ${inv ? "border-neutral-200" : "border-line"}`}
-        aria-label={`${p.title} deliverables`}
+        as="div"
+        delay={delay + 0.3}
+        stagger={0.08}
+        amount={0.2}
+        className={`mt-10 flex flex-1 flex-col divide-y border-t ${
+          inv ? "divide-neutral-200 border-neutral-200" : "divide-line border-line"
+        }`}
+        aria-label={`${p.title} focus areas`}
       >
-        {p.deliverables.map((d) => (
+        {p.focusAreas.map((f, idx) => (
           <Item
-            as="li"
-            key={d.title}
-            className={`border-b border-r p-7 ${inv ? "border-neutral-200" : "border-line"}`}
+            as="div"
+            key={f.title}
+            className="flex flex-col py-4 sm:py-5 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6"
           >
-            <span className={`block size-2 ${inv ? "bg-black" : "bg-white"}`} aria-hidden />
-            <h4 className="mt-5 text-base font-semibold leading-snug tracking-[-0.01em]">
-              {d.title}
-            </h4>
+            <div className="flex items-baseline gap-3">
+              <span
+                className={`font-mono text-xs tabular-nums ${
+                  inv ? "text-neutral-400" : "text-step-2"
+                }`}
+              >
+                {String(idx + 1).padStart(2, "0")}
+              </span>
+              <h4 className="text-[15px] sm:text-base font-semibold tracking-[-0.01em]">
+                {f.title}
+              </h4>
+            </div>
             <p
-              className={`mt-3 text-[15px] leading-[1.65] ${inv ? "text-neutral-600" : "text-silver"}`}
+              className={`mt-1.5 sm:mt-0 text-[13px] sm:text-[14px] leading-relaxed sm:max-w-[34ch] sm:text-right ${
+                inv ? "text-neutral-600" : "text-silver"
+              }`}
             >
-              {d.body}
+              {f.desc}
             </p>
           </Item>
         ))}

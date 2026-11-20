@@ -38,24 +38,31 @@ const FLOW = [
     n: 1,
     label: "Source layer",
     title: "Legacy & field data sources",
-    items: ["ERP systems", "National registries", "IoT & field devices", "Departmental databases"],
+    desc: "Ingesting records across legacy ERPs, national registries, and edge sensors without requiring disruptive migrations.",
+    tags: ["ERP Systems", "National Registries", "Field Telemetry"],
   },
   {
     n: 2,
     label: "Data backbone",
     title: "SYNAPSTREAM data backbone",
-    items: ["Automated ingestion", "Validation", "Warehousing", "Access governance"],
+    desc: "Automated pipelines, governed lakehouses, and zero-trust validation creating a single dependable source of truth.",
+    tags: ["Automated Ingestion", "Unified Lakehouse", "Access Governance"],
     core: true,
   },
   {
     n: 3,
     label: "Application layer",
     title: "Custom application layer",
-    items: ["Operational portals", "Executive analytics", "Creative production suites"],
+    desc: "Purpose-built operational portals, executive consoles, and workflow suites tailored to institutional operations.",
+    tags: ["Operational Portals", "Executive Analytics", "Workflow Suites"],
   },
 ];
 
-const ENVIRONMENTS = ["On-premise data centers", "Private GovCloud", "Hybrid enterprise cloud"];
+const ENVIRONMENTS = [
+  { name: "On-premise data centers", tag: "Air-Gapped" },
+  { name: "Private GovCloud", tag: "Sovereign" },
+  { name: "Hybrid enterprise cloud", tag: "Distributed" },
+];
 
 function Connector({ show, delay }: { show: boolean; delay: number }) {
   return (
@@ -113,37 +120,48 @@ export function Blueprint() {
               <Step
                 show={show}
                 delay={SEQ.layers[i]}
-                className={`tile flex flex-col p-7 ${
+                className={`tile flex flex-col justify-between p-7 ${
                   layer.core ? "bg-black text-white" : "border border-neutral-200 bg-white"
                 }`}
               >
-                <div className="flex items-center justify-between">
-                  <Numeral
-                    n={layer.n}
-                    className={`text-lg ${layer.core ? "text-white" : "text-black"}`}
-                  />
-                  <span
-                    className={`font-mono text-[11px] uppercase tracking-[0.14em] ${layer.core ? "text-silver" : "text-neutral-500"}`}
+                <div>
+                  <div className="flex items-center justify-between">
+                    <Numeral
+                      n={layer.n}
+                      className={`text-lg ${layer.core ? "text-white" : "text-black"}`}
+                    />
+                    <span
+                      className={`font-mono text-[11px] uppercase tracking-[0.14em] ${layer.core ? "text-silver" : "text-neutral-500"}`}
+                    >
+                      {layer.label}
+                    </span>
+                  </div>
+                  <h3 className="mt-5 text-[17px] font-semibold leading-snug tracking-[-0.01em]">
+                    {layer.title}
+                  </h3>
+                  <p
+                    className={`mt-3 text-[14px] leading-relaxed ${layer.core ? "text-mist" : "text-neutral-600"}`}
                   >
-                    {layer.label}
-                  </span>
+                    {layer.desc}
+                  </p>
                 </div>
-                <h3 className="mt-6 text-[17px] font-semibold leading-snug tracking-[-0.01em]">
-                  {layer.title}
-                </h3>
-                <ul
-                  className={`mt-5 space-y-2.5 border-t pt-5 text-[14px] ${layer.core ? "border-white/15 text-mist" : "border-neutral-200 text-neutral-600"}`}
+
+                <div
+                  className={`mt-6 flex flex-wrap gap-2 border-t pt-5 ${layer.core ? "border-white/15" : "border-neutral-200"}`}
                 >
-                  {layer.items.map((item) => (
-                    <li key={item} className="flex items-center gap-3">
-                      <span
-                        className={`size-1.5 shrink-0 ${layer.core ? "bg-white" : "bg-black"}`}
-                        aria-hidden
-                      />
-                      {item}
-                    </li>
+                  {layer.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className={`tile-xs px-2.5 py-1 font-mono text-[11px] tracking-wide ${
+                        layer.core
+                          ? "border border-white/20 bg-white/10 text-white"
+                          : "border border-neutral-200 bg-neutral-100 text-neutral-700"
+                      }`}
+                    >
+                      {tag}
+                    </span>
                   ))}
-                </ul>
+                </div>
               </Step>
             </li>
           ))}
@@ -167,7 +185,7 @@ export function Blueprint() {
         <Step
           show={show}
           delay={SEQ.base}
-          className="tile mt-4 grid items-center gap-6 bg-neutral-100 p-7 lg:mt-0 lg:grid-cols-[240px_1fr]"
+          className="tile mt-4 grid items-center gap-6 bg-neutral-100 p-7 lg:mt-0 lg:grid-cols-[260px_1fr]"
         >
           <div className="flex items-center gap-5">
             <Numeral n={4} className="text-lg" />
@@ -178,16 +196,19 @@ export function Blueprint() {
               <p className="mt-1 text-[15px] font-semibold">Runs where you choose</p>
             </div>
           </div>
-          <ul className="grid gap-3 sm:grid-cols-3">
+          <div className="grid gap-3 sm:grid-cols-3">
             {ENVIRONMENTS.map((env) => (
-              <li
-                key={env}
-                className="tile-sm border border-neutral-300 bg-white px-5 py-4 text-[14px] font-medium"
+              <div
+                key={env.name}
+                className="tile-sm flex items-center justify-between border border-neutral-300 bg-white px-5 py-4 text-[14px] font-medium"
               >
-                {env}
-              </li>
+                <span>{env.name}</span>
+                <span className="font-mono text-[10px] uppercase tracking-wider text-neutral-400">
+                  {env.tag}
+                </span>
+              </div>
             ))}
-          </ul>
+          </div>
         </Step>
       </div>
     </StepTile>
