@@ -588,10 +588,10 @@ export function Careers() {
                 return (
                   <div
                     key={role.id}
-                    className={`tile border transition-all duration-300 ${
+                    className={`tile border transition-all duration-300 bg-white text-black ${
                       isExpanded
-                        ? "border-white/35 bg-obsidian shadow-[0_12px_40px_rgba(0,0,0,0.7)]"
-                        : "border-line bg-obsidian/70 hover:border-white/20"
+                        ? "border-neutral-300 shadow-[0_20px_50px_rgba(255,255,255,0.06),0_8px_24px_rgba(0,0,0,0.12)]"
+                        : "border-neutral-200/90 shadow-[0_4px_20px_rgba(0,0,0,0.06)] hover:border-neutral-400 hover:shadow-[0_8px_30px_rgba(0,0,0,0.1)]"
                     }`}
                   >
                     {/* Header Bar */}
@@ -602,17 +602,17 @@ export function Careers() {
                       <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
                         <div>
                           <div className="flex flex-wrap items-center gap-2">
-                            <span className="tile-xs border border-line bg-white/[0.05] px-2.5 py-0.5 font-mono text-[10px] uppercase tracking-wider text-silver">
+                            <span className="tile-xs border border-neutral-300 bg-neutral-100 px-2.5 py-0.5 font-mono text-[10px] uppercase tracking-wider text-neutral-800 font-semibold">
                               {role.department}
                             </span>
-                            <span className="font-mono text-xs text-neutral-400">
+                            <span className="font-mono text-xs text-neutral-500">
                               • {role.seniority}
                             </span>
-                            <span className="font-mono text-xs text-neutral-400">
+                            <span className="font-mono text-xs text-neutral-500">
                               • {role.workMode}
                             </span>
                           </div>
-                          <h3 className="mt-3 text-xl sm:text-2xl font-semibold tracking-[-0.015em] text-white">
+                          <h3 className="mt-3 text-xl sm:text-2xl font-semibold tracking-[-0.015em] text-black">
                             {role.title}
                           </h3>
                         </div>
@@ -624,14 +624,14 @@ export function Careers() {
                               e.stopPropagation();
                               setApplyingRole(role);
                             }}
-                            className="tile-xs border border-white bg-white px-4 py-2 font-mono text-xs font-semibold uppercase tracking-wider text-black transition-all hover:bg-neutral-200"
+                            className="tile-xs border border-black bg-black px-4 py-2 font-mono text-xs font-semibold uppercase tracking-wider text-white transition-all hover:bg-neutral-800"
                           >
                             Apply Now
                           </button>
-                          <span className="font-mono text-xs uppercase tracking-wider text-silver flex items-center gap-1.5">
+                          <span className="font-mono text-xs uppercase tracking-wider text-neutral-600 hover:text-black flex items-center gap-1.5 transition-colors">
                             {isExpanded ? "Hide Details" : "Full Specs"}
                             <svg
-                              className={`size-3.5 transition-transform duration-300 ${
+                              className={`size-3.5 text-neutral-600 transition-transform duration-300 ${
                                 isExpanded ? "rotate-180" : ""
                               }`}
                               fill="none"
@@ -649,7 +649,7 @@ export function Careers() {
                         </div>
                       </div>
 
-                      <p className="mt-4 text-[14.5px] leading-relaxed text-mist">
+                      <p className="mt-4 text-[14.5px] leading-relaxed text-neutral-600">
                         {role.summary}
                       </p>
 
@@ -658,7 +658,7 @@ export function Careers() {
                         {role.tags.map((tag) => (
                           <span
                             key={tag}
-                            className="tile-xs border border-line/60 bg-white/[0.02] px-2 py-0.5 font-mono text-[10px] text-neutral-300"
+                            className="tile-xs border border-neutral-200 bg-neutral-100/90 px-2 py-0.5 font-mono text-[10px] text-neutral-700"
                           >
                             {tag}
                           </span>
@@ -674,15 +674,15 @@ export function Careers() {
                           animate={{ height: "auto", opacity: 1 }}
                           exit={{ height: 0, opacity: 0 }}
                           transition={{ duration: 0.35, ease: EASE_OUT }}
-                          className="overflow-hidden border-t border-line bg-black/40"
+                          className="overflow-hidden border-t border-neutral-200 bg-[#f9f9fa] text-black"
                         >
                           <div className="p-6 sm:p-10 space-y-8">
                             {/* Operational Mandate */}
                             <div>
-                              <span className="font-mono text-xs uppercase tracking-[0.16em] text-silver">
+                              <span className="font-mono text-xs uppercase tracking-[0.16em] text-neutral-500 font-semibold">
                                 The Operational Mandate
                               </span>
-                              <p className="mt-2 text-[15px] leading-relaxed text-white">
+                              <p className="mt-2 text-[15px] leading-relaxed text-neutral-900">
                                 {role.mandate}
                               </p>
                             </div>
@@ -691,16 +691,16 @@ export function Careers() {
                             <div className="grid gap-8 lg:grid-cols-2">
                               {/* Responsibilities */}
                               <div className="space-y-3">
-                                <span className="font-mono text-xs uppercase tracking-[0.16em] text-silver">
+                                <span className="font-mono text-xs uppercase tracking-[0.16em] text-neutral-500 font-semibold">
                                   Core Responsibilities
                                 </span>
                                 <ul className="mt-3 space-y-2.5">
                                   {role.responsibilities.map((r, i) => (
                                     <li
                                       key={i}
-                                      className="flex items-start gap-3 text-[13.5px] leading-relaxed text-mist"
+                                      className="flex items-start gap-3 text-[13.5px] leading-relaxed text-neutral-700"
                                     >
-                                      <span className="font-mono text-xs text-white shrink-0 mt-0.5">
+                                      <span className="font-mono text-xs text-black font-semibold shrink-0 mt-0.5">
                                         [0{i + 1}]
                                       </span>
                                       <span>{r}</span>
@@ -711,31 +711,31 @@ export function Careers() {
 
                               {/* Technical Profile */}
                               <div className="space-y-3">
-                                <span className="font-mono text-xs uppercase tracking-[0.16em] text-silver">
+                                <span className="font-mono text-xs uppercase tracking-[0.16em] text-neutral-500 font-semibold">
                                   Required Qualifications
                                 </span>
                                 <ul className="mt-3 space-y-2.5">
                                   {role.qualifications.map((q, i) => (
                                     <li
                                       key={i}
-                                      className="flex items-start gap-3 text-[13.5px] leading-relaxed text-mist"
+                                      className="flex items-start gap-3 text-[13.5px] leading-relaxed text-neutral-700"
                                     >
-                                      <span className="size-1.5 rounded-full bg-white shrink-0 mt-2" />
+                                      <span className="size-1.5 rounded-full bg-black shrink-0 mt-2" />
                                       <span>{q}</span>
                                     </li>
                                   ))}
                                 </ul>
 
                                 {role.preferred.length > 0 && (
-                                  <div className="mt-6 pt-4 border-t border-line/60">
-                                    <span className="font-mono text-[11px] uppercase tracking-wider text-neutral-400">
+                                  <div className="mt-6 pt-4 border-t border-neutral-200">
+                                    <span className="font-mono text-[11px] uppercase tracking-wider text-neutral-500 font-semibold">
                                       Differentiating Experience
                                     </span>
                                     <ul className="mt-2 space-y-1.5">
                                       {role.preferred.map((p, i) => (
                                         <li
                                           key={i}
-                                          className="text-xs text-neutral-400 leading-relaxed"
+                                          className="text-xs text-neutral-600 leading-relaxed"
                                         >
                                           • {p}
                                         </li>
@@ -747,20 +747,20 @@ export function Careers() {
                             </div>
 
                             {/* First 90 Days Milestones */}
-                            <div className="border-t border-line pt-6">
-                              <span className="font-mono text-xs uppercase tracking-[0.16em] text-silver">
+                            <div className="border-t border-neutral-200 pt-6">
+                              <span className="font-mono text-xs uppercase tracking-[0.16em] text-neutral-500 font-semibold">
                                 First 90 Days Architectural Milestones
                               </span>
                               <div className="mt-4 grid gap-4 sm:grid-cols-3">
                                 {role.milestones.map((m) => (
                                   <div
                                     key={m.month}
-                                    className="border border-line bg-obsidian/80 p-4"
+                                    className="border border-neutral-200 bg-white p-4 shadow-sm"
                                   >
-                                    <span className="font-mono text-xs font-semibold text-white">
+                                    <span className="font-mono text-xs font-semibold text-black">
                                       {m.month}
                                     </span>
-                                    <p className="mt-2 text-xs leading-relaxed text-silver">
+                                    <p className="mt-2 text-xs leading-relaxed text-neutral-600">
                                       {m.deliverable}
                                     </p>
                                   </div>
@@ -769,8 +769,8 @@ export function Careers() {
                             </div>
 
                             {/* Action Bar */}
-                            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-line pt-6">
-                              <div className="flex items-center gap-3 text-xs text-neutral-400 font-mono">
+                            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-neutral-200 pt-6">
+                              <div className="flex items-center gap-3 text-xs text-neutral-500 font-mono">
                                 <span>Location: {role.location}</span>
                                 <span>•</span>
                                 <span>Clearance: {role.clearance}</span>
@@ -778,7 +778,7 @@ export function Careers() {
                               <button
                                 type="button"
                                 onClick={() => setApplyingRole(role)}
-                                className="w-full sm:w-auto tile-sm border border-white bg-white px-6 py-2.5 font-mono text-xs font-semibold uppercase tracking-wider text-black transition-all hover:bg-neutral-200"
+                                className="w-full sm:w-auto tile-sm border border-black bg-black px-6 py-2.5 font-mono text-xs font-semibold uppercase tracking-wider text-white transition-all hover:bg-neutral-800"
                               >
                                 Submit Application for {role.title}
                               </button>

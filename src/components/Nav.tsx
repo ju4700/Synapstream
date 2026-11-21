@@ -6,10 +6,10 @@ import { navigate, usePathname } from "../router";
 
 const LINKS = [
   { label: "About", href: "/about" },
-  { label: "Careers", href: "/careers" },
   { label: "Capabilities", href: "/#capabilities" },
   { label: "Delivery Model", href: "/#delivery" },
   { label: "Governance", href: "/#governance" },
+  { label: "Careers", href: "/careers" },
 ];
 
 export function Nav() {
