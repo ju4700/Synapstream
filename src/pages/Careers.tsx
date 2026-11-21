@@ -43,298 +43,347 @@ interface Role {
 
 const ROLES: Role[] = [
   {
-    id: "staff-distributed-systems",
-    title: "Staff Distributed Systems Engineer",
+    id: "full-stack-engineer",
+    title: "Full-Stack Software Engineer",
     department: "Engineering",
-    seniority: "Staff / Principal",
-    location: "Chittagong, Bangladesh / Hybrid / Global Remote",
+    seniority: "Mid-Level (2–4 Years)",
+    location: "Chittagong, Bangladesh / Hybrid / Remote",
     workMode: "Hybrid",
-    clearance: "Sovereign Background Verification",
+    clearance: "Standard Background Verification",
     summary:
-      "Architect, validate, and scale distributed consensus engines, offline-first sync pipelines, and sovereign data center clusters engineered to withstand geopolitical network disruptions.",
+      "Build and maintain user-facing web applications and backend APIs, delivering end-to-end features from database schemas to responsive frontend interfaces.",
     mandate:
-      "Modern public institutions and critical conglomerates cannot depend on black-box commercial clouds with extraterritorial jurisdiction. You will own the distributed consensus protocols and bare-metal orchestration engines that power nation-scale registries and air-gapped operational workloads under statutory custody.",
+      "You will work across the full stack—developing intuitive React interfaces, typed API endpoints, and scalable database schemas for mission-critical client applications. We focus on clean code, automated test coverage, and responsive performance.",
     responsibilities: [
-      "Design fault-tolerant distributed consensus mechanisms that guarantee mathematical data consistency across intermittent, air-gapped, and high-latency sovereign network partitions.",
-      "Build deterministic storage engines and automated zero-downtime replication pipelines handling multi-million citizen records with zero data loss.",
-      "Implement custom Linux kernel tuning, eBPF telemetry collectors, and network namespace isolation for statutory GovCloud deployments.",
-      "Eliminate third-party cloud dependencies by authoring bare-metal provisioning and Kubernetes cluster orchestration runbooks.",
-      "Lead formal technical architecture reviews, schema definitions (OpenAPI 3.1 / typed gRPC), and chaos engineering failure simulations.",
+      "Develop responsive, accessible web interfaces using React, TypeScript, and modern CSS frameworks like Tailwind.",
+      "Design and implement RESTful and typed API endpoints backed by PostgreSQL and Node.js or Go.",
+      "Write comprehensive unit, integration, and end-to-end tests to maintain high software reliability.",
+      "Collaborate with product designers in Figma to turn wireframes into pixel-perfect, accessible interactive components.",
+      "Participate in peer code reviews, sprint planning, and architectural discussions to uphold engineering standards.",
     ],
     qualifications: [
-      "7+ years of deep experience in systems programming using Go, Rust, or modern C++ in high-concurrency environments.",
-      "Demonstrated mastery of distributed consensus algorithms (Raft, Paxos), vector clocks, and Conflict-Free Replicated Data Types (CRDTs).",
-      "Comprehensive understanding of Linux systems internals, TCP/IP socket tuning, eBPF telemetry, memory profiling, and SIMD optimizations.",
-      "Production experience operating air-gapped or bare-metal infrastructure (Talos Linux, bare-metal Kubernetes, or dedicated GovCloud enclaves).",
-      "Strict commitment to contract-first architecture, explicit type safety, and zero external runtime API telemetry leaks.",
+      "2–4 years of full-stack web development experience using TypeScript, React, and Node.js or Go.",
+      "Strong proficiency in SQL schema design, migrations, and query optimization with relational databases (PostgreSQL/MySQL).",
+      "Demonstrated understanding of web performance fundamentals, responsive layout patterns, and modern state management.",
+      "Experience building and consuming structured APIs with contract-first tooling (OpenAPI, tRPC, or REST).",
+      "Familiarity with Git version control, CI/CD pipelines, and containerization using Docker.",
     ],
     preferred: [
-      "Prior track record contributing to open-source distributed databases, storage engines, or container runtimes.",
-      "Experience with statutory compliance auditing, post-quantum encryption readiness, or defense communications protocols.",
+      "Experience with modern build tools (Vite, Next.js) and cloud deployment platforms.",
+      "Contributions to open-source software or public technical side projects.",
     ],
     milestones: [
       {
         month: "Month 01",
         deliverable:
-          "Audit and benchmark our air-gapped cryptographic sync engine under 100k concurrent synthetic simulated node partitions.",
+          "Onboard onto our core repository, ship your first full-stack feature to production, and refine our end-to-end test suite.",
       },
       {
         month: "Month 02",
         deliverable:
-          "Ship an eBPF-based low-overhead latency observability daemon for bare-metal GovCloud clusters.",
+          "Lead the development of a real-time notification service and optimize database query latency for high-traffic dashboards.",
       },
       {
         month: "Month 03",
         deliverable:
-          "Author the architectural blueprint and reference implementation for the next-generation sovereign civil registry pipeline.",
+          "Architect and deliver a reusable component module for customer analytics with automated documentation and unit tests.",
       },
     ],
-    tags: ["Rust", "Go", "Distributed Consensus", "eBPF", "Raft", "Bare-Metal", "GovCloud"],
+    tags: ["TypeScript", "React", "Node.js", "PostgreSQL", "Tailwind CSS", "Docker"],
   },
   {
-    id: "principal-security-cryptography",
-    title: "Principal Security & Cryptographic Architect",
+    id: "backend-systems-engineer",
+    title: "Backend & Systems Engineer",
     department: "Engineering",
-    seniority: "Principal / Technical Lead",
-    location: "Chittagong, Bangladesh / Hybrid / Global Remote",
+    seniority: "Mid-Level (3–5 Years)",
+    location: "Chittagong, Bangladesh / Hybrid / Remote",
     workMode: "Hybrid",
-    clearance: "Statutory Security Clearable",
+    clearance: "Standard Background Verification",
     summary:
-      "Lead cryptographic architecture, Hardware Security Module (HSM) integrations, post-quantum readiness, and statutory zero-trust access boundaries across all government platforms.",
+      "Design and scale reliable backend microservices, background job workers, and database architectures for high-throughput enterprise platforms.",
     mandate:
-      "Sovereignty is meaningless if cryptographic custody is outsourced. You will engineer the cryptographic custody frameworks ensuring sovereign clients retain exclusive custody of encryption keys, root certificate authorities, and immutable audit ledgers.",
+      "You will own the core business logic, asynchronous task queues, and data storage layers that power institutional client workflows. We emphasize zero-downtime migrations, latency reduction, and predictable system behavior.",
     responsibilities: [
-      "Engineer cryptographic custody models ensuring clients retain exclusive sovereignty over encryption keys, root CAs, and audit logs.",
-      "Integrate and certify PKCS#11 interfaces with Hardware Security Modules (YubiHSM, Thales Luna, AWS CloudHSM) for identity and licensing platforms.",
-      "Architect mutual TLS (mTLS) zero-trust service meshes with ephemeral cryptographic certificates and deterministic access revocation.",
-      "Conduct forensic code audits, mathematical verification of cryptographic algorithms, and red-team penetration benchmarks against state-sponsored threat vectors.",
-      "Design mathematically verifiable tamper-evident audit ledgers that prove data integrity to parliamentary and statutory oversight committees.",
+      "Build resilient backend services and background job processors using Go, Python, or Rust.",
+      "Architect reliable database schemas, indexes, and caching strategies using PostgreSQL, Redis, and event streams.",
+      "Implement structured telemetry, distributed tracing, and health checks to maintain high service observability.",
+      "Automate deployment pipelines and manage containerized workloads across cloud and on-premise Kubernetes clusters.",
+      "Profile memory usage, CPU hotspots, and database connection pools to eliminate performance bottlenecks.",
     ],
     qualifications: [
-      "8+ years in enterprise security engineering, applied cryptography, or defense-grade information assurance.",
-      "Deep fluency in cryptographic primitives (AES-GCM, Ed25519, ChaCha20-Poly1305, Dilithium/Kyber post-quantum candidates).",
-      "Proven experience with HSM interfaces, OpenSSL/BoringSSL internals, PKI architecture, and TPM 2.0 attestation.",
-      "Strong background in vulnerability research, reverse engineering, OWASP Top 10, and statutory compliance (ISO 27001, SOC 2 Type II, national data protection acts).",
-      "Ability to communicate rigorous cryptographic trade-offs directly to ministerial CIOs and technical steering committees.",
+      "3–5 years of professional backend development experience in Go, Python, or Rust.",
+      "Deep understanding of relational database internals, transaction isolation levels, indexing, and connection pooling.",
+      "Familiarity with message queues and event-driven patterns (RabbitMQ, Kafka, or Redis Streams).",
+      "Practical experience with Linux server administration, Docker containerization, and basic Kubernetes operations.",
+      "Strong commitment to automated testing, defensive programming, and clean error handling.",
     ],
     preferred: [
-      "Master's or Ph.D. in Computer Science, Applied Mathematics, or Cryptography.",
-      "Published research in secure multi-party computation, zero-knowledge proofs, or post-quantum key exchange.",
+      "Experience with gRPC, Protocol Buffers, and microservice communication patterns.",
+      "Familiarity with cloud platforms (AWS, GCP) and Infrastructure as Code using Terraform.",
     ],
     milestones: [
       {
         month: "Month 01",
         deliverable:
-          "Complete an end-to-end cryptographic threat model of our offline-sync and key custody architecture.",
+          "Familiarize yourself with the backend architecture, set up local development environments, and resolve priority performance tickets.",
       },
       {
         month: "Month 02",
         deliverable:
-          "Deploy an automated HSM-backed key rotation and attestation daemon with automated failover.",
+          "Migrate an existing synchronous data processing pipeline to an asynchronous event-driven queue with retry policies.",
       },
       {
         month: "Month 03",
         deliverable:
-          "Formalize Synapstream's Post-Quantum Cryptographic Migration Roadmap for sovereign client contracts.",
+          "Implement comprehensive OpenTelemetry instrumentation across primary microservices to establish latency baselines.",
       },
     ],
-    tags: ["Cryptography", "HSM", "Zero-Trust", "PKI", "mTLS", "Rust", "Post-Quantum"],
+    tags: ["Go", "Python", "PostgreSQL", "Redis", "Docker", "Linux", "REST APIs"],
   },
   {
-    id: "lead-product-designer",
-    title: "Lead Institutional Product Designer",
-    department: "Design",
-    seniority: "Lead / Principal",
-    location: "Chittagong, Bangladesh / Hybrid / Global Remote",
-    workMode: "Hybrid",
-    clearance: "Standard Non-Disclosure & Code Covenant",
-    summary:
-      "Own product design for mission-critical institutional dashboards, statutory citizen portals, and dense operational telemetry interfaces that cannot tolerate user error.",
-    mandate:
-      "Government software does not have to look like archaic bureaucracy. You will define the visual and interaction standard for national software platforms—combining the density of a Bloomberg terminal with the effortless precision of Swiss typographic architecture.",
-    responsibilities: [
-      "Architect multi-tier UI systems that synthesize millions of data points into legible, error-proof operational workflows for civil servants and enterprise operators.",
-      "Establish and govern the Synapstream Design System (tokens, components, typography scales, contrast algorithms) bridging Figma and React 19 / Tailwind.",
-      "Design accessibility-first user journeys compliant with strict WCAG 2.2 AAA standards across low-bandwidth environments, screen readers, and multi-lingual scripts.",
-      "Conduct deep domain-modeling interviews with institutional stakeholders, mapping intricate legal requirements into frictionless interaction states.",
-      "Partner directly with staff engineers to review CSS implementations, ensuring sub-pixel visual fidelity, zero layout shift, and tactile interactive feedback.",
-    ],
-    qualifications: [
-      "6+ years designing complex SaaS, data-dense applications, financial terminals, or government enterprise platforms.",
-      "Flawless command of Figma (Variables, Auto-Layout, Component Sets, Token Studio) and a deep understanding of CSS Grid / Flexbox mechanics.",
-      "Uncompromising obsession with typography, information hierarchy, data visualization, and micro-interactions.",
-      "Demonstrated experience designing for high-stakes environments where cognitive overload causes operational failure.",
-      "Portfolio showcasing shipped, complex applications with documented design rationale and edge-case mapping.",
-    ],
-    preferred: [
-      "Working knowledge of React, Tailwind CSS, and Git version control to inspect or contribute directly to design system repositories.",
-      "Experience designing localized interfaces for non-Latin scripts (Arabic, Bengali, Cyrillic) and right-to-left layout mechanics.",
-    ],
-    milestones: [
-      {
-        month: "Month 01",
-        deliverable:
-          "Unify and publish the Synapstream Institutional Design Token specification across Figma and React.",
-      },
-      {
-        month: "Month 02",
-        deliverable:
-          "Redesign the telemetry and node-management console for our sovereign cloud deployment suite.",
-      },
-      {
-        month: "Month 03",
-        deliverable:
-          "Establish the institutional accessibility test suite guaranteeing WCAG AAA compliance across all future deliverables.",
-      },
-    ],
-    tags: ["Design Systems", "Figma", "Data Density", "WCAG AAA", "Typography", "Tokens"],
-  },
-  {
-    id: "creative-technologist-3d",
-    title: "Senior Creative Technologist & 3D Spatial Designer",
-    department: "Design",
-    seniority: "Senior / Specialist",
-    location: "Chittagong, Bangladesh / Hybrid / Global Remote",
+    id: "frontend-engineer",
+    title: "Frontend Engineer",
+    department: "Engineering",
+    seniority: "Mid-Level (2–4 Years)",
+    location: "Chittagong, Bangladesh / Hybrid / Remote",
     workMode: "Remote-First",
-    clearance: "Standard Non-Disclosure & Code Covenant",
+    clearance: "Standard Background Verification",
     summary:
-      "Bridge high-end digital art and performance engineering. Build real-time 3D web visualizations, custom GLSL shaders, and interactive spatial artifacts that visually define our platforms.",
+      "Craft fast, accessible, and responsive user interfaces using React, TypeScript, and modern CSS, ensuring sub-second page loads and tactile user feedback.",
     mandate:
-      "We believe technology should feel physical, palpable, and grounded. You will turn abstract distributed infrastructure and air-gapped cryptographic topologies into mesmerizing, interactive 3D digital artifacts that run smoothly at 60fps across any browser.",
+      "You will translate complex data sets and multifaceted workflows into clean, accessible web applications. You care deeply about layout precision, smooth transitions, mobile responsiveness, and Core Web Vitals.",
     responsibilities: [
-      "Author high-performance WebGL, Three.js, and GLSL shader pipelines that render at 60fps across both high-end desktop workstations and mobile hardware.",
-      "Design bespoke procedural visuals, dot-matrix halftones, topological terrain meshes, and interactive 3D spatial node maps.",
-      "Collaborate with product designers and frontend architects to integrate interactive canvas elements into clean, semantic React component hierarchies.",
-      "Optimize 3D assets, draw calls, vertex counts, and memory buffers to prevent frame drops and battery drain on low-spec hardware.",
-      "Continuously push the creative aesthetic boundaries of institutional technology, transforming abstract sovereign code into tactile digital monuments.",
+      "Build accessible, performant UI components using React 19, TypeScript, and Tailwind CSS.",
+      "Ensure high visual consistency and compliance with WCAG 2.1 AA accessibility guidelines.",
+      "Collaborate with product designers to review Figma designs and implement interactive micro-animations with Motion.",
+      "Optimize client-side bundle sizes, code splitting, and caching to achieve high Lighthouse performance scores.",
+      "Write unit and integration tests using Vitest and React Testing Library for core user interaction flows.",
     ],
     qualifications: [
-      "4+ years of professional experience in Creative Technology, WebGL, Three.js, or GLSL shader development.",
-      "Deep understanding of 3D math (linear algebra, vector projection, quaternions, raymarching, trigonometric transforms).",
-      "Fluency in modern TypeScript, React, Vite, and performance profiling via Chrome DevTools and Spector.js.",
-      "Solid foundations in 3D modeling tools (Blender, Houdini) with expertise in baking PBR maps and optimizing glTF/GLB models.",
-      "Portfolio featuring live, interactive web graphics that demonstrate exceptional aesthetic taste and buttery-smooth frame rates.",
+      "2–4 years of specialized frontend engineering experience with modern React and TypeScript.",
+      "Mastery of CSS, Flexbox, CSS Grid, responsive design patterns, and utility-first styling.",
+      "Solid grasp of DOM rendering cycles, client-side caching, and asynchronous data fetching patterns.",
+      "Demonstrated portfolio or GitHub projects showing high visual attention to detail and clean component code.",
+      "Experience collaborating in agile environments with design handoffs in Figma.",
     ],
     preferred: [
-      "Experience with WebGPU API and compute shaders for particle physics simulations.",
-      "Knowledge of generative design, parametric architectural algorithms, and physical computing.",
+      "Experience with Next.js, Vite, or modern static site generation workflows.",
+      "Understanding of animation libraries (Motion/Framer Motion, CSS animations) and canvas basics.",
     ],
     milestones: [
       {
         month: "Month 01",
         deliverable:
-          "Build a high-performance WebGL topology visualizer demonstrating real-time air-gapped node connectivity.",
+          "Audit the existing UI component library, improve responsive styling for tablet/mobile viewports, and add missing component tests.",
       },
       {
         month: "Month 02",
         deliverable:
-          "Ship 3 interactive canvas artifacts showcasing sovereign encryption key states and tensor junction routing.",
+          "Deliver a modular data table component supporting client-side filtering, sorting, and pagination with zero layout shift.",
       },
       {
         month: "Month 03",
         deliverable:
-          "Create an automated rendering pipeline that converts complex network architecture diagrams into lightweight 3D interactive models.",
+          "Improve page load times across primary dashboards by optimizing assets, implementing dynamic code-splitting, and tuning Web Vitals.",
       },
     ],
-    tags: ["WebGL", "Three.js", "GLSL Shaders", "3D Math", "Blender", "TypeScript"],
+    tags: ["React", "TypeScript", "Tailwind CSS", "Vite", "Motion", "Accessibility"],
   },
   {
-    id: "head-of-technical-marketing",
-    title: "Head of Institutional & Technical Product Marketing",
-    department: "Marketing",
-    seniority: "Director / Lead",
-    location: "Chittagong, Bangladesh / Hybrid / Global Remote",
+    id: "product-designer",
+    title: "Product Designer (UI/UX)",
+    department: "Design",
+    seniority: "Mid-Level (2–4 Years)",
+    location: "Chittagong, Bangladesh / Hybrid / Remote",
     workMode: "Hybrid",
-    clearance: "Statutory Security Clearable",
+    clearance: "Standard Non-Disclosure Agreement",
     summary:
-      "Lead strategic positioning, commercial narrative, and technical collateral communicating Synapstream's sovereign value proposition to government ministries, enterprise CIOs, and defense executives.",
+      "Design intuitive user experiences, wireframes, and high-fidelity interfaces for enterprise dashboards, web portals, and collaboration tools.",
     mandate:
-      "Selling institutional digital infrastructure is not consumer growth marketing. You will craft the intellectual arguments, benchmark dossiers, and statutory narratives that convince national authorities to abandon legacy vendor lock-in and adopt sovereign engineering systems.",
+      "Enterprise software should be intuitive, elegant, and efficient. You will turn intricate workflows and dense information architectures into effortless, user-centric experiences that operators love to use daily.",
     responsibilities: [
-      "Own the positioning framework and commercial narrative that differentiates Synapstream from legacy IT consultancies and opaque software vendors.",
-      "Author authoritative technical architecture whitepapers, sovereign cloud benchmark reports, and executive briefing dossiers.",
-      "Partner with solution architects to dissect complex institutional RFPs and translate sovereign technical capabilities into compelling winning proposals.",
-      "Develop high-impact launch campaigns for major platform releases, sovereign LLM frameworks, and air-gapped infrastructure toolkits.",
-      "Build relationships with defense analysts, government procurement directors, and technology journalists covering data sovereignty and national infrastructure.",
+      "Create user journey maps, wireframes, interactive prototypes, and production-ready visual designs in Figma.",
+      "Maintain and expand the company design system, including color palettes, typography scales, components, and variables.",
+      "Partner closely with frontend engineers during handoffs to ensure accurate implementation of design tokens and responsive layouts.",
+      "Conduct user testing sessions and analyze feedback to identify friction points and iterate on product usability.",
+      "Advocate for accessibility, usability best practices, and clean typographic hierarchy across all digital products.",
     ],
     qualifications: [
-      "7+ years in technical product marketing, product strategy, or solutions marketing within enterprise B2B, cloud infrastructure, or cybersecurity.",
-      "Exceptional writing and narrative capability; ability to synthesize complex distributed systems and cryptographic concepts into crystal-clear prose.",
-      "Demonstrated experience engaging with institutional buyers, public sector procurement processes, or regulated industries.",
-      "Strong technical literacy; comfortable reading architectural blueprints, API contracts, and security whitepapers.",
-      "Track record of authoring industry-recognized research papers or leading landmark product launches.",
+      "2–4 years of product design experience working on web applications, SaaS tools, or internal enterprise software.",
+      "Expertise in Figma (Auto-Layout, Component Sets, Variables, Interactive Prototyping).",
+      "Strong foundational knowledge of typography, layout spacing, color theory, and UX heuristics.",
+      "Basic understanding of HTML/CSS capabilities and constraints to collaborate effectively with software engineers.",
+      "A portfolio demonstrating user-centered design thinking, wireframing processes, and polished final interfaces.",
     ],
     preferred: [
-      "Background in computer engineering or technical pre-sales before moving into product marketing.",
-      "Familiarity with national digital sovereignty frameworks in South Asia, the Middle East, or the European Union.",
+      "Experience conducting qualitative user interviews or usability test sessions.",
+      "Knowledge of design tokens integration with frontend codebases (Tailwind or CSS variables).",
     ],
     milestones: [
       {
         month: "Month 01",
         deliverable:
-          "Publish the 'Sovereign Cloud & National Infrastructure Benchmark 2026' research paper.",
+          "Familiarize yourself with product roadmaps, conduct a design audit of current application screens, and identify usability quick-wins.",
       },
       {
         month: "Month 02",
         deliverable:
-          "Overhaul our institutional RFP narrative kit and architecture briefing decks for ministry stakeholders.",
+          "Redesign the user onboarding flow and account settings dashboard, producing interactive Figma prototypes and user testing notes.",
       },
       {
         month: "Month 03",
         deliverable:
-          "Launch the dedicated marketing campaign for Synapstream's Air-Gapped Machine Intelligence platform.",
+          "Publish an updated component library specification with standardized button variants, form states, and modal patterns.",
       },
     ],
-    tags: ["Product Marketing", "Institutional Strategy", "GovTech", "Whitepapers", "Positioning", "RFPs"],
+    tags: ["Figma", "UI/UX", "Design Systems", "Prototyping", "User Research", "Wireframing"],
   },
   {
-    id: "senior-technical-content-devrel",
-    title: "Senior Technical Content & Developer Relations Strategist",
-    department: "Marketing",
-    seniority: "Senior / Lead",
-    location: "Chittagong, Bangladesh / Hybrid / Global Remote",
-    workMode: "Remote-First",
-    clearance: "Standard Non-Disclosure & Code Covenant",
+    id: "brand-visual-designer",
+    title: "Brand & Visual Designer",
+    department: "Design",
+    seniority: "Junior / Mid-Level (1–3 Years)",
+    location: "Chittagong, Bangladesh / Hybrid / Remote",
+    workMode: "Hybrid",
+    clearance: "Standard Non-Disclosure Agreement",
     summary:
-      "Own the developer-facing voice of Synapstream. Author deep engineering postmortems, architectural case studies, reproducible benchmarks, and technical documentation.",
+      "Craft compelling visual identities, marketing assets, presentation decks, and web graphics that visually communicate Synapstream's engineering ethos.",
     mandate:
-      "The best marketing for an engineering firm is unassailable technical truth. You will write deep, peer-reviewed engineering analyses that software architects and systems programmers actually bookmark, cite, and respect.",
+      "You will shape how the world perceives Synapstream. From editorial web graphics and social campaign visuals to client presentations and brand collateral, you will establish a cohesive, modern visual language.",
     responsibilities: [
-      "Write authoritative, highly technical engineering articles dissecting real architectural challenges (e.g., eBPF network observability, zero-copy deserialization, Byzantine fault tolerance).",
-      "Collaborate with staff engineers to extract institutional learnings, producing reproducible benchmarks and open-source documentation.",
-      "Direct Synapstream's technical publication, newsletter, and academic symposium presentations.",
-      "Build and nurture relationships with prominent open-source maintainers, systems programming communities, and computer science researchers.",
-      "Produce technical video walkthroughs and interactive architectural code tours explaining our contract-first and air-gapped deployments.",
+      "Design graphic assets, hero banners, and vector illustrations for company websites, blog articles, and social media.",
+      "Build polished presentation decks and technical case study templates for enterprise sales and client meetings.",
+      "Develop short interface motion graphics, animated badges, and GIFs to showcase product features.",
+      "Maintain brand consistency across marketing collateral, internal documents, and digital properties.",
+      "Collaborate with the marketing team to brainstorm visual concepts for product feature announcements and newsletters.",
     ],
     qualifications: [
-      "5+ years in technical writing, developer advocacy, or software engineering with a demonstrable portfolio of published technical essays.",
-      "Working ability to read and understand code in Go, Rust, or TypeScript and execute benchmark suites.",
-      "Clear, rigorous writing style free of marketing buzzwords, fluff, or hand-waving; commitment to mathematical precision.",
-      "Active engagement in technical communities (Hacker News, Lobsters, specialized systems programming forums).",
-      "Experience producing technical diagrams, architecture schemas, and developer onboarding guides.",
+      "1–3 years of visual design, brand design, or graphic design experience in a digital agency or tech startup.",
+      "Proficiency in Figma and Adobe Creative Suite (Illustrator, Photoshop, After Effects).",
+      "Sharp aesthetic eye for Swiss typography, grid alignment, minimalism, and digital layout compositions.",
+      "Ability to translate abstract technical topics into clean, engaging visual metaphors.",
+      "A strong visual portfolio showcasing branding, editorial layout, and digital design work.",
     ],
     preferred: [
-      "Previous software engineering experience before transitioning into developer relations or technical content strategy.",
-      "Familiarity with interactive documentation tools, MDX pipelines, and technical diagramming using Mermaid or SVG.",
+      "Experience creating short video animations or motion graphics for web products.",
+      "Familiarity with 3D modeling tools (Blender or Spline) for simple web illustrations.",
     ],
     milestones: [
       {
         month: "Month 01",
         deliverable:
-          "Publish a landmark technical deep-dive on 'Engineering Air-Gapped Consensus: Lessons from Sovereign Registry Deployments.'",
+          "Audit existing brand assets, organize a centralized graphic repository, and design a refreshed presentation deck template.",
       },
       {
         month: "Month 02",
         deliverable:
-          "Establish the Synapstream Engineering Journal with a bi-weekly cadence of peer-reviewed technical essays.",
+          "Create a series of custom editorial illustrations and social assets for our upcoming technical blog launch.",
       },
       {
         month: "Month 03",
         deliverable:
-          "Co-author a reproducible benchmark study comparing private sovereign LLM inference latency against public API gateways.",
+          "Design an interactive brand guidelines guide covering typography rules, color usage, icon sets, and asset export standards.",
       },
     ],
-    tags: ["DevRel", "Technical Writing", "Architecture Essays", "Benchmarks", "Systems Programming"],
+    tags: ["Brand Design", "Visual Identity", "Figma", "Illustrator", "Typography", "Motion"],
+  },
+  {
+    id: "product-marketing-specialist",
+    title: "Product Marketing Specialist",
+    department: "Marketing",
+    seniority: "Mid-Level (2–4 Years)",
+    location: "Chittagong, Bangladesh / Hybrid / Remote",
+    workMode: "Hybrid",
+    clearance: "Standard Background Verification",
+    summary:
+      "Drive go-to-market strategies, product messaging, customer case studies, and feature launch campaigns for enterprise software solutions.",
+    mandate:
+      "You will connect our technical capabilities with client business needs. You will turn complex software engineering achievements into crisp positioning, sales collateral, and compelling customer narratives.",
+    responsibilities: [
+      "Develop core product messaging and positioning frameworks for Synapstream's software engineering services and products.",
+      "Interview clients and engineering leads to author detailed customer success stories and technical case studies.",
+      "Manage product launch plans across company blog channels, social media, email newsletters, and press outlets.",
+      "Conduct competitor analysis and market research to identify product differentiation opportunities.",
+      "Create sales enablement materials, including one-pagers, capability decks, and feature walkthroughs for enterprise prospects.",
+    ],
+    qualifications: [
+      "2–4 years of product marketing, marketing communications, or content marketing experience in B2B tech or SaaS.",
+      "Clear, concise copywriting and editing skills with a focus on value propositions rather than empty buzzwords.",
+      "Ability to comprehend technical engineering concepts and translate them into benefits for business decision-makers.",
+      "Experience managing cross-functional project timelines for campaigns and product feature announcements.",
+      "Analytical mindset with comfort tracking campaign engagement, website traffic, and reader retention.",
+    ],
+    preferred: [
+      "Prior experience in a software consultancy, B2B SaaS startup, or technical marketing agency.",
+      "Familiarity with email marketing tools, CMS platforms, and basic analytics dashboards (Google Analytics, PostHog).",
+    ],
+    milestones: [
+      {
+        month: "Month 01",
+        deliverable:
+          "Interview key engineering leads to understand our service offerings and audit all current marketing collateral.",
+      },
+      {
+        month: "Month 02",
+        deliverable:
+          "Draft, design, and publish two comprehensive enterprise case studies highlighting client deliverables.",
+      },
+      {
+        month: "Month 03",
+        deliverable:
+          "Launch a structured quarterly feature release campaign with coordinated blog announcements and sales one-pagers.",
+      },
+    ],
+    tags: ["Product Marketing", "B2B SaaS", "Case Studies", "Content Strategy", "Go-To-Market"],
+  },
+  {
+    id: "technical-content-writer",
+    title: "Technical Content Writer",
+    department: "Marketing",
+    seniority: "Mid-Level (2–4 Years)",
+    location: "Chittagong, Bangladesh / Hybrid / Remote",
+    workMode: "Remote-First",
+    clearance: "Standard Non-Disclosure Agreement",
+    summary:
+      "Write in-depth technical blog posts, architectural breakdowns, API documentation, and engineering guides for developers and technology leaders.",
+    mandate:
+      "Great engineering speaks for itself when clearly explained. You will interview engineers, read source code, and write technical articles that practitioners respect, learn from, and share across the developer community.",
+    responsibilities: [
+      "Write clear, engaging engineering blog posts, technical deep-dives, and architectural explainers.",
+      "Author and maintain developer documentation, getting-started guides, and release notes for client deliverables.",
+      "Partner with frontend and backend developers to extract interesting technical challenges and turn them into public case studies.",
+      "Manage the company engineering blog editorial calendar and coordinate peer reviews with technical staff.",
+      "Monitor industry trends in distributed systems, web performance, and developer tooling to propose timely article topics.",
+    ],
+    qualifications: [
+      "2–4 years of experience writing technical content, developer documentation, or engineering blog articles.",
+      "Ability to read and understand code (e.g., JavaScript/TypeScript, Python, or Go) to accurately describe technical implementations.",
+      "Demonstrated portfolio of published articles, blog posts, or technical documentation.",
+      "Meticulous attention to spelling, grammar, code formatting, and explanatory clarity.",
+      "Curiosity about modern software architectures, databases, and frontend frameworks.",
+    ],
+    preferred: [
+      "Background in computer science, software engineering, or technical journalism.",
+      "Experience writing Markdown, MDX, and using static site generators.",
+    ],
+    milestones: [
+      {
+        month: "Month 01",
+        deliverable:
+          "Publish two technical blog articles exploring recent engineering challenges and establish a weekly editorial calendar.",
+      },
+      {
+        month: "Month 02",
+        deliverable:
+          "Create a standardized documentation template for future engineering handoffs and client deliverable guides.",
+      },
+      {
+        month: "Month 03",
+        deliverable:
+          "Collaborate with the frontend team to publish an interactive tutorial on modern responsive web design and performance.",
+      },
+    ],
+    tags: ["Technical Writing", "Documentation", "Blogging", "Developer Guides", "Content Strategy"],
   },
 ];
 
@@ -351,7 +400,7 @@ const CULTURE_TENETS = [
     title: "Statutory Craftsmanship",
     tag: "High Bar",
     summary:
-      "We treat software as long-lived civil infrastructure. Every line of code is reviewed for type safety, memory leak vectors, algorithmic complexity, and mathematical citation accuracy before merge.",
+      "We treat software as long-lived civil infrastructure. Every line of code is reviewed for type safety, maintainability, algorithmic efficiency, and clear test coverage before merge.",
   },
   {
     n: 3,
@@ -362,10 +411,10 @@ const CULTURE_TENETS = [
   },
   {
     n: 4,
-    title: "Dedicated Sovereign R&D",
+    title: "Dedicated R&D Time",
     tag: "Mastery",
     summary:
-      "Unrestricted hardware allocations, dedicated air-gapped testbeds, private cloud compute quotas, and continuous research stipends so your technical craft never stagnates.",
+      "Modern hardware setups, cloud compute credits, continuous learning allowances, and dedicated research time so your technical skills and craft continuously evolve.",
   },
 ];
 
@@ -375,7 +424,7 @@ const SELECTION_STEPS = [
     name: "Portfolio & Systems Assessment",
     duration: "48-Hour Turnaround",
     description:
-      "We review your real codebase repositories, design systems, or technical whitepapers. No generic automated leetcode quizzes; we evaluate architectural taste and depth.",
+      "We review your real codebase repositories, design systems, or technical writing. No generic automated leetcode quizzes; we evaluate architectural taste and depth.",
   },
   {
     step: "02",
@@ -393,10 +442,10 @@ const SELECTION_STEPS = [
   },
   {
     step: "04",
-    name: "Sovereign Covenant & Offer",
+    name: "Mutual Agreement & Offer",
     duration: "Final Sign-Off",
     description:
-      "Comprehensive transparent offer, IP covenants, clear career milestone trajectory, and hardware provisioning tailored to your exact workflow requirements.",
+      "Transparent offer terms, intellectual property ownership agreements, clear career progression milestones, and hardware provisioning tailored to your workflow.",
   },
 ];
 
@@ -407,7 +456,7 @@ const SELECTION_STEPS = [
 export function Careers() {
   const [selectedDept, setSelectedDept] = useState<Department>("All");
   const [searchQuery, setSearchQuery] = useState("");
-  const [expandedRole, setExpandedRole] = useState<string | null>("staff-distributed-systems");
+  const [expandedRole, setExpandedRole] = useState<string | null>("full-stack-engineer");
   const [applyingRole, setApplyingRole] = useState<Role | null>(null);
 
   // Application form states
@@ -1016,7 +1065,7 @@ export function Careers() {
                       rows={3}
                       value={formData.note}
                       onChange={(e) => setFormData({ ...formData, note: e.target.value })}
-                      placeholder="Share a brief overview of your background with sovereign systems, distributed architectures, high-density UI, or institutional marketing..."
+                      placeholder="Share a brief overview of your background with web applications, distributed backends, UI/UX design, or technical marketing..."
                       className="mt-1.5 w-full border border-line bg-black/60 p-3 text-sm text-white placeholder:text-neutral-600 outline-none focus:border-white resize-none"
                     />
                   </div>
