@@ -5,18 +5,13 @@ import {
   Heading,
   Numeral,
   Section,
-  Button,
-  ButtonLink,
   Arrow,
 } from "../components/brand";
 import {
-  DrawLine,
   EASE_OUT,
   Item,
-  Reveal,
   Stagger,
   StepTile,
-  useIsMobile,
 } from "../motion";
 
 /* -------------------------------------------------------------------------- */
@@ -410,7 +405,6 @@ const SELECTION_STEPS = [
 /* -------------------------------------------------------------------------- */
 
 export function Careers() {
-  const isMobile = useIsMobile();
   const [selectedDept, setSelectedDept] = useState<Department>("All");
   const [searchQuery, setSearchQuery] = useState("");
   const [expandedRole, setExpandedRole] = useState<string | null>("staff-distributed-systems");
@@ -457,122 +451,16 @@ export function Careers() {
   return (
     <div className="pt-24 lg:pt-32">
       {/* -------------------------------------------------------------------- */}
-      {/* 1. HERO SECTION                                                      */}
+      {/* 1. OPEN POSITIONS SECTION                                            */}
       {/* -------------------------------------------------------------------- */}
-      <section className="relative overflow-hidden pt-12 pb-16 md:pt-20 md:pb-24">
-        <Container>
-          <div className="mx-auto max-w-4xl text-center">
-            <Reveal delay={0.05}>
-              <span className="font-mono text-xs uppercase tracking-[0.2em] text-silver">
-                Careers & Institutional Craft
-              </span>
-            </Reveal>
-
-            <h1 className="mt-6 text-[34px] font-semibold leading-[1.12] tracking-[-0.03em] text-white sm:text-[50px] md:text-[64px]">
-              Architecting long-lived systems demands non-negotiable standards.
-            </h1>
-
-            <Reveal delay={0.2}>
-              <p className="mx-auto mt-6 max-w-[66ch] text-[16px] sm:text-[18px] leading-[1.75] text-mist text-pretty">
-                We do not build disposable software, bloated agency prototypes, or opaque consumer AI wrappers.
-                Synapstream engineers critical digital infrastructure, sovereign GovCloud platforms, and air-gapped
-                machine intelligence for national institutions and enterprise conglomerates. We are hiring engineers,
-                designers, and marketing strategists who value rigorous systems thinking, absolute craft precision,
-                and permanent institutional ownership.
-              </p>
-            </Reveal>
-
-            {/* Quick Metrics */}
-            <Reveal delay={0.3}>
-              <div className="mt-12 grid grid-cols-2 gap-4 text-left sm:grid-cols-4">
-                {[
-                  { metric: "Zero", label: "Corporate Theater", sub: "Autonomous vertical slices" },
-                  { metric: "100%", label: "IP Handover", sub: "Zero client vendor lock-in" },
-                  { metric: "Air-Gapped", label: "Isolated Testbeds", sub: "Dedicated physical hardware" },
-                  { metric: "Elite", label: "Compensation Band", sub: "Top-tier regional compensation" },
-                ].map((stat) => (
-                  <div
-                    key={stat.label}
-                    className="tile-sm border border-line bg-obsidian/70 p-4 sm:p-5"
-                  >
-                    <span className="font-display text-xl sm:text-2xl font-bold tracking-tight text-white">
-                      {stat.metric}
-                    </span>
-                    <p className="mt-2 text-xs font-semibold uppercase tracking-wider text-white">
-                      {stat.label}
-                    </p>
-                    <p className="mt-0.5 text-[11px] text-neutral-400">{stat.sub}</p>
-                  </div>
-                ))}
-              </div>
-            </Reveal>
-          </div>
-        </Container>
-      </section>
-
-      {/* -------------------------------------------------------------------- */}
-      {/* 2. CULTURE & ENGINEERING COVENANTS                                   */}
-      {/* -------------------------------------------------------------------- */}
-      <Section id="culture" className="border-t border-hairline bg-[#040404]">
-        <Container>
-          <div className="mx-auto max-w-3xl text-center">
-            <span className="font-mono text-xs uppercase tracking-[0.16em] text-silver">
-              Engineering Culture
-            </span>
-            <Heading as="h2" className="mt-4 text-[26px] sm:text-[38px]">
-              How We Work & What We Value
-            </Heading>
-            <p className="mt-4 text-[15px] sm:text-base leading-relaxed text-silver text-justify [text-align-last:center]">
-              We have eliminated the friction, political theater, and superficial metrics that plague
-              traditional tech companies. We optimize strictly for high-velocity craft, verifiable correctness,
-              and intellectual honesty.
-            </p>
-          </div>
-
-          <Stagger
-            as="div"
-            className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4"
-          >
-            {CULTURE_TENETS.map((t, idx) => (
-              <Item key={t.n}>
-                <StepTile
-                  as="article"
-                  hover
-                  delay={idx * 0.08}
-                  className="tile-lg flex h-full flex-col justify-between border border-line bg-obsidian p-6 sm:p-7"
-                >
-                  <div>
-                    <div className="flex items-center justify-between">
-                      <Numeral n={t.n} className="text-2xl text-white" />
-                      <span className="tile-xs border border-line bg-white/[0.04] px-2 py-0.5 font-mono text-[10px] uppercase tracking-wider text-silver">
-                        {t.tag}
-                      </span>
-                    </div>
-                    <h3 className="mt-6 text-lg font-semibold tracking-[-0.015em] text-white">
-                      {t.title}
-                    </h3>
-                    <p className="mt-3 text-[14px] leading-[1.65] text-mist">
-                      {t.summary}
-                    </p>
-                  </div>
-                </StepTile>
-              </Item>
-            ))}
-          </Stagger>
-        </Container>
-      </Section>
-
-      {/* -------------------------------------------------------------------- */}
-      {/* 3. OPEN POSITIONS SECTION                                            */}
-      {/* -------------------------------------------------------------------- */}
-      <Section id="open-roles" className="border-t border-hairline">
+      <section id="open-roles" className="pt-6 pb-16 md:pt-10 md:pb-24">
         <Container>
           <div className="flex flex-col items-start justify-between gap-6 border-b border-line pb-8 md:flex-row md:items-end">
             <div>
               <span className="font-mono text-xs uppercase tracking-[0.16em] text-silver">
                 Active Requisitions
               </span>
-              <Heading as="h2" className="mt-3 text-[28px] sm:text-[40px]">
+              <Heading as="h1" className="mt-3 text-[30px] sm:text-[42px]">
                 Open Institutional Roles
               </Heading>
               <p className="mt-2 text-sm text-silver">
@@ -861,12 +749,64 @@ export function Careers() {
             )}
           </div>
         </Container>
+      </section>
+
+      {/* -------------------------------------------------------------------- */}
+      {/* 2. CULTURE & ENGINEERING COVENANTS                                   */}
+      {/* -------------------------------------------------------------------- */}
+      <Section id="culture" className="border-t border-hairline bg-[#040404]">
+        <Container>
+          <div className="mx-auto max-w-3xl text-center">
+            <span className="font-mono text-xs uppercase tracking-[0.16em] text-silver">
+              Engineering Culture
+            </span>
+            <Heading as="h2" className="mt-4 text-[26px] sm:text-[38px]">
+              How We Work & What We Value
+            </Heading>
+            <p className="mt-4 text-[15px] sm:text-base leading-relaxed text-silver text-justify [text-align-last:center]">
+              We have eliminated the friction, political theater, and superficial metrics that plague
+              traditional tech companies. We optimize strictly for high-velocity craft, verifiable correctness,
+              and intellectual honesty.
+            </p>
+          </div>
+
+          <Stagger
+            as="div"
+            className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4"
+          >
+            {CULTURE_TENETS.map((t, idx) => (
+              <Item key={t.n}>
+                <StepTile
+                  as="article"
+                  hover
+                  delay={idx * 0.08}
+                  className="tile-lg flex h-full flex-col justify-between border border-line bg-obsidian p-6 sm:p-7"
+                >
+                  <div>
+                    <div className="flex items-center justify-between">
+                      <Numeral n={t.n} className="text-2xl text-white" />
+                      <span className="tile-xs border border-line bg-white/[0.04] px-2 py-0.5 font-mono text-[10px] uppercase tracking-wider text-silver">
+                        {t.tag}
+                      </span>
+                    </div>
+                    <h3 className="mt-6 text-lg font-semibold tracking-[-0.015em] text-white">
+                      {t.title}
+                    </h3>
+                    <p className="mt-3 text-[14px] leading-[1.65] text-mist">
+                      {t.summary}
+                    </p>
+                  </div>
+                </StepTile>
+              </Item>
+            ))}
+          </Stagger>
+        </Container>
       </Section>
 
       {/* -------------------------------------------------------------------- */}
-      {/* 4. THE SELECTION PROCESS                                             */}
+      {/* 3. THE SELECTION PROCESS                                             */}
       {/* -------------------------------------------------------------------- */}
-      <Section id="process" className="border-t border-hairline bg-[#040404]">
+      <Section id="process" className="border-t border-hairline">
         <Container>
           <div className="mx-auto max-w-3xl text-center">
             <span className="font-mono text-xs uppercase tracking-[0.16em] text-silver">
