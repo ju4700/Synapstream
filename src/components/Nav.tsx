@@ -6,6 +6,7 @@ import { navigate, usePathname } from "../router";
 
 const LINKS = [
   { label: "About", href: "/about" },
+  { label: "Careers", href: "/careers" },
   { label: "Capabilities", href: "/#capabilities" },
   { label: "Delivery Model", href: "/#delivery" },
   { label: "Governance", href: "/#governance" },
@@ -84,7 +85,7 @@ export function Nav() {
         <ul className="hidden items-center gap-1 lg:flex">
           {LINKS.map((l) => {
             const isLinkActive =
-              l.href === "/about" ? pathname === "/about" : active === l.href;
+              l.href.startsWith("/#") ? active === l.href : pathname === l.href;
             return (
               <li key={l.href}>
                 <a

@@ -4,6 +4,7 @@ import { Footer } from "./components/Footer";
 import { Nav } from "./components/Nav";
 import { Home } from "./pages/Home";
 import { About } from "./pages/About";
+import { Careers } from "./pages/Careers";
 import { usePathname } from "./router";
 
 export default function App() {
@@ -18,6 +19,8 @@ export default function App() {
   useEffect(() => {
     if (pathname === "/about") {
       document.title = "About — Synapstream | Institutional Software Engineering";
+    } else if (pathname === "/careers") {
+      document.title = "Careers — Synapstream | Institutional Engineering & Design";
     } else {
       document.title = "Synapstream — Enterprise Architecture & Digital Infrastructure";
     }
@@ -38,9 +41,9 @@ export default function App() {
         <div className="min-h-screen overflow-x-clip bg-black text-white">
           <Nav />
           <main id="top">
-            {pathname === "/about" ? <About /> : <Home />}
+            {pathname === "/about" ? <About /> : pathname === "/careers" ? <Careers /> : <Home />}
           </main>
-          <Footer className={pathname === "/about" ? "bg-[#040404]" : "bg-black"} />
+          <Footer className={pathname === "/about" || pathname === "/careers" ? "bg-[#040404]" : "bg-black"} />
         </div>
       </MotionConfig>
     </LazyMotion>

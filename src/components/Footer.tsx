@@ -31,6 +31,16 @@ export function Footer({ className = "" }: { className?: string }) {
               About
             </a>
             <a
+              href="/careers"
+              onClick={(e) => {
+                e.preventDefault();
+                navigate("/careers");
+              }}
+              className="transition-colors hover:text-white"
+            >
+              Careers
+            </a>
+            <a
               href="/#capabilities"
               onClick={(e) => {
                 e.preventDefault();
