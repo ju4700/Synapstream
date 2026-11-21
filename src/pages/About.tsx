@@ -215,7 +215,7 @@ export function About() {
         <Container>
           <div className="mx-auto max-w-4xl">
             <Reveal delay={0.1}>
-              <p className="text-justify text-[16px] sm:text-[18px] md:text-[20px] font-normal leading-[1.85] text-mist tracking-[-0.01em]">
+              <p className="text-justify [text-align-last:center] text-[14px] sm:text-[16px] md:text-[17px] font-normal leading-[1.8] text-mist tracking-[-0.005em]">
                 Synapstream is an institutional software engineering firm engineered to design,
                 build, and maintain long-lived digital systems where operational failure is not an option.
                 We partner with sovereign governments, public institutions, commercial conglomerates,
