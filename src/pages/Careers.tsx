@@ -453,29 +453,24 @@ export function Careers() {
       {/* -------------------------------------------------------------------- */}
       {/* 1. OPEN POSITIONS SECTION                                            */}
       {/* -------------------------------------------------------------------- */}
-      <section id="open-roles" className="pt-6 pb-16 md:pt-10 md:pb-24">
+      <section id="open-roles" className="pt-8 pb-16 md:pt-14 md:pb-24">
         <Container>
-          <div className="flex flex-col items-start justify-between gap-6 border-b border-line pb-8 md:flex-row md:items-end">
-            <div>
-              <span className="font-mono text-xs uppercase tracking-[0.16em] text-silver">
-                Active Requisitions
-              </span>
-              <Heading as="h1" className="mt-3 text-[30px] sm:text-[42px]">
-                Open Institutional Roles
-              </Heading>
-              <p className="mt-2 text-sm text-silver">
-                Showing {filteredRoles.length} of {ROLES.length} open positions across Engineering, Design, and Marketing.
-              </p>
-            </div>
+          <div className="mx-auto max-w-2xl text-center">
+            <Heading as="h1" className="text-[32px] sm:text-[44px] font-semibold tracking-[-0.02em]">
+              Open Roles
+            </Heading>
+            <p className="mt-2.5 text-sm sm:text-base text-silver">
+              Explore open positions across Engineering, Design, and Marketing.
+            </p>
 
             {/* Department Filter Pills */}
-            <div className="flex flex-wrap items-center gap-2">
+            <div className="mt-6 flex flex-wrap items-center justify-center gap-2">
               {(["All", "Engineering", "Design", "Marketing"] as Department[]).map((dept) => (
                 <button
                   key={dept}
                   type="button"
                   onClick={() => setSelectedDept(dept)}
-                  className={`tile-xs px-3.5 py-1.5 font-mono text-xs uppercase tracking-wider transition-all duration-200 ${
+                  className={`tile-xs px-4 py-2 font-mono text-xs uppercase tracking-wider transition-all duration-200 ${
                     selectedDept === dept
                       ? "border-white bg-white text-black font-semibold shadow-[0_0_16px_rgba(255,255,255,0.2)]"
                       : "border-line bg-obsidian text-silver hover:border-white/40 hover:text-white"
@@ -485,43 +480,43 @@ export function Careers() {
                 </button>
               ))}
             </div>
-          </div>
 
-          {/* Search Bar */}
-          <div className="mt-8 flex items-center gap-3 border border-line bg-obsidian/80 px-4 py-3">
-            <svg
-              className="size-4 shrink-0 text-neutral-400"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-              />
-            </svg>
-            <input
-              type="text"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Filter by role title, technical keywords, or focus area (e.g. Rust, Shaders, GovCloud)..."
-              className="w-full bg-transparent text-sm text-white placeholder:text-neutral-500 outline-none"
-            />
-            {searchQuery && (
-              <button
-                type="button"
-                onClick={() => setSearchQuery("")}
-                className="font-mono text-xs text-neutral-400 hover:text-white"
+            {/* Search Bar */}
+            <div className="mt-5 flex items-center gap-3 border border-line bg-obsidian/80 px-4 py-3 transition-colors focus-within:border-white/50">
+              <svg
+                className="size-4 shrink-0 text-neutral-400"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
               >
-                Clear
-              </button>
-            )}
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                />
+              </svg>
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Search by title, technology, or keyword..."
+                className="w-full bg-transparent text-sm text-white placeholder:text-neutral-500 outline-none"
+              />
+              {searchQuery && (
+                <button
+                  type="button"
+                  onClick={() => setSearchQuery("")}
+                  className="font-mono text-xs text-neutral-400 hover:text-white"
+                >
+                  Clear
+                </button>
+              )}
+            </div>
           </div>
 
           {/* Role Cards List */}
-          <div className="mt-8 space-y-6">
+          <div className="mt-12 sm:mt-16 space-y-6">
             {filteredRoles.length === 0 ? (
               <div className="tile border border-line bg-obsidian/60 p-12 text-center">
                 <p className="font-mono text-sm text-neutral-400">
