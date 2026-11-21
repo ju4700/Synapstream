@@ -12,7 +12,6 @@ import {
   DrawLine,
   EASE_OUT,
   Item,
-  MaskLine,
   Reveal,
   Stagger,
   StepTile,
@@ -212,26 +211,15 @@ export function About() {
       {/* -------------------------------------------------------------------- */}
       {/* 1. HERO SECTION                                                      */}
       {/* -------------------------------------------------------------------- */}
-      <section className="relative overflow-hidden pt-8 pb-16 md:pt-14 md:pb-20">
+      <section className="relative overflow-hidden pt-10 pb-16 md:pt-16 md:pb-24">
         <Container>
-          <div className="mx-auto max-w-4xl text-center">
-            <Reveal delay={0.05}>
-              <span className="font-mono text-xs uppercase tracking-[0.2em] text-silver">
-                Institutional Software Engineering
-              </span>
-            </Reveal>
-
-            <h1 className="mt-6 text-[32px] font-semibold leading-[1.12] tracking-[-0.03em] text-white sm:text-[46px] md:text-[58px]">
-              <MaskLine>Engineering long-lived digital</MaskLine>
-              <MaskLine>systems where failure</MaskLine>
-              <MaskLine className="text-silver">is not an option.</MaskLine>
-            </h1>
-
-            <Reveal delay={0.2}>
-              <p className="mx-auto mt-6 max-w-[62ch] text-[16px] sm:text-[18px] leading-[1.75] text-mist text-pretty">
-                Synapstream designs, builds, and operates resilient digital systems for sovereign
-                institutions, commercial conglomerates, and mission-critical technology platforms—grounded
-                in clean architecture, deterministic delivery, and measurable operational reliability.
+          <div className="mx-auto max-w-3xl text-center">
+            <Reveal delay={0.1}>
+              <p className="text-[18px] sm:text-[22px] md:text-[26px] font-normal leading-[1.65] tracking-[-0.015em] text-white/90 text-pretty">
+                Synapstream is an institutional software engineering firm focused on designing,
+                building, and operating resilient digital systems for sovereign governments,
+                commercial conglomerates, and mission-critical technology platforms—grounded in
+                clean architecture, deterministic delivery, and measurable operational reliability.
               </p>
             </Reveal>
           </div>
