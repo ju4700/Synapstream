@@ -211,15 +211,28 @@ export function About() {
       {/* -------------------------------------------------------------------- */}
       {/* 1. HERO SECTION                                                      */}
       {/* -------------------------------------------------------------------- */}
-      <section className="relative overflow-hidden pt-10 pb-16 md:pt-16 md:pb-24">
+      <section className="relative overflow-hidden pt-12 pb-16 md:pt-16 md:pb-24">
         <Container>
-          <div className="mx-auto max-w-3xl text-center">
+          <div className="mx-auto max-w-4xl">
             <Reveal delay={0.1}>
-              <p className="text-[18px] sm:text-[22px] md:text-[26px] font-normal leading-[1.65] tracking-[-0.015em] text-white/90 text-pretty">
-                Synapstream is an institutional software engineering firm focused on designing,
-                building, and operating resilient digital systems for sovereign governments,
-                commercial conglomerates, and mission-critical technology platforms—grounded in
-                clean architecture, deterministic delivery, and measurable operational reliability.
+              <p className="text-justify text-[16px] sm:text-[18px] md:text-[20px] font-normal leading-[1.85] text-mist tracking-[-0.01em]">
+                Synapstream is an institutional software engineering firm engineered to design,
+                build, and maintain long-lived digital systems where operational failure is not an option.
+                We partner with sovereign governments, public institutions, commercial conglomerates,
+                and mission-critical technology enterprises to deliver robust digital infrastructure
+                that remains strictly under statutory custody. Unlike conventional software vendors
+                that produce disposable deliverables or force organizations into opaque recurring licensing
+                traps, Synapstream operates on a philosophy of absolute engineering transparency and
+                operational sovereignty. Every system we build is grounded in contract-first architectures,
+                explicit type safety, deterministic deployment pipelines, and zero-trust security boundaries
+                engineered from sprint zero. From nationwide public registries and air-gapped cryptographic
+                environments to private machine intelligence clusters executing entirely on client-controlled
+                hardware with mathematical citation grounding, our platforms are architected to withstand
+                both peak operational concurrency and geopolitical network disruptions. We eliminate third-party
+                data leakage, reject black-box abstractions, and guarantee a total handover of intellectual
+                property—delivering complete source code repositories, automated infrastructure definitions,
+                and forensic runbooks directly to client custody so that institutions maintain uncompromised,
+                perpetual autonomy over the software that powers their critical operations.
               </p>
             </Reveal>
           </div>
