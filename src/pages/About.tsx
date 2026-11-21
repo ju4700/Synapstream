@@ -1,5 +1,7 @@
-import { m } from "motion/react";
+import { useRef } from "react";
+import { m, useReducedMotion, useScroll, useTransform } from "motion/react";
 import { CircularCarousel, type CarouselItem } from "../components/reactbits/CircularCarousel";
+import { HalftoneSphere } from "../components/HalftoneSphere";
 import {
   Container,
   Heading,
@@ -205,13 +207,24 @@ const ENGAGEMENT_MODELS = [
 
 export function About() {
   const isMobile = useIsMobile();
+  const heroRef = useRef<HTMLElement>(null);
+  const reduced = useReducedMotion();
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"],
+  });
+  const sphereY = useTransform(scrollYProgress, [0, 1], [0, 140]);
+  const sphereOpacity = useTransform(scrollYProgress, [0.2, 0.9], [1, 0.35]);
 
   return (
     <div className="pt-24 lg:pt-32">
       {/* -------------------------------------------------------------------- */}
       {/* 1. HERO SECTION                                                      */}
       {/* -------------------------------------------------------------------- */}
-      <section className="relative overflow-hidden pt-12 pb-16 md:pt-16 md:pb-24">
+      <section
+        ref={heroRef}
+        className="relative overflow-hidden pt-12 pb-0 md:pt-16"
+      >
         <Container>
           <div className="mx-auto max-w-4xl">
             <Reveal delay={0.1}>
@@ -237,6 +250,35 @@ export function About() {
             </Reveal>
           </div>
         </Container>
+
+        {/* Rising Halftone Sphere under the paragraph */}
+        <div className="relative mt-8 sm:mt-12 lg:mt-14 h-[320px] sm:h-[440px] lg:h-[540px] w-full overflow-hidden">
+          <m.div
+            className="pointer-events-none absolute inset-x-0 top-0 h-full w-full"
+            style={reduced || isMobile ? undefined : { y: sphereY, opacity: sphereOpacity }}
+            aria-hidden
+          >
+            <HalftoneSphere
+              radius={0.42}
+              crestY={24}
+              maxRadius={740}
+              minRadius={320}
+              rings={90}
+              maxDot={5.2}
+              tilt={0.6}
+              speed={0.02}
+              fadeTop={0.4}
+              intro={2}
+              interactive
+            />
+          </m.div>
+
+          {/* Bottom fade into the tenets section */}
+          <div
+            className="pointer-events-none absolute inset-x-0 bottom-0 h-28 sm:h-36 bg-gradient-to-t from-black via-black/80 to-transparent"
+            aria-hidden
+          />
+        </div>
       </section>
 
       {/* -------------------------------------------------------------------- */}
