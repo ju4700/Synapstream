@@ -212,72 +212,27 @@ export function About() {
       {/* -------------------------------------------------------------------- */}
       {/* 1. HERO SECTION                                                      */}
       {/* -------------------------------------------------------------------- */}
-      <section className="relative overflow-hidden pt-8 pb-20 md:pt-14 md:pb-28">
+      <section className="relative overflow-hidden pt-8 pb-16 md:pt-14 md:pb-20">
         <Container>
           <div className="mx-auto max-w-4xl text-center">
             <Reveal delay={0.05}>
-              <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-4 py-1.5 text-xs font-mono uppercase tracking-[0.16em] text-silver backdrop-blur-md">
-                <span className="size-1.5 rounded-full bg-white animate-pulse" />
-                Firm Overview & Institutional Engineering
-              </div>
+              <span className="font-mono text-xs uppercase tracking-[0.2em] text-silver">
+                Institutional Software Engineering
+              </span>
             </Reveal>
 
-            <h1 className="mt-8 text-[32px] font-semibold leading-[1.12] tracking-[-0.025em] text-white sm:text-[46px] md:text-[58px]">
+            <h1 className="mt-6 text-[32px] font-semibold leading-[1.12] tracking-[-0.03em] text-white sm:text-[46px] md:text-[58px]">
               <MaskLine>Engineering long-lived digital</MaskLine>
               <MaskLine>systems where failure</MaskLine>
               <MaskLine className="text-silver">is not an option.</MaskLine>
             </h1>
 
-            <Reveal delay={0.25}>
-              <p className="mx-auto mt-8 max-w-[68ch] text-[16px] sm:text-[18px] leading-[1.7] text-mist">
-                Synapstream is an institutional software engineering firm focused on designing,
-                building, and operating resilient digital systems for sovereign governments,
-                commercial conglomerates, and mission-critical technology platforms. Rather than
-                treating software as a disposable deliverable, we engineer platforms grounded in
-                clean architecture, deterministic delivery, and measurable operational reliability.
+            <Reveal delay={0.2}>
+              <p className="mx-auto mt-6 max-w-[62ch] text-[16px] sm:text-[18px] leading-[1.75] text-mist text-pretty">
+                Synapstream designs, builds, and operates resilient digital systems for sovereign
+                institutions, commercial conglomerates, and mission-critical technology platforms—grounded
+                in clean architecture, deterministic delivery, and measurable operational reliability.
               </p>
-            </Reveal>
-
-            {/* Engineering Mandate Callout Box */}
-            <Reveal delay={0.35}>
-              <div className="tile mt-12 border border-white/15 bg-obsidian/90 p-6 sm:p-10 text-left shadow-[0_12px_40px_rgba(0,0,0,0.6)] backdrop-blur-xl">
-                <div className="flex items-center justify-between gap-4 border-b border-line pb-4">
-                  <span className="font-mono text-xs uppercase tracking-[0.16em] text-silver">
-                    The Engineering Mandate
-                  </span>
-                  <span className="font-mono text-xs text-step-2">SYNAPSTREAM PROTOCOL</span>
-                </div>
-                <blockquote className="mt-5 text-[17px] sm:text-[20px] font-medium leading-[1.55] tracking-[-0.01em] text-white">
-                  &ldquo;Build software that is unambiguous in its architecture, transparent in its
-                  operation, secure by default, and effortless for the people who rely on it every day.
-                  Every line of production code must serve a verifiable operational objective.&rdquo;
-                </blockquote>
-              </div>
-            </Reveal>
-
-            {/* Quick Metrics */}
-            <Reveal delay={0.45}>
-              <div className="mt-12 grid grid-cols-2 gap-4 text-left sm:grid-cols-4">
-                {[
-                  { metric: "100%", label: "IP & Code Handover", sub: "Zero vendor lock-in" },
-                  { metric: "Zero", label: "Third-Party Data Leak", sub: "Strict sovereign boundary" },
-                  { metric: "Air-Gapped", label: "Infrastructure Ready", sub: "Isolated network execution" },
-                  { metric: "Contract", label: "First Architecture", sub: "Type-safe OpenAPI & schemas" },
-                ].map((stat) => (
-                  <div
-                    key={stat.label}
-                    className="tile-sm border border-line bg-obsidian/60 p-4 sm:p-5"
-                  >
-                    <span className="font-display text-xl sm:text-2xl font-bold tracking-tight text-white">
-                      {stat.metric}
-                    </span>
-                    <p className="mt-2 text-xs font-semibold uppercase tracking-wider text-white">
-                      {stat.label}
-                    </p>
-                    <p className="mt-0.5 text-[11px] text-neutral-400">{stat.sub}</p>
-                  </div>
-                ))}
-              </div>
             </Reveal>
           </div>
         </Container>
